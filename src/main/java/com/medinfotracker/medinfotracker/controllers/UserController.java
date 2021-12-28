@@ -18,6 +18,5 @@ public class UserController {
     @GetMapping("")
     public String index(Model model) {
 //        model.addAttribute()
-        return null;
     }
 }
