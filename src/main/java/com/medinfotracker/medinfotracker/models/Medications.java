@@ -3,8 +3,8 @@ package com.medinfotracker.medinfotracker.models;
 //import javax.persistence.Id;
 //import javax.persistence.MappedSuperclass;
 //import javax.persistence.*;
-//import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.*;
 import java.util.*;
 import java.util.Objects;
@@ -19,7 +19,5 @@ import org.springframework.web.bind.annotation.*;
 import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.controllers.*;
 import com.medinfotracker.medinfotracker.models.data.*;
-public class User {
+public class Medications {
 }
-
-

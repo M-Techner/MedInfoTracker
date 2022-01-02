@@ -1,4 +1,4 @@
-package com.medinfotracker.medinfotracker.models;
+package com.medinfotracker.medinfotracker.controllers;
 //import javax.persistence.GeneratedValue;
 //import javax.persistence.Id;
 //import javax.persistence.MappedSuperclass;
@@ -19,7 +19,5 @@ import org.springframework.web.bind.annotation.*;
 import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.controllers.*;
 import com.medinfotracker.medinfotracker.models.data.*;
-public class User {
+public class SearchController {
 }
-
-

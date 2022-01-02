@@ -19,7 +19,5 @@ import org.springframework.web.bind.annotation.*;
 import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.controllers.*;
 import com.medinfotracker.medinfotracker.models.data.*;
-public class User {
+public class Conditions {
 }
-
-
