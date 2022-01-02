@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container  body-content">
+<h1>Add User Information</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<form method="post" style="max-width:600px;">
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Employer Name</label>-->
+<!--        <input class="form-control" th:field="${employer.name}" />-->
+<!--        <span th:errors="${employer.name}" class="error"></span>-->
+<!--    </div>-->
+
+    <div class="form-group">
+        <label th:for="userAddress">User Address</label>
+        <input class="form-control" th:field="${user.userAddress}" />
+        <span th:errors="${user.userAddress}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="userPhoneNumber">User Phone Number</label>
+        <input class="form-control" th:field="${user.userPhoneNumber}" />
+        <span th:errors="${user.userPhoneNumber}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="userEmail">User Email</label>
+        <input class="form-control" th:field="${user.userEmail}" />
+        <span th:errors="${user.userEmail}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="userDateOfBirth">User Date of Birth</label>
+        <input class="form-control" th:field="${user.userDateOfBirth}" />
+        <span th:errors="${user.userDateOfBirth}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="emergencyName">Emergency Contact Name</label>
+        <input class="form-control" th:field="${user.emergencyName}" />
+        <span th:errors="${user.emergencyName}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="emergencyPhoneNumber">Emergency Contact Phone</label>
+        <input class="form-control" th:field="${user.emergencyPhoneNumber}" />
+        <span th:errors="${user.emergencyPhoneNumber}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="emergencyRelationship">Relationship to Emergency Contact</label>
+        <input class="form-control" th:field="${user.emergencyRelationship}" />
+        <span th:errors="${user.emergencyRelationship}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="primaryCarePhysicianName">Primary Care Physician Name</label>
+        <input class="form-control" th:field="${user.primaryCarePhysicianName}" />
+        <span th:errors="${user.primaryCarePhysicianName}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="primaryCarePhysicianAddress">Primary Care Physician Address</label>
+        <input class="form-control" th:field="${user.primaryCarePhysicianAddress}" />
+        <span th:errors="${user.primaryCarePhysicianAddress}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="primaryCarePhysicianPhoneNumber">Primary Care Physician Phone Number</label>
+        <input class="form-control" th:field="${user.primaryCarePhysicianPhoneNumber}" />
+        <span th:errors="${user.primaryCarePhysicianPhoneNumber}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="specialistName">Specialist Name</label>
+        <input class="form-control" th:field="${user.specialistName}" />
+        <span th:errors="${user.specialistName}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="specialistPhoneNumber">Specialist Phone Number</label>
+        <input class="form-control" th:field="${user.specialistPhoneNumber}" />
+        <span th:errors="${user.specialistPhoneNumber}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="specialistType">Specialist Type</label>
+        <input class="form-control" th:field="${user.specialistType}" />
+        <span th:errors="${user.specialistType}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="allergies">Known Allergies</label>
+        <input class="form-control" th:field="${user.allergies}" />
+        <span th:errors="${user.allergies}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="medicalConditions">Medical Conditions</label>
+        <input class="form-control" th:field="${user.medicalConditions}" />
+        <span th:errors="${user.medicalConditions}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add User Information"/>
+</form>
+
+</body>
+</html>
