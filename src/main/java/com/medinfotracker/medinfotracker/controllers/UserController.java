@@ -1,7 +1,9 @@
 package com.medinfotracker.medinfotracker.controllers;
 
 
+import com.medinfotracker.medinfotracker.models.Profile;
 import com.medinfotracker.medinfotracker.models.User;
+import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private ProfileRepository profileRepository;
+
     @GetMapping("")
     public String index(Model model) {
         model.addAttribute("Title", "User Profile");
@@ -27,7 +32,10 @@ public class UserController {
     }
 
     @GetMapping("add")
-    public String displayAddUserForm(Model model) {
+    public String displayAddProfileForm(Model model) {
+        model.addAttribute("User Legal Name", "Add User Legal Name");
+        model.addAttribute("User Address", "Add User Address");
+        model.addAttribute("User Phone Number", "Add User Phone Number");
         model.addAttribute("Emergency Contact Name", "Add Emergency Contact Name");
         model.addAttribute("Emergency Contact Phone Number", "Add Emergency Contact Phone Number");
         model.addAttribute("Emergency Contact Relationship", "Add Emergency Contact Relationship");
@@ -39,13 +47,12 @@ public class UserController {
         model.addAttribute("Specialist Type", "Add Specialist Type");
         model.addAttribute("Known Allergies", "Add Known Allergies");
         model.addAttribute("Medical Conditions", "Add Medical Conditions");
-        model.addAttribute(new User());
+        model.addAttribute(new Profile());
         return "user/add";
-
     }
 
     @PostMapping("add")
-    public String processAddUserForm(@ModelAttribute @Valid User newUser,
+    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
                                          Errors errors, Model model) {
 
         if (errors.hasErrors()) {
@@ -53,16 +60,19 @@ public class UserController {
             return "user/add";
         }
 
-        userRepository.save(newUser);
-        model.addAttribute("user", userRepository.findAll());
+        profileRepository.save(newProfile);
+//        userRepository.save(newUser);
+//        model.addAttribute("user", userRepository.findAll());
+        model.addAttribute("profile", profileRepository.findAll());
         return "redirect:";
     }
 
     @GetMapping("view/{userId}")
-    public String displayViewUser(Model model, @PathVariable int userId) {
-        model.addAttribute("user", userRepository.findAll());
+    public String displayViewProfile(Model model, @PathVariable int userId) {
+//        model.addAttribute("user", userRepository.findAll());
+        model.addAttribute("profile", profileRepository.findAll());
 
-        Optional optUser = userRepository.findById(userId);
+        Optional optUser = profileRepository.findById(userId);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
             model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
@@ -71,6 +81,16 @@ public class UserController {
         } else {
             return "redirect:../";
         }
+
+//        Optional optUser = userRepository.findById(userId);
+//        if (optUser.isPresent()) {
+//            User user = (User) optUser.get();
+//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            model.addAttribute("user", user);
+//            return "user/view";
+//        } else {
+//            return "redirect:../";
+//        }
     }
 
 }

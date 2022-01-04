@@ -4,28 +4,29 @@
 
 
 <body class="container body-content">
-<h1 th:text="${'User: ' + user.name}">MedInfoTracker</h1>
+<h1 th:text="${'User: ' + user.userName}">MedInfoTracker</h1>
 
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="User-Profile">
-    <p th:text="${'Name: ' + user.userName}"></p>
-    <p th:text="${'Address: ' + user.userAddress}"></p>
-    <p th:text="${'Phone Number: ' + user.userPhoneNumber"></p>
-    <p th:text="${'Email: ' + user.userEmail"></p>
-    <p th:text="${'Date of Birth: ' + user.userDateOfBirth"></p>
-    <p th:text="${'Emergency Contact: ' + user.emergencyName"></p>
-    <p th:text="${'Emergency Contact Number: ' + user.emergencyPhoneNumber"></p>
-    <p th:text="${'Emergency Contact Relationship: ' + user.emergencyRelationship"></p>
-    <p th:text="${'Primary Care Physician: ' + user.primaryCarePhysicianName"></p>
-    <p th:text="${'PCP Address: ' + user.primaryCarePhysicianAddress"></p>
-    <p th:text="${'PCP Phone Number: ' + user.primaryCarePhysicianPhoneNumber"></p>
-    <p th:text="${'Specialist Physician: ' + user.specialistName"></p>
-    <p th:text="${'Specialist Phone Number: ' + user.specialistPhoneNumber"></p>
-    <p th:text="${'Specialist Type: ' + user.specialistType"></p>
-    <p th:text="${'Known Allergies of Any Kind: ' + user.allergies"></p>
-    <p th:text="${'Medical Conditions: ' + user.medicalConditions"></p>
+    <p th:text="${'User Name: ' + user.userName}"></p>
+    <p th:text="${'Name: ' + profile.userLegalName}"></p>
+    <p th:text="${'Address: ' + profile.userAddress}"></p>
+    <p th:text="${'Phone Number: ' + profile.userPhoneNumber"></p>
+    <p th:text="${'Email: ' + profile.userEmail"></p>
+    <p th:text="${'Date of Birth: ' + profile.userDateOfBirth"></p>
+    <p th:text="${'Emergency Contact: ' + profile.emergencyName"></p>
+    <p th:text="${'Emergency Contact Number: ' + profile.emergencyPhoneNumber"></p>
+    <p th:text="${'Emergency Contact Relationship: ' + profile.emergencyRelationship"></p>
+    <p th:text="${'Primary Care Physician: ' + profile.primaryCarePhysicianName"></p>
+    <p th:text="${'PCP Address: ' + profile.primaryCarePhysicianAddress"></p>
+    <p th:text="${'PCP Phone Number: ' + profile.primaryCarePhysicianPhoneNumber"></p>
+    <p th:text="${'Specialist Physician: ' + profile.specialistName"></p>
+    <p th:text="${'Specialist Phone Number: ' + profile.specialistPhoneNumber"></p>
+    <p th:text="${'Specialist Type: ' + profile.specialistType"></p>
+    <p th:text="${'Known Allergies of Any Kind: ' + profile.allergies"></p>
+    <p th:text="${'Medical Conditions: ' + profile.medicalConditions"></p>
 
 </div>
 

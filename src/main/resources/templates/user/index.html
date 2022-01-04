@@ -11,13 +11,13 @@
 <p th:unless="${user} and ${user.size()}">no users</p>
 
 <div class="container body-content">
-    <h2>New User</h2>
+    <h2>Hello, <a th:text="${userName}"></a></h2>
     <ul>
         <li th:each="user : ${user}">
             <a th:href="@{'/user/view/' + ${user.userId}}" th:text="${user.userName}"></a>
         </li>
     </ul>
-    <a th:href="@{'user/add'}">Register</a>
+    <a th:href="@{'user/add'}">Update</a>
 </div>
 
 </body>
