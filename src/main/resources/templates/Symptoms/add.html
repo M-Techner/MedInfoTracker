@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container  body-content">
+<h1>Add Symptom</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Symptom Name</label>
+        <input class="form-control" th:field="${symptoms.name}" />
+        <span th:errors="${symptoms.name}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="description">Symptom Description</label>
+        <input class="form-control" th:field="${symptoms.description}" />
+        <span th:errors="${symptoms.description}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Symptom" />
+</form>
 
 </body>
 </html>
