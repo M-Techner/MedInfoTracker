@@ -6,7 +6,7 @@ import javax.validation.constraints.*;
 import java.util.*;
 
 @Entity
-class Symptoms extends AbstractEntity {
+public class Symptoms extends AbstractEntity {
     @NotNull
     @Size(min=3, max=49)
     private String name;
@@ -14,30 +14,23 @@ class Symptoms extends AbstractEntity {
     private Date stopDate;
     private String description;
 
+
     public Symptoms() {
     }
 
-//    public Symptoms(String aName, Date aStartDate, Date aStopDate, String aDescription) {
-//        this.name = aName;
-//        this.startDate = aStartDate;
-//        this.stopDate = aStopDate;
-//        this.description = aDescription;
-//    }
-//    
-
-
-    public Symptoms(String aName, Date aStartDate, Date aStopDate, String aDescription) {
-        super();
-        this.name = aName;
-        this.startDate = aStartDate;
-        this.stopDate = aStopDate;
-        this.description = aDescription;
+    public Symptoms(String name, Date startDate, Date stopDate, String description) {
+        this.name = name;
+        this.startDate = startDate;
+        this.stopDate = stopDate;
+        this.description = description;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -65,4 +58,5 @@ class Symptoms extends AbstractEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }
