@@ -14,12 +14,12 @@ public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue
-    private int userId;
+    private int id;
 
 //    getters and setters
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     @Override
@@ -27,12 +27,12 @@ public abstract class AbstractEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractEntity that = (AbstractEntity) o;
-        return userId == that.userId;
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(userId);
+        return Objects.hash(id);
     }
 
 }

@@ -4,21 +4,21 @@
 </head>
 <body>
 
+<!--Use fragments.html for consistency across  pages-->
 <div th:replace="fragments :: page-header"></div>
 
 <div class="container body-content">
     <h2>Medical Information Tracker</h2>
     <ul>
         <li th:each="user : ${users}">
-            <a th:href="@{'/view/' + ${user.userId}}" th:text="${user.userName}"></a>
+            <a th:href="@{'profile/view/' + ${userId}}" th:text="${username}"></a>
         </li>
     </ul>
 
 </div>
 
 <div class="container body-content">
-<!--    <h3>New User</h3>-->
-    <a th:href="@{'user/add'}">Add Medical Information</a>
+    <a th:href="@{'profile/add'}">Add Medical Information</a>
 </div>
 
 </body>

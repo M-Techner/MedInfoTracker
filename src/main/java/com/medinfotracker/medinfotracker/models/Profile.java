@@ -1,76 +1,94 @@
 package com.medinfotracker.medinfotracker.models;
 
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Profile extends AbstractEntity{
+public class Profile extends AbstractEntity {
 
+    @OneToOne
+    private User user;
+
+//    @NotNull
+//    @JoinColumn(name = "id")
+//    private String userName;
+
+    @NotNull
     private String userLegalName;
 
+    @NotNull
     private String userAddress;
 
+    @NotNull
     private String userPhoneNumber;
 
+    @NotNull
     private String userEmail;
 
+    @NotNull
     private String userDateOfBirth;
 
+    @NotNull
     private String emergencyName;
 
+    @NotNull
     private String emergencyPhoneNumber;
 
+    @NotNull
     private String emergencyRelationship;
 
+    @NotNull
     private String primaryCarePhysicianName;
 
+    @NotNull
     private String primaryCarePhysicianAddress;
 
+    @NotNull
     private String primaryCarePhysicianPhoneNumber;
 
-    @OneToMany
+//    @OneToMany
 //    @ElementCollection
 //    @JoinColumn(name = "userId")
-//        private String specialistName;
-    private final List<User> specialistName = new ArrayList<>();
+    private String specialistName;
+//    private final List<User> specialistName = new ArrayList<>();
 
-    @OneToMany
+//    @OneToMany
 //    @ElementCollection
 //    @JoinColumn(name = "userId")
-//    private String specialistPhoneNumber;
-    private final List<User> specialistPhoneNumber = new ArrayList<>();
+    private String specialistPhoneNumber;
+//    private final List<User> specialistPhoneNumber = new ArrayList<>();
 
-    @OneToMany
+//    @OneToMany
 //    @ElementCollection
 //    @JoinColumn(name = "userId")
-//    private String specialistType;
-    private final List<User> specialistType = new ArrayList<>();
+    private String specialistType;
+//    private final List<User> specialistType = new ArrayList<>();
 
-    @OneToMany
+//    @OneToMany
 //    @ElementCollection
 //    @JoinColumn(name = "userId")
-//    private String allergies;
-    private final List<User> allergies = new ArrayList<>();
+    private String allergies;
+//    private final List<User> allergies = new ArrayList<>();
 
-    @OneToMany
+//    @OneToMany
 //    @ElementCollection
 //    @JoinColumn(name = "userId")
-//    private String medicalConditions;
-    private final List<User> medicalConditions = new ArrayList<>();
+    private String medicalConditions;
+//    private final List<User> medicalConditions = new ArrayList<>();
 
     public Profile() {}
 
     public Profile(String aUserLegalName, String aUserAddress, String aUserPhoneNumber, String aUserEmail,
                    String aUserDateOfBirth, String anEmergencyName, String anEmergencyPhoneNumber, String anEmergencyRelationship,
-                   String aPrimaryCarePhysicianName, String aPrimaryCarePhysicianAddress, String aPrimaryCarePhysicianPhoneNumber) {
-//                   String aSpecialistName, String aSpecialistPhoneNumber, String aSpecialistType, String someAllergies, String someMedicalConditions
-        super();
+                   String aPrimaryCarePhysicianName, String aPrimaryCarePhysicianAddress, String aPrimaryCarePhysicianPhoneNumber,
+                   String aSpecialistName, String aSpecialistPhoneNumber, String aSpecialistType,
+                   String someAllergies, String someMedicalConditions) {
+//        super();
+//        this.userName = userName;
         this.userLegalName = aUserLegalName;
         this.userAddress = aUserAddress;
         this.userPhoneNumber = aUserPhoneNumber;
@@ -82,12 +100,16 @@ public class Profile extends AbstractEntity{
         this.primaryCarePhysicianName = aPrimaryCarePhysicianName;
         this.primaryCarePhysicianAddress  = aPrimaryCarePhysicianAddress;
         this.primaryCarePhysicianPhoneNumber = aPrimaryCarePhysicianPhoneNumber;
-//        this.specialistName = aSpecialistName;
-//        this.specialistPhoneNumber = aSpecialistPhoneNumber;
-//        this.specialistType = aSpecialistType;
-//        this.allergies =  someAllergies;
-//        this.medicalConditions = someMedicalConditions;
+        this.specialistName = aSpecialistName;
+        this.specialistPhoneNumber = aSpecialistPhoneNumber;
+        this.specialistType = aSpecialistType;
+        this.allergies =  someAllergies;
+        this.medicalConditions = someMedicalConditions;
     }
+
+//    public String getUserName() { return userName; }
+//
+//    public void setUserName(String userName) { this.userName = userName; }
 
     public String getUserLegalName() { return userLegalName; }
 
@@ -133,24 +155,24 @@ public class Profile extends AbstractEntity{
 
     public void setPrimaryCarePhysicianPhoneNumber(String primaryCarePhysicianPhoneNumber) { this.primaryCarePhysicianPhoneNumber = primaryCarePhysicianPhoneNumber; }
 
-    public List<User> getSpecialistName() { return specialistName; }
+    public String getSpecialistName() { return specialistName; }
 
-//    public void setSpecialistName(String specialistName) { this.specialistName = specialistName; }
+    public void setSpecialistName(String specialistName) { this.specialistName = specialistName; }
 
-    public List<User> getSpecialistPhoneNumber() { return specialistPhoneNumber; }
+    public String getSpecialistPhoneNumber() { return specialistPhoneNumber; }
 
-//    public void setSpecialistPhoneNumber(String specialistPhoneNumber) { this.specialistPhoneNumber = specialistPhoneNumber; }
+    public void setSpecialistPhoneNumber(String specialistPhoneNumber) { this.specialistPhoneNumber = specialistPhoneNumber; }
 
-    public List<User> getSpecialistType() { return specialistType; }
+    public String getSpecialistType() { return specialistType; }
 
-//    public void setSpecialistType(String specialistType) { this.specialistType = specialistType; }
+    public void setSpecialistType(String specialistType) { this.specialistType = specialistType; }
 
-    public List<User>  getAllergies() { return allergies; }
+    public String getAllergies() { return allergies; }
 
-//    public void setAllergies(String allergies) { this.allergies = allergies; }
+    public void setAllergies(String allergies) { this.allergies = allergies; }
 
-    public List<User> getMedicalConditions() { return medicalConditions; }
+    public String getMedicalConditions() { return medicalConditions; }
 
-//    public void setMedicalConditions(String medicalConditions) { this.medicalConditions = medicalConditions; }
+    public void setMedicalConditions(String medicalConditions) { this.medicalConditions = medicalConditions; }
 
 }

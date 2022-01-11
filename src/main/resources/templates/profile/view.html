@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<!--Use fragments.html for consistency across  pages-->
+
+<body class="container body-content">
+<h1 th:text="${'Username: ' + userName}">MedInfoTracker</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="user-profile">
+<!--    <p th:text="${'Username: ' + profile.userName}"></p>-->
+    <p th:text="${'Name: ' + profile.userLegalName}"></p>
+    <p th:text="${'Address: ' + profile.userAddress}"></p>
+    <p th:text="${'Phone Number: ' + profile.userPhoneNumber}"></p>
+    <p th:text="${'Email: ' + profile.userEmail}"></p>
+    <p th:text="${'Date of Birth: ' + profile.userDateOfBirth}"></p>
+    <p th:text="${'Emergency Contact: ' + profile.emergencyName}"></p>
+    <p th:text="${'Emergency Contact Number: ' + profile.emergencyPhoneNumber}"></p>
+    <p th:text="${'Emergency Contact Relationship: ' + profile.emergencyRelationship}"></p>
+    <p th:text="${'Primary Care Physician (PCP): ' + profile.primaryCarePhysicianName}"></p>
+    <p th:text="${'PCP Address: ' + profile.primaryCarePhysicianAddress}"></p>
+    <p th:text="${'PCP Phone Number: ' + profile.primaryCarePhysicianPhoneNumber}"></p>
+    <p th:text="${'Specialist Physician: ' + profile.specialistName}"></p>
+    <p th:text="${'Specialist Phone Number: ' + profile.specialistPhoneNumber}"></p>
+    <p th:text="${'Specialist Type: ' + profile.specialistType}"></p>
+    <p th:text="${'Known Allergies of Any Kind: ' + profile.allergies}"></p>
+    <p th:text="${'Medical Conditions: ' + profile.medicalConditions}"></p>
+
+</div>
+<!--Want to add an edit/update button-->
+</body>
+</html>

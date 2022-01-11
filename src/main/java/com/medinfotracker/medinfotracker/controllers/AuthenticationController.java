@@ -41,7 +41,7 @@ public class AuthenticationController {
         }
 
         private static void setUserInSession(HttpSession session, User user) {
-            session.setAttribute(userSessionKey, user.getUserId());
+            session.setAttribute(userSessionKey, user.getId());
         }
 
         @GetMapping("/register")
@@ -104,7 +104,7 @@ public class AuthenticationController {
             User theUser = userRepository.findByUserName(loginFormDTO.getUserName());
 
             if (theUser == null) {
-                errors.rejectValue("username", "user.invalid", "The given username does not exist");
+                errors.rejectValue("userName", "user.invalid", "The given username does not exist");
                 model.addAttribute("title", "Log In");
                 return "login";
             }

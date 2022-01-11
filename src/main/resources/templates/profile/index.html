@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--Use fragments.html for consistency across  pages-->
+<div th:replace="fragments :: page-header"></div>
+
+<p th:unless="${user} and ${user.size()}">no users</p>
+
+<div class="container body-content">
+    <h2>Medical Profile</a></h2>
+    <a th:href="@{'profile/view/{id}'}">View My Profile</a>
+<br>
+<!--    Need to change this link to an edit option, not an add option-->
+    <a th:href="@{'profile/add'}">Update My Profile</a>
+</div>
+
+</body>
+</html>
