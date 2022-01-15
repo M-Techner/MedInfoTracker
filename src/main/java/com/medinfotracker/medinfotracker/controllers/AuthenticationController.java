@@ -26,12 +26,12 @@ public class AuthenticationController {
         private static final String userSessionKey = "user";
 
         public User getUserFromSession(HttpSession session) {
-            Integer userId = (Integer) session.getAttribute(userSessionKey);
-            if (userId == null) {
+            Integer id = (Integer) session.getAttribute(userSessionKey);
+            if (id == null) {
                 return null;
             }
 
-            Optional<User> user = userRepository.findById(userId);
+            Optional<User> user = userRepository.findById(id);
 
             if (user.isEmpty()) {
                 return null;
@@ -64,7 +64,7 @@ public class AuthenticationController {
             User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
 
             if (existingUser != null) {
-                errors.rejectValue("userName", "userName.alreadyexists", "A user with that username already exists");
+                errors.rejectValue("userName", "userName.alreadyexists", "That username is already in use.");
                 model.addAttribute("title", "Register");
                 return "register";
             }
@@ -72,7 +72,7 @@ public class AuthenticationController {
             String password = registerFormDTO.getPassword();
             String verifyPassword = registerFormDTO.getVerifyPassword();
             if (!password.equals(verifyPassword)) {
-                errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
+                errors.rejectValue("password", "passwords.mismatch", "Passwords entered do not match");
                 model.addAttribute("title", "Register");
                 return "register";
             }

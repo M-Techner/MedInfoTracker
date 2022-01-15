@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -19,6 +21,19 @@ public class ProfileController {
 
     @Autowired
     private ProfileRepository profileRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
+    private AuthenticationController authenticationController;
+
+////    private HandshakeCompletedEvent request;
+//    HttpSession session = request.getSession();
+//    int id = session.getAttribute("id");
+
+
+//    String userName = (String) session.getAttribute("userName");
 
     @GetMapping("")
     public String index(Model model) {
@@ -50,14 +65,18 @@ public class ProfileController {
 
     @PostMapping("add")
     public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
-                                        Errors errors, Model model) {
+                                        Errors errors, Model model, HttpServletRequest request) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add User Profile Details");
             return "profile/add";
         }
 
+        User user = authenticationController.getUserFromSession(request.getSession());
+
         profileRepository.save(newProfile);
+        user.setProfile(newProfile);
+        userRepository.save(user);
 //        model.addAttribute("user", userRepository.findAll());
         model.addAttribute("profile", profileRepository.findAll());
         return "redirect:";

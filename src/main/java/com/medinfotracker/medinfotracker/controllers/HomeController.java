@@ -4,7 +4,6 @@ package com.medinfotracker.medinfotracker.controllers;
 import com.medinfotracker.medinfotracker.models.Profile;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
-//import com.medinfotracker.medinfotracker.models.data.SpecialistRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -43,7 +42,6 @@ public class HomeController {
         model.addAttribute("title", "Add Profile");
         model.addAttribute("user", userRepository.findAll());
         model.addAttribute("profile", profileRepository.findAll());
-//        model.addAttribute("specialist", specialistRepository.findAll());
         model.addAttribute(new Profile());
         return "add";
     }

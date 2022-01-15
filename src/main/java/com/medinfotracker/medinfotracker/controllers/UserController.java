@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -23,7 +25,12 @@ public class UserController {
 
 //    @Autowired
 //    private ProfileRepository profileRepository;
-
+//
+//    private <EntUserId> EntUserId getUserId(HttpServletRequest request) {
+//        HttpSession session = request.getSession();
+//        EntUserId profile = (EntUserId) session.getAttribute("id");
+//        return id;
+//    }
 
     @GetMapping("")
     public String index(Model model) {
