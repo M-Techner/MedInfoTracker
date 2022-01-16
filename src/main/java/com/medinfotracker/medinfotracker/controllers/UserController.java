@@ -60,18 +60,18 @@ public class UserController {
         return "redirect:";
     }
 
-    @GetMapping("view/{userId}")
-    public String displayViewUser(Model model, @PathVariable int userId) {
+    @GetMapping("view/{profileId}")
+    public String displayViewUser(Model model, @PathVariable int profileId) {
         model.addAttribute("user", userRepository.findAll());
 
-        Optional optUser = userRepository.findById(userId);
+        Optional optUser = userRepository.findById(profileId);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
             model.addAttribute("title", "user: " + ((User) optUser.get()).getId());
             model.addAttribute("user", user);
             return "user/view";
         } else {
-            return "redirect:../";
+            return "redirect:..";
         }
     }
 

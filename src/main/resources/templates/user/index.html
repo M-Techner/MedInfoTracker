@@ -18,7 +18,7 @@
     <h2>Hello</h2>
     <ul>
         <li th:each="user : ${users}">
-<!--            <a th:href="@{'/user/view/' + ${user.id}" th:text="${user.userName}"></a>-->
+            <a th:href="@{'/user/view/' + ${user.id}" th:text="${user.userName}"></a>
         </li>
     </ul>
     <a th:href="@{'/profile/add'}">Create My Profile</a>

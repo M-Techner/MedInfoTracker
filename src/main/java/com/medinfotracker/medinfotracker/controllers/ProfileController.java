@@ -74,8 +74,8 @@ public class ProfileController {
 
         User user = authenticationController.getUserFromSession(request.getSession());
 
-        profileRepository.save(newProfile);
         user.setProfile(newProfile);
+        profileRepository.save(newProfile);
         userRepository.save(user);
 //        model.addAttribute("user", userRepository.findAll());
         model.addAttribute("profile", profileRepository.findAll());
@@ -83,10 +83,10 @@ public class ProfileController {
     }
 
     @GetMapping("view/{id}")
-    public String displayViewProfile(Model model, @PathVariable int id) {
-        model.addAttribute("profile", profileRepository.findAll());
+    public String displayViewProfile(Model model, @PathVariable("id") int id) {
+        model.addAttribute("profile", userRepository.findAll());
 
-        Optional optProfile = profileRepository.findById(id);
+        Optional optProfile = userRepository.findById(id);
         if (optProfile.isPresent()) {
             Profile profile = (Profile) optProfile.get();
 //            model.addAttribute("title", "User Profile: " + ((Profile) optProfile.get()).getId());

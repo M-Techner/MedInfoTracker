@@ -18,9 +18,7 @@ public abstract class AbstractEntity {
 
 //    getters and setters
 
-    public int getId() {
-        return id;
-    }
+    public int getId() { return id; }
 
     @Override
     public boolean equals(Object o) {

@@ -8,8 +8,10 @@
 
 <nav th:replace="fragments :: page-header"></nav>
 
+<!--Display profile information-->
+
 <div class="user-profile">
-<!--    <p th:text="${'Username: ' + profile.userName}"></p>-->
+    <p th:text="${'Username: ' + user.userName}"></p>
     <p th:text="${'Name: ' + profile.userLegalName}"></p>
     <p th:text="${'Address: ' + profile.userAddress}"></p>
     <p th:text="${'Phone Number: ' + profile.userPhoneNumber}"></p>

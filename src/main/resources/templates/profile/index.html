@@ -12,9 +12,17 @@
 <p th:unless="${user} and ${user.size()}">no users</p>
 
 <div class="container body-content">
-    <h2>Medical Profile</a></h2>
-    <a th:href="@{'profile/view/{id}'}">View My Profile</a>
+    <h2>Medical Profile</h2>
+<!--    <ul>-->
+<!--        <li th:each="user : ${users}">-->
+<!--            <a th:href="@{'/profile/view/' + ${user.profileId}}" th:text="${user.userName}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+
+    <a th:href="@{'user.profile'}">View My Profile</a>
+
 <br>
+
 <!--    Need to change this link to an edit option, not an add option-->
     <a th:href="@{'profile/add'}">Update My Profile</a>
 </div>
