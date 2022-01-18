@@ -9,17 +9,55 @@
 
 <div class="container body-content">
     <h2>Medical Information Tracker</h2>
-    <ul>
-        <li th:each="user : ${users}">
-            <a th:href="@{'profile/view/' + ${userId}}" th:text="${username}"></a>
-        </li>
-    </ul>
-
+<!--    <ul>-->
+<!--        <li th:each="user : ${users}">-->
+<!--            <a th:href="@{'profile/view/' + ${userId}}" th:text="${username}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <h1>Hello!</h1>-->
+    <h6> Please Use The Navigation Bar To Locate Your Medical Tracking Information</h6>
 </div>
 
 <div class="container body-content">
     <a th:href="@{'profile/add'}">Add Medical Information</a>
+    <br>
+<!--    <a th:herf="@{'/user/view/' + ${user.profile}}">View My Profile</a>-->
+    <br>
+    <a th:href="@{/logout}">Or Logout to Change User</a>
 </div>
 
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org/">-->
+<!--<head th:replace="fragments :: head">-->
+<!--    &lt;!&ndash;    <meta charset="UTF-8">&ndash;&gt;-->
+<!--    &lt;!&ndash;    <title>Title</title>&ndash;&gt;-->
+<!--</head>-->
+
+
+<!--&lt;!&ndash;<body class="container body-content">&ndash;&gt;-->
+<!--&lt;!&ndash;<h1 th:text="${'User: ' + user.userName}"></h1>&ndash;&gt;-->
+
+<!--&lt;!&ndash;Use fragments.html for consistency across  pages&ndash;&gt;-->
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+<!--<p th:unless="${users} and ${user.size()}">no users</p>-->
+
+<!--<div class="container body-content">-->
+<!--    &lt;!&ndash;    <h1 th:text="${'Medical Profile for: ' + user.userName}">MedInfoTracker</h1>&ndash;&gt;-->
+<!--    <h1>Hello!</h1>-->
+<!--    <h4> Please Use The Navigation Bar To Locate Your Medical Tracking Information</h4>-->
+<!--    &lt;!&ndash;    <ul>&ndash;&gt;-->
+<!--    &lt;!&ndash;        <li th:each="user : ${users}">&ndash;&gt;-->
+<!--    &lt;!&ndash;            <a th:href="@{'/user/view/' + ${user.profile}" th:text="${user.userName}"></a>&ndash;&gt;-->
+<!--    &lt;!&ndash;        </li>&ndash;&gt;-->
+<!--    &lt;!&ndash;    </ul>&ndash;&gt;-->
+<!--&lt;!&ndash;    <a th:href="@{/logout}">Or Logout/Change User</a>&ndash;&gt;-->
+<!--    &lt;!&ndash;    <a th:href="@{'/profile/add'}">Create My Profile</a>&ndash;&gt;-->
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+

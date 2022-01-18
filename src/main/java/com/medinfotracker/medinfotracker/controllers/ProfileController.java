@@ -45,7 +45,7 @@ public class ProfileController {
     @GetMapping("add")
     public String displayAddProfileForm(Model model) {
 //        model.addAttribute("Username", "${user.userName}");
-        model.addAttribute("User Legal Name", "Add User Legal Name");
+        model.addAttribute("User Medical Record Name", "Add User Medical Record Name");
         model.addAttribute("User Address", "Add User Address");
         model.addAttribute("User Phone Number", "Add User Phone Number");
         model.addAttribute("Emergency Contact Name", "Add Emergency Contact Name");
@@ -83,10 +83,10 @@ public class ProfileController {
     }
 
     @GetMapping("view/{id}")
-    public String displayViewProfile(Model model, @PathVariable("id") int id) {
-        model.addAttribute("profile", userRepository.findAll());
+    public String displayViewProfile(Model model, @PathVariable int id) {
+        model.addAttribute("profile", profileRepository.findAll());
 
-        Optional optProfile = userRepository.findById(id);
+        Optional optProfile = profileRepository.findById(id);
         if (optProfile.isPresent()) {
             Profile profile = (Profile) optProfile.get();
 //            model.addAttribute("title", "User Profile: " + ((Profile) optProfile.get()).getId());

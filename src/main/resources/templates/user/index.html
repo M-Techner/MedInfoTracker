@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-<!--    <meta charset="UTF-8">-->
-<!--    <title>Title</title>-->
-</head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
 
 
-<!--<body class="container body-content">-->
+<body class="container body-content">
 <!--<h1 th:text="${'User: ' + user.userName}"></h1>-->
 
 <!--Use fragments.html for consistency across  pages-->
 <div th:replace="fragments :: page-header"></div>
 
-<p th:unless="${users} and ${user.size()}">no users</p>
+<!--<p th:unless="${users} and ${user.size()}">no users</p>-->
 
 <div class="container body-content">
-    <h2>Hello</h2>
-    <ul>
-        <li th:each="user : ${users}">
-            <a th:href="@{'/user/view/' + ${user.id}" th:text="${user.userName}"></a>
-        </li>
-    </ul>
-    <a th:href="@{'/profile/add'}">Create My Profile</a>
+<!--    Below causes an error "Property or field 'userName' cannot be found on null" -->
+        <h1 th:text="${'Medical Profile for: ' + user.userName}">MedInfoTracker</h1>
+
+        <h1>Hello!</h1>
+    <h4> Please Use The Navigation Bar To Locate Your Medical Tracking Information</h4>
+<!--    <ul>-->
+<!--        <li th:each="user : ${users}">-->
+<!--            <a th:href="@{'/user/view/' + ${user.profile}}" th:text="${user.userName}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    <a th:href="@{'/user/view/' + ${user.profile}}">View My Profile</a>-->
+    <br>
+    <a th:href="@{/logout}">Or Logout to Change User</a>
+<!--    <a th:href="@{'/profile/add'}">Create My Profile</a>-->
 </div>
 
 </body>

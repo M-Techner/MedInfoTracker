@@ -77,14 +77,14 @@ public class HomeController {
 //    }
 
 
-    @GetMapping("view/{userId}")
-    public String displayViewUserProfile(Model model, @PathVariable int userId) {
+    @GetMapping("view/{id}")
+    public String displayViewUserProfile(Model model, @PathVariable int id) {
 
-        Optional optProfile = profileRepository.findById(userId);
-        if (!optProfile.isEmpty()) {
-            Profile profile = (Profile) optProfile.get();
-            model.addAttribute("profile", optProfile.get());
-            return "profile/view/";
+        Optional optUser = userRepository.findById(id);
+        if (!optUser.isEmpty()) {
+            Profile profile = (Profile) optUser.get();
+            model.addAttribute("user", optUser.get());
+            return "user/view/";
         } else {
             return "redirect:/";
         }

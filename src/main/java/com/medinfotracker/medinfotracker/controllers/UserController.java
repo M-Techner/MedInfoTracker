@@ -23,19 +23,15 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    private ProfileRepository profileRepository;
-//
-//    private <EntUserId> EntUserId getUserId(HttpServletRequest request) {
-//        HttpSession session = request.getSession();
-//        EntUserId profile = (EntUserId) session.getAttribute("id");
-//        return id;
-//    }
+    @Autowired
+    private ProfileRepository profileRepository;
+
 
     @GetMapping("")
     public String index(Model model) {
         model.addAttribute("Title", "User");
         model.addAttribute("User", userRepository.findAll());
+        model.addAttribute("profile", profileRepository.findAll());
         return "user/index";
     }
 
@@ -60,11 +56,11 @@ public class UserController {
         return "redirect:";
     }
 
-    @GetMapping("view/{profileId}")
-    public String displayViewUser(Model model, @PathVariable int profileId) {
-        model.addAttribute("user", userRepository.findAll());
+    @GetMapping("view/{id}")
+    public String displayViewUser(Model model, @PathVariable("id") int id) {
+//        model.addAttribute("user", userRepository.findAll());
 
-        Optional optUser = userRepository.findById(profileId);
+        Optional optUser = userRepository.findById(id);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
             model.addAttribute("title", "user: " + ((User) optUser.get()).getId());

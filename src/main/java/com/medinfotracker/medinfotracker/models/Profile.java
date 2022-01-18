@@ -18,7 +18,7 @@ public class Profile extends AbstractEntity {
 //    private String userName;
 
     @NotNull
-    private String userLegalName;
+    private String userMedicalRecordName;
 
     @NotNull
     private String userAddress;
@@ -82,14 +82,14 @@ public class Profile extends AbstractEntity {
 
     public Profile() {}
 
-    public Profile(String aUserLegalName, String aUserAddress, String aUserPhoneNumber, String aUserEmail,
+    public Profile(String aUserMedicalRecordName, String aUserAddress, String aUserPhoneNumber, String aUserEmail,
                    String aUserDateOfBirth, String anEmergencyName, String anEmergencyPhoneNumber, String anEmergencyRelationship,
                    String aPrimaryCarePhysicianName, String aPrimaryCarePhysicianAddress, String aPrimaryCarePhysicianPhoneNumber,
                    String aSpecialistName, String aSpecialistPhoneNumber, String aSpecialistType,
                    String someAllergies, String someMedicalConditions) {
         super();
 //        this.userName = userName;
-        this.userLegalName = aUserLegalName;
+        this.userMedicalRecordName = aUserMedicalRecordName;
         this.userAddress = aUserAddress;
         this.userPhoneNumber = aUserPhoneNumber;
         this.userEmail = aUserEmail;
@@ -111,9 +111,9 @@ public class Profile extends AbstractEntity {
 //
 //    public void setUserName(String userName) { this.userName = userName; }
 
-    public String getUserLegalName() { return userLegalName; }
+    public String getUserMedicalRecordName() { return userMedicalRecordName; }
 
-    public void setUserLegalName(String userLegalName) { this.userLegalName = userLegalName; }
+    public void setUserMedicalRecordName(String userMedicalRecordName) { this.userMedicalRecordName = userMedicalRecordName; }
 
     public String getUserAddress() { return userAddress; }
 
