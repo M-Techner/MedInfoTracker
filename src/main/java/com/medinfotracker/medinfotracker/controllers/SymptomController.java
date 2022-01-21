@@ -17,9 +17,13 @@ import java.util.Optional;
 public class SymptomController {
 
     /**
+<<<<<<< HEAD
      *
      *
      *
+=======
+     *h
+>>>>>>> d0589d51a27d883dda0a380a190769b3a4e5bc77
      */
     @Autowired
     private SymptomRepository symptomRepository;
