@@ -1,6 +1,7 @@
 package com.medinfotracker.medinfotracker.controllers;
 
 
+import com.medinfotracker.medinfotracker.models.Symptoms;
 import com.medinfotracker.medinfotracker.models.data.SymptomRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
@@ -17,13 +18,7 @@ import java.util.Optional;
 public class SymptomController {
 
     /**
-<<<<<<< HEAD
      *
-     *
-     *
-=======
-     *h
->>>>>>> d0589d51a27d883dda0a380a190769b3a4e5bc77
      */
     @Autowired
     private SymptomRepository symptomRepository;
@@ -31,11 +26,37 @@ public class SymptomController {
 
     @GetMapping("")
     public String index(Model model){
-        model.addAttribute("Symptom Name", "sxName");
-        model.addAttribute("Symptom Description", "sxDescribe");
+        model.addAttribute("Symptom Name", "symptomName");
+        model.addAttribute("Symptom Description", "symptomDescribe");
 
-        return "/index";
+        return "symptoms/index";
     }
+    @GetMapping("add")
+    public String displayAddSymptomsForm(Model model) {
+        model.addAttribute(new Symptoms());
+        return "symptoms/add";
+    }
+    @PostMapping("add")
+    public String processAddSymptomsForm(@Valid Symptoms newSymptoms,
+                                      Errors errors, Model model) {
 
+        if (errors.hasErrors()) {
+            return "symptoms/add";
+        }
 
+        symptomRepository.save(newSymptoms);
+        return "redirect:";
+    }
+    @GetMapping("view/{symptomsId}")
+    public String displayViewSymptoms(Model model, @PathVariable int symptomsId) {
+
+        Optional optSymptoms = symptomRepository.findById(symptomsId);
+        if (optSymptoms.isPresent()) {
+            Symptoms symptoms = (Symptoms) optSymptoms.get();
+            model.addAttribute("symptoms", symptoms);
+            return "symptoms/view";
+        } else {
+            return "redirect:../";
+        }
+    }
 }
