@@ -3,7 +3,7 @@ package com.medinfotracker.medinfotracker.Models;
         import javax.persistence.Entity;
         import javax.persistence.JoinColumn;
         import javax.persistence.ManyToMany;
-        import javax.persistence.ManyToOne;
+        //import javax.persistence.ManyToOne;
         import javax.validation.constraints.NotBlank;
         import javax.validation.constraints.NotNull;
         import javax.validation.constraints.Size;
@@ -15,15 +15,11 @@ package com.medinfotracker.medinfotracker.Models;
 @Entity
 public class Medication extends AbstractEntity {
 
-    @ManyToMany
-    // still have ?
-    @JoinColumn(name = "User")
-    private final List<Medication> medications = new ArrayList<>();
+
 
     @NotBlank
     @NotNull
     @Size(min = 1, max = 60)
-
     private String medicationName;
 
     @NotBlank
@@ -62,16 +58,21 @@ public class Medication extends AbstractEntity {
     private String overTheCounter;
 
     // Initialize the id and value fields.
-    public Medication(String aMedicationName, String aDateStarted, String aPrescribingPhysician, String aDosage, String aFrequency, String aRouteOfAdminstration, String arefill, String anOverTheCounter) {
+    public Medication(String aMedicationName, String aDateStarted, String aPrescribingPhysician, String aDosage, String aFrequency, String aRouteOfAdministration, String aRefill, String anOverTheCounter) {
         super();
         this.medicationName = aMedicationName;
         this.dateStarted = aDateStarted;
         this.prescribingPhysician = aPrescribingPhysician;
         this.dosage = aDosage;
         this.frequency = aFrequency;
+        @NotBlank @NotNull @Size(min = 1, max = 60) String aRouteOfAdminstration = null;
         this.routeOfAdministration = aRouteOfAdminstration;
-        this.refill = arefill;
+        this.refill = aRefill;
         this.overTheCounter = anOverTheCounter;
+
+    }
+
+    public Medication() {
 
     }
 
@@ -79,7 +80,7 @@ public class Medication extends AbstractEntity {
         return medicationName;
     }
 
-    public void setMedicatioName(String medicationName) {
+    public void setMedicationName(String medicationName) {
         this.medicationName = medicationName;
     }
 

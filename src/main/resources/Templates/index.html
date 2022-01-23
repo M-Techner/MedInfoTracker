@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+
+<div class="container body-content">
+    <h2>View medication info by:</h2>
+    <ul>
+        <li th:each="action : ${actions}">
+            <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>
+        </li>
+    </ul>
+</div>
+
+</body>
+
+</html>

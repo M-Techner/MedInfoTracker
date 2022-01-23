@@ -12,21 +12,14 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("Medication")
+@RequestMapping("medication")
 public class MedicationController {
     @Autowired
     private MedicationRepository medicationRepository;
 
-    @GetMapping("")
-    public String index(Model model) {
-        model.addAttribute("Medication", medicationRepository.findAll());
-        return "medication/index";
-    }
-
-
     @GetMapping(value = "add")
     public String displayAddMedicationForm(Model model) {
-        model.addAttribute(new Medication());
+
         model.addAttribute("Medication Name", "Add Medication Name");
         model.addAttribute("Date Started", "Add Date Started");
         model.addAttribute("Prescribing Physician", "Add Prescribing Physician");
@@ -35,9 +28,8 @@ public class MedicationController {
         model.addAttribute("Route Of Administration", "Add Route Of Administration");
         model.addAttribute("Refill", "Add Refill");
         model.addAttribute("Over the Counter", "Add Over the Counter");
-
+        model.addAttribute(new Medication());
         return "medication/add";
-
     }
 
     @PostMapping(value = "add")
@@ -66,23 +58,5 @@ public class MedicationController {
 
     }
 
-
-
-
 }
 
-        //@GetMapping(value = "jobs")
-        //public String listJobsByColumnAndValue(Model
-            //ArrayList<Job> jobs;
-            //if (column.equals("all")){
-                //jobs = JobData.findAll();
-                //model.addAttribute("title", "All Jobs");
-            //} else {
-                //jobs = JobData.findByColumnAndValue(column, value);
-                //model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
-            //}
-            //model.addAttribute("jobs", jobs);
-
-            //return "list-jobs";
-        //}
-    //}
