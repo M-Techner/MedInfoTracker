@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
 import java.util.Optional;
 
 @Controller
@@ -20,14 +21,15 @@ public class MedicationController {
     @GetMapping(value = "add")
     public String displayAddMedicationForm(Model model) {
 
-        model.addAttribute("Medication Name", "Add Medication Name");
-        model.addAttribute("Date Started", "Add Date Started");
-        model.addAttribute("Prescribing Physician", "Add Prescribing Physician");
-        model.addAttribute("Dosage", "Add Dosage");
-        model.addAttribute("Frequency", "Add Frequency");
-        model.addAttribute("Route Of Administration", "Add Route Of Administration");
-        model.addAttribute("Refill", "Add Refill");
-        model.addAttribute("Over the Counter", "Add Over the Counter");
+
+        model.addAttribute("Medication Name","add Medication Name");
+        model.addAttribute("Date Started","add Date Started");
+        model.addAttribute("Prescribing Physician", "add Prescribing Physician");
+        model.addAttribute("Dosage", "add Dosage");
+        model.addAttribute("Frequency", "add Frequency");
+        model.addAttribute("Route Of Administration", "add Route Of Administration");
+        model.addAttribute("Refill", "add Refill");
+        model.addAttribute("Over the Counter", "add Over the Counter");
         model.addAttribute(new Medication());
         return "medication/add";
     }

@@ -1,80 +1,60 @@
 package com.medinfotracker.medinfotracker.Models;
 
-        import javax.persistence.Entity;
-        import javax.persistence.JoinColumn;
-        import javax.persistence.ManyToMany;
-        //import javax.persistence.ManyToOne;
-        import javax.validation.constraints.NotBlank;
-        import javax.validation.constraints.NotNull;
-        import javax.validation.constraints.Size;
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Objects;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Objects;
+
 
 
 @Entity
 public class Medication extends AbstractEntity {
 
 
-
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
     private String medicationName;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
+
+
     private String dateStarted;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
+
     private String prescribingPhysician;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
+
     private String dosage;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
+
     private String frequency;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
+
     private String routeOfAdministration;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
+
     private String refill;
 
-    @NotBlank
-    @NotNull
-    @Size(min = 1, max = 60)
     private String overTheCounter;
 
-    // Initialize the id and value fields.
+
+
+
     public Medication(String aMedicationName, String aDateStarted, String aPrescribingPhysician, String aDosage, String aFrequency, String aRouteOfAdministration, String aRefill, String anOverTheCounter) {
         super();
+
         this.medicationName = aMedicationName;
         this.dateStarted = aDateStarted;
         this.prescribingPhysician = aPrescribingPhysician;
         this.dosage = aDosage;
         this.frequency = aFrequency;
-        @NotBlank @NotNull @Size(min = 1, max = 60) String aRouteOfAdminstration = null;
-        this.routeOfAdministration = aRouteOfAdminstration;
+        this.routeOfAdministration = aRouteOfAdministration;
         this.refill = aRefill;
         this.overTheCounter = anOverTheCounter;
 
     }
-
     public Medication() {
 
     }
+
 
     public String getMedicationName() {
         return medicationName;
