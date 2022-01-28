@@ -1,10 +1,23 @@
 package com.medinfotracker.medinfotracker.models;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import javax.validation.constraints.*;
-//import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.*;
-
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import javax.validation.constraints.*;
+import java.util.*;
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import javax.validation.constraints.*;
+import javax.validation.*;
 @Entity
 public class Symptoms extends AbstractEntity {
     @NotNull
