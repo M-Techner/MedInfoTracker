@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container body-content">
+<h1 th:text="${'user: ' + user.userName}">Default Title</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div class="user-profile">
+<!--    <p th:text="${'User ID: ' + user.id}"></p>-->
+    <p th:text="${'Username: ' + user.userName}"></p>
+
+    <p>
+<!--        Profile: <a th:href="@{'profile/view/' + ${user.profile}"></a>-->
+    </p>
+
+
+<!--    <p>-->
+<!--        Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--        Skills:-->
+<!--    <ul>-->
+<!--        <li th:each="skill : ${job.skills}">-->
+<!--            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    </p>-->
+</div>
+
+
+</body>
+</html>

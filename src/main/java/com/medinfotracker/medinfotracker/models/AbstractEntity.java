@@ -1,6 +1,8 @@
 package com.medinfotracker.medinfotracker.models;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Objects;
@@ -14,23 +16,9 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    @NotBlank
-    @Size(min = 2, max = 60)
-    private String name;
-
 //    getters and setters
 
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+    public int getId() { return id; }
 
     @Override
     public boolean equals(Object o) {
