@@ -11,9 +11,9 @@
 
 <!--<p th:unless="${users} and ${user.size()}">no users</p>-->
 
-<div class="container body-content">
+<div class="user-profile">
 <!--    Below causes an error "Property or field 'userName' cannot be found on null" -->
-        <h1 th:text="${'Medical Profile for: ' + user.userName}">MedInfoTracker</h1>
+<!--        <h1 th:text="${'Medical Profile for: ' + user.userName}">MedInfoTracker</h1>-->
 
         <h1>Hello!</h1>
     <h4> Please Use The Navigation Bar To Locate Your Medical Tracking Information</h4>
@@ -23,8 +23,12 @@
 <!--        </li>-->
 <!--    </ul>-->
 <!--    <a th:href="@{'/user/view/' + ${user.profile}}">View My Profile</a>-->
+    <a th:href="@{profileView/{id}(id=${id})}">View My Profile</a>
+    <!--    "@{posts/view/{postId}(postId=${post.id})}"-->
     <br>
-    <a th:href="@{/logout}">Or Logout to Change User</a>
+
+    <br>
+    <a th:href="@{/logout}">Or Logout To Change User</a>
 <!--    <a th:href="@{'/profile/add'}">Create My Profile</a>-->
 </div>
 

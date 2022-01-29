@@ -24,6 +24,9 @@ public class HomeController {
     @Autowired
     private ProfileRepository profileRepository;
 
+    @Autowired
+    private AuthenticationController authenticationController;
+
 //    @Autowired
 //    private SymptomRepository symptomRepository;
 //
@@ -37,25 +40,25 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("add")
-    public String displayAddProfileForm(Model model) {
-        model.addAttribute("title", "Add Profile");
-        model.addAttribute("user", userRepository.findAll());
-        model.addAttribute("profile", profileRepository.findAll());
-        model.addAttribute(new Profile());
-        return "add";
-    }
+//    @GetMapping("add")
+//    public String displayAddProfileForm(Model model) {
+//        model.addAttribute("title", "Add Profile");
+//        model.addAttribute("user", userRepository.findAll());
+//        model.addAttribute("profile", profileRepository.findAll());
+//        model.addAttribute(new Profile());
+//        return "add";
+//    }
 
 
-    @PostMapping("add")
-    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
-                                        Errors errors, Model model, @RequestParam int userId) {
-//                                    @RequestParam
-
-        if (errors.hasErrors()) {
-//            model.addAttribute("title", "Add Profile");
-            return "add";
-        }
+//    @PostMapping("add")
+//    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
+//                                        Errors errors, Model model, @RequestParam int userId) {
+////                                    @RequestParam
+//
+//        if (errors.hasErrors()) {
+////            model.addAttribute("title", "Add Profile");
+//            return "add";
+//        }
 
 //        User newUser = userRepository.findById(userId).orElse(new User());
 //
@@ -65,9 +68,9 @@ public class HomeController {
 ////        newProfile.setSymptoms(symptomObj);
 //        model.addAttribute("profile", profileRepository.findAll());
 //
-        profileRepository.save(newProfile);
-        return "redirect:";
-    }
+//        profileRepository.save(newProfile);
+//        return "redirect:";
+//    }
 
 //        User newUser = userRepository.findById(userId).orElse(new User());
 //        newSymptom.setUser(newUser);
@@ -77,17 +80,17 @@ public class HomeController {
 //    }
 
 
-    @GetMapping("view/{id}")
-    public String displayViewUserProfile(Model model, @PathVariable int id) {
-
-        Optional optUser = userRepository.findById(id);
-        if (!optUser.isEmpty()) {
-            Profile profile = (Profile) optUser.get();
-            model.addAttribute("user", optUser.get());
-            return "user/view/";
-        } else {
-            return "redirect:/";
-        }
+//    @GetMapping("view/{id}")
+//    public String displayViewUserProfile(Model model, @PathVariable int id) {
+//
+//        Optional optUser = userRepository.findById(id);
+//        if (!optUser.isEmpty()) {
+//            Profile profile = (Profile) optUser.get();
+//            model.addAttribute("user", optUser.get());
+//            return "user/view/";
+//        } else {
+//            return "redirect:/";
+//        }
 
 //            model.addAttribute("userId", userRepository.findAll());
 //            if (userId == 0) {
@@ -106,6 +109,6 @@ public class HomeController {
 //                return "view";
 //            }
 //             return "redirect:/";
-        }
+//        }
     }
 

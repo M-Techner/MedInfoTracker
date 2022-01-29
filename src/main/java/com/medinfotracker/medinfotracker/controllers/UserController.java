@@ -26,37 +26,39 @@ public class UserController {
     @Autowired
     private ProfileRepository profileRepository;
 
+    @Autowired
+    private AuthenticationController authenticationController;
 
     @GetMapping("")
     public String index(Model model) {
         model.addAttribute("Title", "User");
         model.addAttribute("User", userRepository.findAll());
-        model.addAttribute("profile", profileRepository.findAll());
+//        model.addAttribute("profile", profileRepository.findAll());
         return "user/index";
     }
 
-    @GetMapping("add")
-    public String displayAddUserForm(Model model) {
-        model.addAttribute("title", "Add User");
-        model.addAttribute(new User());
-        return "user/add";
-    }
+//    @GetMapping("add")
+//    public String displayAddUserForm(Model model) {
+//        model.addAttribute("title", "Add User");
+//        model.addAttribute(new User());
+//        return "user/add";
+//    }
 
-    @PostMapping("add")
-    public String processAddUserForm(@ModelAttribute @Valid User newUser,
-                                         Errors errors, Model model) {
+//    @PostMapping("add")
+//    public String processAddUserForm(@ModelAttribute @Valid User newUser,
+//                                         Errors errors, Model model) {
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Add User");
+//            return "user/add";
+//        }
+//
+//        userRepository.save(newUser);
+//        model.addAttribute("user", userRepository.findAll());
+//        return "redirect:";
+//    }
 
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add User");
-            return "user/add";
-        }
-
-        userRepository.save(newUser);
-        model.addAttribute("user", userRepository.findAll());
-        return "redirect:";
-    }
-
-    @GetMapping("view/{id}")
+    @GetMapping("profileView/{id}")
     public String displayViewUser(Model model, @PathVariable("id") int id) {
 //        model.addAttribute("user", userRepository.findAll());
 
@@ -65,7 +67,7 @@ public class UserController {
             User user = (User) optUser.get();
             model.addAttribute("title", "user: " + ((User) optUser.get()).getId());
             model.addAttribute("user", user);
-            return "user/view";
+            return "user/profileView";
         } else {
             return "redirect:..";
         }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
 @Controller
@@ -25,7 +26,7 @@ public class AuthenticationController {
 
         private static final String userSessionKey = "user";
 
-        public User getUserFromSession(HttpSession session) {
+        public User getUserFromSession(@NotNull HttpSession session) {
             Integer id = (Integer) session.getAttribute(userSessionKey);
             if (id == null) {
                 return null;

@@ -19,9 +19,9 @@
 </div>
 
 <div class="container body-content">
-    <a th:href="@{'profile/add'}">Add Medical Information</a>
+    <a th:href="@{'profile/add'}">Create Your Medical Profile</a>
     <br>
-<!--    <a th:herf="@{'/user/view/' + ${user.profile}}">View My Profile</a>-->
+    <a th:href="@{user/profileView/{id}(id=${id})}">View My Profile</a>
     <br>
     <a th:href="@{/logout}">Or Logout to Change User</a>
 </div>

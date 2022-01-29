@@ -89,7 +89,7 @@ public class ProfileController {
         Optional optProfile = profileRepository.findById(id);
         if (optProfile.isPresent()) {
             Profile profile = (Profile) optProfile.get();
-//            model.addAttribute("title", "User Profile: " + ((Profile) optProfile.get()).getId());
+            model.addAttribute("title", "User Profile: " + ((Profile) optProfile.get()).getId());
             model.addAttribute("profile", profile);
             return "profile/view";
         } else {
