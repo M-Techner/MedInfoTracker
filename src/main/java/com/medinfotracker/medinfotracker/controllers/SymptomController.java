@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("symptom")
@@ -27,6 +27,8 @@ public class SymptomController {
     @GetMapping("")
     public String index(Model model){
         model.addAttribute("Symptom Name", "symptomName");
+        model.addAttribute("Start Date", "startDate");
+        model.addAttribute("Stop Date", "stopDate");
         model.addAttribute("Symptom Description", "symptomDescribe");
 
         return "symptoms/index";

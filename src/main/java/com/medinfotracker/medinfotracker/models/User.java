@@ -1,31 +1,7 @@
 package com.medinfotracker.medinfotracker.models;
 
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.boot.autoconfigure.domain.*;
-
 import javax.persistence.Entity;
-import javax.validation.*;
-import javax.validation.constraints.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.validation.constraints.*;
-import java.util.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.validation.constraints.*;
-import java.util.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.validation.constraints.*;
-import javax.validation.*;
 @Entity
 public class User extends AbstractEntity{
 
