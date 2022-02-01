@@ -39,6 +39,9 @@ public class HomeController {
         model.addAttribute("username", userRepository.findAll());
         return "index";
     }
+//    NEED TO CREATE REDIRECT URL WITH CREDENTIALS FILE< THAT PASSES ALL THE  NECESSARY INFO - LOOK  THIS UP
+
+
 
 //    @GetMapping("add")
 //    public String displayAddProfileForm(Model model) {

@@ -34,8 +34,49 @@ public class UserController {
         model.addAttribute("Title", "User");
         model.addAttribute("User", userRepository.findAll());
 //        model.addAttribute("profile", profileRepository.findAll());
-        return "user/index";
+        return "index";
     }
+
+    @GetMapping("addProfile")
+    public String displayAddProfileForm(Model model) {
+//        model.addAttribute("Username", "${user.userName}");
+        model.addAttribute("User Medical Record Name", "Add User Medical Record Name");
+        model.addAttribute("User Address", "Add User Address");
+        model.addAttribute("User Phone Number", "Add User Phone Number");
+        model.addAttribute("Emergency Contact Name", "Add Emergency Contact Name");
+        model.addAttribute("Emergency Contact Phone Number", "Add Emergency Contact Phone Number");
+        model.addAttribute("Emergency Contact Relationship", "Add Emergency Contact Relationship");
+        model.addAttribute("Primary Care Physician Name", "Add Primary Care Physician Name");
+        model.addAttribute("Primary Care Physician Address", "Add Primary Care Physician Address");
+        model.addAttribute("Primary Care Physician Phone Number", "Add Primary Care Physician Phone Number");
+        model.addAttribute("Specialist Name", "Add Specialist Name");
+        model.addAttribute("Specialist Phone Number", "Add Specialist Phone Number");
+        model.addAttribute("Specialist Type", "Add Specialist Type");
+        model.addAttribute("Known Allergies", "Add Known Allergies");
+        model.addAttribute("Medical Conditions", "Add Medical Conditions");
+        model.addAttribute(new Profile());
+        return "user/addProfile";
+    }
+
+    @PostMapping("addProfile")
+    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
+                                        Errors errors, Model model, HttpServletRequest request) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add User Profile Details");
+            return "user/addProfile";
+        }
+
+        User user = authenticationController.getUserFromSession(request.getSession());
+
+        user.setProfile(newProfile);
+        profileRepository.save(newProfile);
+        userRepository.save(user);
+//        model.addAttribute("user", userRepository.findAll());
+        model.addAttribute("profile", profileRepository.findAll());
+        return "redirect:";
+    }
+
 
 //    @GetMapping("add")
 //    public String displayAddUserForm(Model model) {
@@ -58,6 +99,8 @@ public class UserController {
 //        return "redirect:";
 //    }
 
+
+//    Should this connect to the user session??
     @GetMapping("profileView/{id}")
     public String displayViewUser(Model model, @PathVariable("id") int id) {
 //        model.addAttribute("user", userRepository.findAll());
@@ -69,7 +112,7 @@ public class UserController {
             model.addAttribute("user", user);
             return "user/profileView";
         } else {
-            return "redirect:..";
+            return "redirect:";
         }
     }
 

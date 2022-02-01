@@ -10,13 +10,6 @@ import java.util.List;
 @Entity
 public class Profile extends AbstractEntity {
 
-//    @OneToOne
-//    private User user;
-
-//    @NotNull
-//    @JoinColumn(name = "id")
-//    private String userName;
-
     @NotNull
     private String userMedicalRecordName;
 
@@ -50,35 +43,18 @@ public class Profile extends AbstractEntity {
     @NotNull
     private String primaryCarePhysicianPhoneNumber;
 
-//    @OneToMany
-//    @ElementCollection
-//    @JoinColumn(name = "userId")
+
     private String specialistName;
-//    private final List<User> specialistName = new ArrayList<>();
 
-//    @OneToMany
-//    @ElementCollection
-//    @JoinColumn(name = "userId")
+
     private String specialistPhoneNumber;
-//    private final List<User> specialistPhoneNumber = new ArrayList<>();
 
-//    @OneToMany
-//    @ElementCollection
-//    @JoinColumn(name = "userId")
     private String specialistType;
-//    private final List<User> specialistType = new ArrayList<>();
 
-//    @OneToMany
-//    @ElementCollection
-//    @JoinColumn(name = "userId")
     private String allergies;
-//    private final List<User> allergies = new ArrayList<>();
 
-//    @OneToMany
-//    @ElementCollection
-//    @JoinColumn(name = "userId")
     private String medicalConditions;
-//    private final List<User> medicalConditions = new ArrayList<>();
+
 
     public Profile() {}
 
@@ -106,10 +82,6 @@ public class Profile extends AbstractEntity {
         this.allergies =  someAllergies;
         this.medicalConditions = someMedicalConditions;
     }
-
-//    public String getUserName() { return userName; }
-//
-//    public void setUserName(String userName) { this.userName = userName; }
 
     public String getUserMedicalRecordName() { return userMedicalRecordName; }
 
