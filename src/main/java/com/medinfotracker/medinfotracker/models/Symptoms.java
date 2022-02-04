@@ -1,67 +1,52 @@
 package com.medinfotracker.medinfotracker.models;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.validation.constraints.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.validation.constraints.*;
-import java.util.*;
-import java.util.Date;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import javax.validation.constraints.*;
-import javax.validation.*;
+import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 @Entity
 public class Symptoms extends AbstractEntity {
     @NotNull
     @Size(min=3, max=49)
     private String name;
-    private Date startDate;
-    private Date stopDate;
+    private String startDate;
+    private String stopDate;
     private String description;
 
 
     public Symptoms() {
     }
 
-    public Symptoms(String name, Date startDate, Date stopDate, String description) {
+    public Symptoms(String name, String startDate, String stopDate, String description) {
         this.name = name;
         this.startDate = startDate;
         this.stopDate = stopDate;
         this.description = description;
     }
 
-    @Override
+//    @Override
     public String getName() {
         return name;
     }
 
-    @Override
+//    @Override
     public void setName(String name) {
         this.name = name;
     }
 
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getStopDate() {
+    public String getStopDate() {
         return stopDate;
     }
 
-    public void setStopDate(Date stopDate) {
+    public void setStopDate(String stopDate) {
         this.stopDate = stopDate;
     }
 

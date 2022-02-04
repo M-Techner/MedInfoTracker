@@ -31,8 +31,9 @@ public class SymptomController {
         model.addAttribute("Start Date", "startDate");
         model.addAttribute("Stop Date", "stopDate");
         model.addAttribute("Symptom Description", "symptomDescribe");
-
-        return "symptoms/index";
+//        return "symptoms/view";
+//        return "symptoms/index";
+        return "redirect:../";
     }
     @GetMapping("add")
     public String displayAddSymptomsForm(Model model) {

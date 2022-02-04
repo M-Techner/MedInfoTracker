@@ -28,25 +28,25 @@ abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    @Size(min = 3, max = 100, message = "Name must be between 3 and 50 characters")
-    @NotBlank(message = "Name is required")
+//    @Size(min = 3, max = 100, message = "Name must be between 3 and 50 characters")
+//    @NotBlank(message = "Name is required")
     private String name;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
+//
+//    public int getId() {
+//        return id;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     @Override
     public String toString() {

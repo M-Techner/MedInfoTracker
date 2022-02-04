@@ -1,18 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-<input id="searchbar" onkeyup="searchSx()" type="text"
-       name="search" placeholder="Search Symptoms">
-<ol id="list">
-    <li class="symptoms">chest pain</li>
-    <li class="symptoms">joint pain</li>
-    <li class="symptoms">etc</li>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
-</ol>
-<script src="./search.js"></script>
+<head th:fragment="head">
+
+    <!-- Bootstrap stylesheets and script -->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link th:href="@{/css/medinfotracker.css}" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
+    <title th:text="'MedInfoTracker' + ${title == null ? '' : ' :: ' + title}">Medical Information Tracker</title>
+</head>
+
+<body>
+
+<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a th:href="@{/}" class="navbar-brand">Medical Information Tracker</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="user/profileView.html" th:href="@{user/profileView/{id}(id=${id})}">My Profile</a></li>
+                <li><a th:href="@{/medication}">Medication History</a></li>
+                <li><a th:href="@{/symptom}">Symptom Tracker</a></li>
+                <li><a th:href="@{/logout}">Logout/Change User</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
