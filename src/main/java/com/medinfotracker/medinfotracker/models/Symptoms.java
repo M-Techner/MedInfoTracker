@@ -29,6 +29,7 @@ public class Symptoms extends AbstractEntity {
         return name;
     }
 
+
     public void setName(String name) {
         this.name = name;
     }
