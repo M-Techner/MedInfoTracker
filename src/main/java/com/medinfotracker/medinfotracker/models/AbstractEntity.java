@@ -10,33 +10,11 @@ abstract class AbstractEntity {
     @Id
     @GeneratedValue
     private int id;
-
-//    @Size(min = 3, max = 100, message = "Name must be between 3 and 50 characters")
-//    @NotBlank(message = "Name is required")
-    private String name;
-
-    public AbstractEntity() {
-    }
-
-    public AbstractEntity(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
+    /**
+     * get and set
+     */
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override
@@ -46,64 +24,11 @@ abstract class AbstractEntity {
 
         AbstractEntity that = (AbstractEntity) o;
 
-        if (getId() != that.getId()) return false;
-        return getName() != null ? getName().equals(that.getName()) : that.getName() == null;
+        return getId() == that.getId();
     }
 
-
-    //    @Override
-//    public int hashCode() {
-//        int result = getId();
-//        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
-//        return result;
-//    }
-    //    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public int getId() {
-//        return id;
-////    }
-////
-////    public String getName() {
-////        return name;
-////    }
-////
-////    public void setName(String name) {
-////        this.name = name;
-////    }
-//
-////public int getId() { return id; }
-////
-////    @Override
-////    public boolean equals(Object o) {
-////        if (this == o) return true;
-////        if (o == null || getClass() != o.getClass()) return false;
-////        AbstractEntity that = (AbstractEntity) o;
-////        return id == that.id;
-////    }
-////
-////    @Override
-////    public int hashCode() {
-////        return Objects.hash(id);
-////    }
-//
-//    @Override
-//    public String toString() {
-//        return name;
-//    }
-//
-//    @Override
-//    public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
-//        AbstractEntity that = (AbstractEntity) o;
-//        return id == that.id;
-//    }
-//
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return getId();
     }
-
 }
