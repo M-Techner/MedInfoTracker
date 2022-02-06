@@ -1,17 +1,19 @@
 package com.medinfotracker.medinfotracker.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 @Entity
 public class Symptoms extends AbstractEntity {
+
     @NotNull
     @Size(min=3, max=49)
     private String name;
     private String startDate;
     private String stopDate;
     private String description;
-
 
     public Symptoms() {
     }
@@ -23,16 +25,13 @@ public class Symptoms extends AbstractEntity {
         this.description = description;
     }
 
-//    @Override
     public String getName() {
         return name;
     }
 
-//    @Override
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getStartDate() {
         return startDate;
@@ -57,5 +56,4 @@ public class Symptoms extends AbstractEntity {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }
