@@ -1,94 +1,64 @@
 package com.medinfotracker.medinfotracker.models;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.Entity;
+import javax.net.ssl.HandshakeCompletedEvent;
+import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Entity
-public class User extends AbstractEntity{
+public class User extends AbstractEntity {
 
-    private String userAddress;
+    @OneToOne
+    private Profile profile;
 
-    private String userPhoneNumber;
 
-    private String userEmail;
 
-    private String userDateOfBirth;
+    @NotNull
+    private String userName;
 
-    private String emergencyName;
+    @NotNull
+    private String pwHash;
 
-    private String emergencyPhoneNumber;
+    public User() {}
 
-    private String emergencyRelationship;
-
-//    private
-
-    public User() {
+    public User(String userName, String password) {
+        super();
+        this.userName = userName;
+        this.pwHash = encoder.encode(password);
     }
 
-    public User(String userAddress, String userPhoneNumber, String userEmail, String userDateOfBirth, String emergencyName, String emergencyPhoneNumber, String emergencyRelationship) {
-        this.userAddress = userAddress;
-        this.userPhoneNumber = userPhoneNumber;
-        this.userEmail = userEmail;
-        this.userDateOfBirth = userDateOfBirth;
-        this.emergencyName = emergencyName;
-        this.emergencyPhoneNumber = emergencyPhoneNumber;
-        this.emergencyRelationship = emergencyRelationship;
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
     }
+
 //    getters and setters
 
 
-    public String getUserAddress() {
-        return userAddress;
+//    public List<Profile> getProfile() { return profile; }
+
+
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setUserAddress(String userAddress) {
-        this.userAddress = userAddress;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
-    public String getUserPhoneNumber() {
-        return userPhoneNumber;
-    }
+    public String getUserName() { return userName; }
 
-    public void setUserPhoneNumber(String userPhoneNumber) {
-        this.userPhoneNumber = userPhoneNumber;
-    }
+    public void setUserName(String userName) { this.userName = userName; }
 
-    public String getUserEmail() {
-        return userEmail;
-    }
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
 
-    public String getUserDateOfBirth() {
-        return userDateOfBirth;
-    }
 
-    public void setUserDateOfBirth(String userDateOfBirth) {
-        this.userDateOfBirth = userDateOfBirth;
-    }
-
-    public String getEmergencyName() {
-        return emergencyName;
-    }
-
-    public void setEmergencyName(String emergencyName) {
-        this.emergencyName = emergencyName;
-    }
-
-    public String getEmergencyPhoneNumber() {
-        return emergencyPhoneNumber;
-    }
-
-    public void setEmergencyPhoneNumber(String emergencyPhoneNumber) {
-        this.emergencyPhoneNumber = emergencyPhoneNumber;
-    }
-
-    public String getEmergencyRelationship() {
-        return emergencyRelationship;
-    }
-
-    public void setEmergencyRelationship(String emergencyRelationship) {
-        this.emergencyRelationship = emergencyRelationship;
-    }
 }
