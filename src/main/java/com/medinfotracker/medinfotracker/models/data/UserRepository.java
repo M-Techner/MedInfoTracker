@@ -1,9 +1,9 @@
 package com.medinfotracker.medinfotracker.models.data;
 
 
-import com.medinfotracker.medinfotracker.models.User;
+import com.medinfotracker.medinfotracker.models.UserProfile;
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-public interface UserRepository extends CrudRepository<User, Integer>{
+
+public interface UserRepository extends CrudRepository<UserProfile, Integer>{
 
 }
