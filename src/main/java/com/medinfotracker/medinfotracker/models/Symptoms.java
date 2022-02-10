@@ -14,6 +14,7 @@ public class Symptoms extends AbstractEntity {
     private String startDate;
     private String stopDate;
     private String description;
+    private String user;
 
     public Symptoms() {
     }
