@@ -2,7 +2,8 @@ package com.medinfotracker.medinfotracker.controllers;
 
 
 import com.medinfotracker.medinfotracker.models.Symptoms;
-import com.medinfotracker.medinfotracker.models.data.SymptomRepository;
+import com.medinfotracker.medinfotracker.models.data.*;
+import com.medinfotracker.medinfotracker.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
@@ -24,6 +25,8 @@ public class SymptomController {
     @Autowired
     private SymptomRepository symptomRepository;
 
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("")
     public String index(Model model){
@@ -35,6 +38,7 @@ public class SymptomController {
 //        return "symptoms/index";
         return "redirect:../";
     }
+
     @GetMapping("add")
     public String displayAddSymptomsForm(Model model) {
         model.addAttribute(new Symptoms());
@@ -49,6 +53,7 @@ public class SymptomController {
         }
 
         symptomRepository.save(newSymptoms);
+//        userRepository.save(newSymptoms);
         return "redirect:";
     }
     @GetMapping("view/{symptomsId}")
@@ -58,7 +63,7 @@ public class SymptomController {
         if (optSymptoms.isPresent()) {
             Symptoms symptoms = (Symptoms) optSymptoms.get();
             model.addAttribute("symptoms", symptoms);
-            return "symptoms/view";
+            return "symptom/view";
         } else {
             return "redirect:../";
         }
