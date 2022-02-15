@@ -1,38 +1,49 @@
 package com.medinfotracker.medinfotracker.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import com.medinfotracker.medinfotracker.models.*;
+import com.medinfotracker.medinfotracker.models.User;
+import com.medinfotracker.medinfotracker.models.data.*;
+import com.medinfotracker.medinfotracker.controllers.*;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 @Entity
 public class Symptoms extends AbstractEntity {
-    @NotNull
-    @Size(min=3, max=49)
-    private String name;
+
+
+
     private String startDate;
     private String stopDate;
     private String description;
+    @ManyToOne
+    private User user;
 
-
+    private String userName;
+    @NotNull
+    private String name;
     public Symptoms() {
     }
 
-    public Symptoms(String name, String startDate, String stopDate, String description) {
-        this.name = name;
+
+
+    public Symptoms(int id, String name, String name1, String startDate, String stopDate, String description, String userName) {
+        super(id, name);
+        this.name = name1;
         this.startDate = startDate;
         this.stopDate = stopDate;
         this.description = description;
+        this.userName = userName;
     }
 
-//    @Override
+    @Override
     public String getName() {
         return name;
     }
 
-//    @Override
+    @Override
     public void setName(String name) {
         this.name = name;
     }
-
 
     public String getStartDate() {
         return startDate;
@@ -58,4 +69,11 @@ public class Symptoms extends AbstractEntity {
         this.description = description;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 }
