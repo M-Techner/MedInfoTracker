@@ -104,7 +104,7 @@ public class UserController {
     @GetMapping("profileView/{id}")
     public String displayViewUser(Model model, @PathVariable("id") int id) {
 //        model.addAttribute("user", userRepository.findAll());
-
+// hh
         Optional optUser = userRepository.findById(id);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();

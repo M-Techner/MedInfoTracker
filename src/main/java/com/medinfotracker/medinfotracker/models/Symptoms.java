@@ -19,11 +19,12 @@ public class Symptoms extends AbstractEntity {
     public Symptoms() {
     }
 
-    public Symptoms(String name, String startDate, String stopDate, String description) {
+    public Symptoms(String name, String startDate, String stopDate, String description, String user) {
         this.name = name;
         this.startDate = startDate;
         this.stopDate = stopDate;
         this.description = description;
+        this.user = user;
     }
 
     public String getName() {
@@ -32,6 +33,14 @@ public class Symptoms extends AbstractEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
     }
 
     public String getStartDate() {
