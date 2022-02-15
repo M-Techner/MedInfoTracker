@@ -2,25 +2,38 @@ package com.medinfotracker.medinfotracker.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+<<<<<<< HEAD
 import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.*;
 import com.medinfotracker.medinfotracker.controllers.*;
+=======
+import javax.persistence.OneToMany;
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 import javax.validation.constraints.NotNull;
 @Entity
 public class Symptoms extends AbstractEntity {
 
+<<<<<<< HEAD
 
 
+=======
+    @NotNull
+    @Size(min=3, max=49)
+    private String name;
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     private String startDate;
     private String stopDate;
     private String description;
     @ManyToOne
     private User user;
 
+<<<<<<< HEAD
     private String userName;
     @NotNull
     private String name;
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     public Symptoms() {
     }
 
@@ -35,12 +48,18 @@ public class Symptoms extends AbstractEntity {
         this.userName = userName;
     }
 
+<<<<<<< HEAD
     @Override
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     public String getName() {
         return name;
     }
 
+<<<<<<< HEAD
     @Override
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     public void setName(String name) {
         this.name = name;
     }
@@ -68,6 +87,7 @@ public class Symptoms extends AbstractEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+<<<<<<< HEAD
 
     public String getUserName() {
         return userName;
@@ -77,3 +97,6 @@ public class Symptoms extends AbstractEntity {
         this.userName = userName;
     }
 }
+=======
+}
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
