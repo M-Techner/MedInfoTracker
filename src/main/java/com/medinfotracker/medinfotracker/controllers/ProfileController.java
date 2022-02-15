@@ -39,7 +39,7 @@ public class ProfileController {
     public String index(Model model) {
         model.addAttribute("Title", "User Profile");
         model.addAttribute("User Profile", profileRepository.findAll());
-        return "index";
+        return "profile/index";
     }
 
     @GetMapping("add")

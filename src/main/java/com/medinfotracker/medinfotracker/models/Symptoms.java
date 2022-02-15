@@ -1,11 +1,13 @@
 package com.medinfotracker.medinfotracker.models;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 @Entity
+@Table(name = "Symptoms", indexes = {
+        @Index(name = "idx_symptoms_user", columnList = "user")
+})
 public class Symptoms extends AbstractEntity {
 
     @NotNull
@@ -14,6 +16,9 @@ public class Symptoms extends AbstractEntity {
     private String startDate;
     private String stopDate;
     private String description;
+    /**
+     *
+     */
     private String user;
 
     public Symptoms() {

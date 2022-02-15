@@ -44,8 +44,15 @@ public class SymptomController {
         model.addAttribute(new Symptoms());
         return "symptoms/add";
     }
+    @GetMapping("addSymptoms")
+    public String displayAddSymptomsToUserForm(Model model) {
+//        model.addAttribute("Username", "${user.userName}");
+        model.addAttribute("User", "userName");
+//        return "user/addSymptoms";
+        return "addSymptoms";
+    }
     @PostMapping("add")
-    public String processAddSymptomsForm(@Valid Symptoms newSymptoms,
+    public String processAddSymptomsForm(@ModelAttribute @Valid Symptoms newSymptoms,
                                       Errors errors, Model model) {
 
         if (errors.hasErrors()) {
@@ -56,16 +63,16 @@ public class SymptomController {
 //        userRepository.save(newSymptoms);
         return "redirect:";
     }
-    @GetMapping("view/{symptomsId}")
-    public String displayViewSymptoms(Model model, @PathVariable int symptomsId) {
+    @GetMapping("symptoms/view/{Id}")
+    public String displayViewSymptoms(Model model, @PathVariable("id") int id) {
 
-        Optional optSymptoms = symptomRepository.findById(symptomsId);
+        Optional optSymptoms = symptomRepository.findById(id);
         if (optSymptoms.isPresent()) {
             Symptoms symptoms = (Symptoms) optSymptoms.get();
             model.addAttribute("symptoms", symptoms);
-            return "symptom/view";
+            return "symptoms/view";
         } else {
-            return "redirect:../";
+            return "redirect:";
         }
     }
 }
