@@ -147,4 +147,5 @@ public class Profile extends AbstractEntity {
 
     public void setMedicalConditions(String medicalConditions) { this.medicalConditions = medicalConditions; }
 
+
 }
