@@ -3,10 +3,14 @@ package com.medinfotracker.medinfotracker.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.*;
 import com.medinfotracker.medinfotracker.controllers.*;
+=======
+import javax.persistence.OneToMany;
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 import javax.persistence.OneToMany;
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
@@ -15,9 +19,12 @@ import javax.validation.constraints.NotNull;
 public class Symptoms extends AbstractEntity {
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 
 =======
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     @NotNull
     @Size(min=3, max=49)
     private String name;
@@ -29,9 +36,12 @@ public class Symptoms extends AbstractEntity {
     private User user;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     private String userName;
     @NotNull
     private String name;
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     public Symptoms() {
@@ -49,7 +59,10 @@ public class Symptoms extends AbstractEntity {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     public String getName() {
@@ -57,7 +70,10 @@ public class Symptoms extends AbstractEntity {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
     public void setName(String name) {
@@ -88,6 +104,7 @@ public class Symptoms extends AbstractEntity {
         this.description = description;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     public String getUserName() {
         return userName;
@@ -96,6 +113,8 @@ public class Symptoms extends AbstractEntity {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+=======
+>>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 }
 =======
 }
