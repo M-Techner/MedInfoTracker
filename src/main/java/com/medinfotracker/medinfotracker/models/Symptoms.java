@@ -27,7 +27,8 @@ public class Symptoms extends AbstractEntity {
 
 
     public Symptoms(int id, String name, String name1, String startDate, String stopDate, String description, String userName) {
-        super(id, name);
+//        super(id, name);
+        super();
         this.name = name1;
         this.startDate = startDate;
         this.stopDate = stopDate;
@@ -35,13 +36,13 @@ public class Symptoms extends AbstractEntity {
         this.userName = userName;
     }
 
-    @Override
+//    @Override
     public String getName() {
         return name;
     }
 
-    @Override
-    public void setName(String name) {
+//    @Override
+    pit sublic void setName(String name) {
         this.name = name;
     }
 
