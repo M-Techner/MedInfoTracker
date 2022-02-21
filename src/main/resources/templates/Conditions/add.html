@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container body-content">
+<br>
+<br>
+<h1>Add Condition</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Condition Name
+            <input class="form-control" th:field="${conditions.name}" /></label>
+        <span th:errors="${conditions.name}" class="error"></span>
+    </div>
+
+    <!--    <input type="date">-->
+    <!--    <input type="time">-->
+    <!--    <input type="datetime-local">-->
+    <div class="form-group">
+        <label th:datetime="dxDate">Condition Diagnosis Date
+            <input class="form-control" type="date" th:field="${conditions.dxDate}" /></label>
+        <span th:errors="${conditions.dxDate}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="specialist">Conditon specialist
+            <input class="form-control" th:field="${conditions.specialist}" /></label>
+        <span th:errors="${conditions.specialist}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="description">Condition Description
+            <input class="form-control" th:field="${conditions.description}" /></label>
+        <span th:errors="${conditions.description}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="organs">Condition Organ Systems and Body Functions affected
+            <input class="form-control" th:field="${conditions.organs}" /></label>
+        <span th:errors="${conditions.organs}" class="error"></span>
+    </div>
+<!--    <div class="form-group">-->
+<!--        <p>-->
+<!--            <label>Organ Systems and Body Functions Condition affects:-->
+<!--            <input type="checkbox" name="organ" th:each="organ : ${allOrgans}" th:text="${organ.name}" th:value="${organ.id}" th:field="*{organs}"></label>-->
+<!--        </p>-->
+<!--    </div>-->
+
+    <input type="submit" value="Add Condition" />
+</form>
+
+</body>
+</html>
