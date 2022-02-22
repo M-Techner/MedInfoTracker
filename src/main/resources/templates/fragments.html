@@ -22,8 +22,11 @@
             <ul class="nav navbar-nav">
                 <li><a href="user/profileView.html" th:href="@{user/profileView/{id}(id=${id})}">My Profile</a></li>
                 <li><a th:href="@{/medication}">Medication History</a></li>
-                <li><a th:href="@{/symptom}">Symptom Tracker</a></li>
+
+                <li><a th:href="@{/symptom/add}">Symptom Tracker -add</a></li>
+                <li><a th:href="@{/symptom/view}">Symptom Tracker -view</a></li>
                 <li><a th:href="@{/logout}">Logout/Change User</a></li>
+                <li><a th:href="@{/Search}">Search</a></li>
             </ul>
         </div>
     </div>

@@ -3,21 +3,31 @@ package com.medinfotracker.medinfotracker.models;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 <<<<<<< HEAD
+=======
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
 import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.*;
 import com.medinfotracker.medinfotracker.controllers.*;
+<<<<<<< HEAD
+=======
 =======
 import javax.persistence.OneToMany;
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 import javax.persistence.OneToMany;
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
 import javax.validation.constraints.NotNull;
 @Entity
 public class Symptoms extends AbstractEntity {
 
+<<<<<<< HEAD
+
+
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -29,12 +39,18 @@ public class Symptoms extends AbstractEntity {
     @Size(min=3, max=49)
     private String name;
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
     private String startDate;
     private String stopDate;
     private String description;
     @ManyToOne
     private User user;
 
+<<<<<<< HEAD
+//    private String userName;
+    @NotNull
+    private String name;
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
     private String userName;
@@ -44,17 +60,29 @@ public class Symptoms extends AbstractEntity {
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
     public Symptoms() {
     }
 
 
 
     public Symptoms(int id, String name, String name1, String startDate, String stopDate, String description, String userName) {
+<<<<<<< HEAD
+//        super(id, name);
+        super();
+=======
         super(id, name);
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
         this.name = name1;
         this.startDate = startDate;
         this.stopDate = stopDate;
         this.description = description;
+<<<<<<< HEAD
+//        this.userName = userName;
+    }
+
+//    @Override
+=======
         this.userName = userName;
     }
 
@@ -65,10 +93,14 @@ public class Symptoms extends AbstractEntity {
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
     public String getName() {
         return name;
     }
 
+<<<<<<< HEAD
+//    @Override
+=======
 <<<<<<< HEAD
 <<<<<<< HEAD
     @Override
@@ -76,6 +108,7 @@ public class Symptoms extends AbstractEntity {
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
 =======
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2
     public void setName(String name) {
         this.name = name;
     }
@@ -104,6 +137,17 @@ public class Symptoms extends AbstractEntity {
         this.description = description;
     }
 <<<<<<< HEAD
+//
+//    public String getUserName() {
+//        return userName;
+//    }
+
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
+}
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 
     public String getUserName() {
@@ -119,3 +163,4 @@ public class Symptoms extends AbstractEntity {
 =======
 }
 >>>>>>> 0ebf3c6f365df4e08ef9b35c3e86556482c8281e
+>>>>>>> e68f6f5f273a59d08c301141edfeaab44c0081a2

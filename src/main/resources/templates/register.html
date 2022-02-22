@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<h1>Register For Your Profile</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label>Username
+            <input class="form-control" th:field="${registerFormDTO.userName}" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.userName}"></p>
+    </div>
+    <div class="form-group">
+        <label>Password
+            <input class="form-control" th:field="${registerFormDTO.password}" type="password" />
+        </label>
+        <p class="error" th:errors="${registerFormDTO.password}"></p>
+    </div>
+    <div class="form-group">
+        <label>Verify Password
+            <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password" />
+        </label>
+    </div>
+
+    <input type="submit" class="btn btn-primary" value="Register" />
+</form>
+
+</body>
+</html>

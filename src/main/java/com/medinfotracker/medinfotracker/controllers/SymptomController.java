@@ -2,7 +2,8 @@ package com.medinfotracker.medinfotracker.controllers;
 
 
 import com.medinfotracker.medinfotracker.models.Symptoms;
-import com.medinfotracker.medinfotracker.models.data.SymptomRepository;
+import com.medinfotracker.medinfotracker.models.data.*;
+import com.medinfotracker.medinfotracker.models.data.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
@@ -24,6 +25,8 @@ public class SymptomController {
     @Autowired
     private SymptomRepository symptomRepository;
 
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping("")
     public String index(Model model){
@@ -35,13 +38,21 @@ public class SymptomController {
 //        return "symptoms/index";
         return "redirect:../";
     }
+
     @GetMapping("add")
     public String displayAddSymptomsForm(Model model) {
         model.addAttribute(new Symptoms());
         return "symptoms/add";
     }
+    @GetMapping("addSymptoms")
+    public String displayAddSymptomsToUserForm(Model model) {
+//        model.addAttribute("Username", "${user.userName}");
+        model.addAttribute("User", "userName");
+//        return "user/addSymptoms";
+        return "addSymptoms";
+    }
     @PostMapping("add")
-    public String processAddSymptomsForm(@Valid Symptoms newSymptoms,
+    public String processAddSymptomsForm(@ModelAttribute @Valid Symptoms newSymptoms,
                                       Errors errors, Model model) {
 
         if (errors.hasErrors()) {
@@ -49,18 +60,19 @@ public class SymptomController {
         }
 
         symptomRepository.save(newSymptoms);
+//        userRepository.save(newSymptoms);
         return "redirect:";
     }
-    @GetMapping("view/{symptomsId}")
-    public String displayViewSymptoms(Model model, @PathVariable int symptomsId) {
+    @GetMapping("symptoms/view/{Id}")
+    public String displayViewSymptoms(Model model, @PathVariable("id") int id) {
 
-        Optional optSymptoms = symptomRepository.findById(symptomsId);
+        Optional optSymptoms = symptomRepository.findById(id);
         if (optSymptoms.isPresent()) {
             Symptoms symptoms = (Symptoms) optSymptoms.get();
             model.addAttribute("symptoms", symptoms);
             return "symptoms/view";
         } else {
-            return "redirect:../";
+            return "redirect:";
         }
     }
 

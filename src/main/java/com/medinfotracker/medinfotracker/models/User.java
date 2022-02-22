@@ -17,9 +17,20 @@ import java.util.List;
 public class User extends AbstractEntity {
 
     @OneToOne
+//    @JoinColumn(name = "user_id")
+//    private final List<Profile> profile = new ArrayList<>();
     private Profile profile;
 
+//    private EntUserId userId;
 
+
+//    private HandshakeCompletedEvent request;
+//    HttpSession session = request.getSession();
+//    int id = session.getAttribute("id");
+
+//    @NotNull
+//    @JoinColumn(name = "id")
+//    private int id;
 
     @NotNull
     private String userName;
