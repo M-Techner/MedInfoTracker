@@ -63,4 +63,5 @@ public class SymptomController {
             return "redirect:../";
         }
     }
+
 }
