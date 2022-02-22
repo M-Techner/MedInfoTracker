@@ -18,7 +18,7 @@ public class Symptoms extends AbstractEntity {
     @ManyToOne
     private User user;
 
-    private String userName;
+//    private String userName;
     @NotNull
     private String name;
     public Symptoms() {
@@ -33,7 +33,7 @@ public class Symptoms extends AbstractEntity {
         this.startDate = startDate;
         this.stopDate = stopDate;
         this.description = description;
-        this.userName = userName;
+//        this.userName = userName;
     }
 
 //    @Override
@@ -69,12 +69,12 @@ public class Symptoms extends AbstractEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+//
+//    public String getUserName() {
+//        return userName;
+//    }
 
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+//    public void setUserName(String userName) {
+//        this.userName = userName;
+//    }
 }
