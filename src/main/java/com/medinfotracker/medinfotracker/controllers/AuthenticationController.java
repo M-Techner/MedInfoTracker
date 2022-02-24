@@ -34,9 +34,7 @@ public class AuthenticationController {
 
             Optional<User> user = userRepository.findById(id);
 
-            if (user.isEmpty()) {
-                return null;
-            }
+            if (user.isEmpty()) { return null; }
 
             return user.get();
         }
@@ -78,7 +76,7 @@ public class AuthenticationController {
                 return "register";
             }
 
-            User newUser = new User(registerFormDTO.getUserName(), registerFormDTO.getPassword());
+            User newUser = new User(registerFormDTO.getUserName(), registerFormDTO.getUserEmail(), registerFormDTO.getPassword());
             userRepository.save(newUser);
             setUserInSession(request.getSession(), newUser);
 

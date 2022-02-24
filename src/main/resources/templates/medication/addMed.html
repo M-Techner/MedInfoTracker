@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+<head th:replace="fragments :: head"></head>
+
+<body class="container body-content">
+
+<div th:replace="fragments :: page-header"></div>
+
+<h1>Medication Form</h1>
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Medication Name</label>
+        <input class="form-control" th:field="${medication.medicationName}" />
+        <span th:errors="${medication.medicationName}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="name">Dosage</label>
+        <input class="form-control" th:field="${medication.dosage}" />
+        <span th:errors="${medication.dosage}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="name">Frequency</label>
+        <input class="form-control" th:field="${medication.frequency}" />
+        <span th:errors="${medication.frequency}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="name">Route of Administration</label>
+        <input class="form-control" th:field="${medication.routeOfAdministration}" />
+        <span th:errors="${medication.routeOfAdministration}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="location">Prescribing Physician</label>
+        <input class="form-control" th:field="${medication.prescribingPhysician}" />
+        <span th:errors="${medication.prescribingPhysician}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="name">Date Started</label>
+        <input class="form-control" th:field="${medication.dateStarted}" />
+        <span th:errors="${medication.dateStarted}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="name">Refill</label>
+        <input class="form-control" th:field="${medication.refill}" />
+        <span th:errors="${medication.refill}" class="error"></span>
+    </div>
+
+    <div class="form-group">
+        <label th:for="name">Over the Counter</label>
+        <input class="form-control" th:field="${medication.overTheCounter}" />
+        <span th:errors="${medication.overTheCounter}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Medication Form">
+</form>
+
+
+</body>
+</html>

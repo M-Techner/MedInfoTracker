@@ -13,11 +13,12 @@
 <div class="user-profile">
     <p th:text="${'User ID: ' + user.id}"></p>
     <p th:text="${'Username: ' + user.userName}"></p>
+    <p th:text="${'Email: ' + user.userEmail}"></p>
     <p th:text="${'Profile ID: ' + user.profile}"></p>
     <p th:text="${'Medical Record Name: ' + user.profile.userMedicalRecordName}"></p>
     <p th:text="${'Address: ' + user.profile.userAddress}"></p>
     <p th:text="${'Phone Number: ' + user.profile.userPhoneNumber}"></p>
-    <p th:text="${'Email: ' + user.profile.userEmail}"></p>
+    <p th:text="${'Email: ' + user.userEmail}"></p>
     <p th:text="${'Date of Birth: ' + user.profile.userDateOfBirth}"></p>
     <p th:text="${'Emergency Contact: ' + user.profile.emergencyName}"></p>
     <p th:text="${'Emergency Contact Number: ' + user.profile.emergencyPhoneNumber}"></p>

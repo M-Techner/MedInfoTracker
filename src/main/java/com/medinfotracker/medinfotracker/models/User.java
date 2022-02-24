@@ -17,32 +17,23 @@ import java.util.List;
 public class User extends AbstractEntity {
 
     @OneToOne
-//    @JoinColumn(name = "user_id")
-//    private final List<Profile> profile = new ArrayList<>();
     private Profile profile;
-
-//    private EntUserId userId;
-
-
-//    private HandshakeCompletedEvent request;
-//    HttpSession session = request.getSession();
-//    int id = session.getAttribute("id");
-
-//    @NotNull
-//    @JoinColumn(name = "id")
-//    private int id;
 
     @NotNull
     private String userName;
+
+    @NotNull
+    private String userEmail;
 
     @NotNull
     private String pwHash;
 
     public User() {}
 
-    public User(String userName, String password) {
+    public User(String userName, String userEmail, String password) {
         super();
         this.userName = userName;
+        this.userEmail = userEmail;
         this.pwHash = encoder.encode(password);
     }
 
@@ -52,8 +43,6 @@ public class User extends AbstractEntity {
 
 //    getters and setters
 
-
-//    public List<Profile> getProfile() { return profile; }
 
 
     public Profile getProfile() {
@@ -67,6 +56,10 @@ public class User extends AbstractEntity {
     public String getUserName() { return userName; }
 
     public void setUserName(String userName) { this.userName = userName; }
+
+    public String getUserEmail() { return userEmail; }
+
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 

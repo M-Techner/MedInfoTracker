@@ -5,17 +5,24 @@ import com.medinfotracker.medinfotracker.models.Profile;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
+import com.medinfotracker.medinfotracker.models.dto.LoginFormDTO;
+import com.medinfotracker.medinfotracker.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
+@RequestMapping("home")
 public class HomeController {
 
     @Autowired
@@ -27,30 +34,70 @@ public class HomeController {
     @Autowired
     private AuthenticationController authenticationController;
 
-//    @Autowired
-//    private SymptomRepository symptomRepository;
+//    CHECK INTO THIS @INITBINDER INFO = PAY ATTENTION
+
+    @InitBinder
+    void allowFields(WebDataBinder webDataBinder) {
+        webDataBinder.setAllowedFields("userName");
+//        webDataBinder.setAllowedFields("symptoms");
+//        webDataBinder.setAllowedFields("symptomNotes");
+//        webDataBinder.setAllowedFields("medication");
+        webDataBinder.setAllowedFields("profile");
+    }
+
+//    private static final String userSessionKey = "user";
+
+//    public User getUserFromSession(@NotNull HttpSession session) {
+//        Integer session_id = (Integer) session.getAttribute(userSessionKey);
+//        if (session_id == null) {
+//            return null;
+//        }
 //
-//    @Autowired
-//    private MedicationRepository medicationRepository;
+//        Optional<User> user = userRepository.findById(session_id);
+//
+//        if (user.isEmpty()) {
+//            return null;
+//        }
+//
+//        return user.get();
+//    }
+
+//    private static void setUserInSession(HttpSession session, User user) {
+//        session.setAttribute(userSessionKey, user.getId());
+//    }
+
 
     @RequestMapping("")
-    public String index(Model model) {
+    public String index(Model model, HttpServletRequest request) {
         model.addAttribute("title", "User");
-        model.addAttribute("username", userRepository.findAll());
+        model.addAttribute("user", userRepository.findAll());
+//        model.addAttribute("userName", loginFormDTO.getUserName());
+        model.addAttribute("profile", profileRepository.findAll());
+
+                User user = authenticationController.getUserFromSession(request.getSession());
+//        setUserInSession(session, user);
+
+
+//
+//        User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
+//        if (existingUser != null) {
+////            errors.rejectValue("userName", "userName.alreadyexists", "That username is already in use.");
+////            model.addAttribute("title", "Register");
+//            return "user/profileView";
+//        }
+
         return "index";
     }
-//    NEED TO CREATE REDIRECT URL WITH CREDENTIALS FILE< THAT PASSES ALL THE  NECESSARY INFO - LOOK  THIS UP
-
-
-
-//    @GetMapping("add")
-//    public String displayAddProfileForm(Model model) {
-//        model.addAttribute("title", "Add Profile");
-//        model.addAttribute("user", userRepository.findAll());
-//        model.addAttribute("profile", profileRepository.findAll());
-//        model.addAttribute(new Profile());
-//        return "add";
-//    }
+//
+//    @RequestMapping("")
+//    public String index(@ModelAttribute  Errors errors, Model model, @RequestParam Profile profile) {
+////                                    @RequestParam
+//
+//        User user = authenticationController.getUserFromSession(request.getSession());
+//
+//
+//        return "redirect:";
+//    })
 
 
 //    @PostMapping("add")

@@ -10,6 +10,9 @@ import java.util.List;
 @Entity
 public class Profile extends AbstractEntity {
 
+    @OneToOne
+    private User user;
+
     @NotNull
     private String userMedicalRecordName;
 
@@ -18,9 +21,6 @@ public class Profile extends AbstractEntity {
 
     @NotNull
     private String userPhoneNumber;
-
-    @NotNull
-    private String userEmail;
 
     @NotNull
     private String userDateOfBirth;
@@ -46,7 +46,6 @@ public class Profile extends AbstractEntity {
 
     private String specialistName;
 
-
     private String specialistPhoneNumber;
 
     private String specialistType;
@@ -58,30 +57,32 @@ public class Profile extends AbstractEntity {
 
     public Profile() {}
 
-    public Profile(String aUserMedicalRecordName, String aUserAddress, String aUserPhoneNumber, String aUserEmail,
-                   String aUserDateOfBirth, String anEmergencyName, String anEmergencyPhoneNumber, String anEmergencyRelationship,
-                   String aPrimaryCarePhysicianName, String aPrimaryCarePhysicianAddress, String aPrimaryCarePhysicianPhoneNumber,
-                   String aSpecialistName, String aSpecialistPhoneNumber, String aSpecialistType,
-                   String someAllergies, String someMedicalConditions) {
+    public Profile(String userMedicalRecordName, String userAddress, String userPhoneNumber,
+                   String userDateOfBirth, String emergencyName, String emergencyPhoneNumber, String emergencyRelationship,
+                   String primaryCarePhysicianName, String primaryCarePhysicianAddress, String primaryCarePhysicianPhoneNumber,
+                   String specialistName, String specialistPhoneNumber, String specialistType,
+                   String allergies, String medicalConditions) {
         super();
-//        this.userName = userName;
-        this.userMedicalRecordName = aUserMedicalRecordName;
-        this.userAddress = aUserAddress;
-        this.userPhoneNumber = aUserPhoneNumber;
-        this.userEmail = aUserEmail;
-        this.userDateOfBirth = aUserDateOfBirth;
-        this.emergencyName = anEmergencyName;
-        this.emergencyPhoneNumber = anEmergencyPhoneNumber;
-        this.emergencyRelationship = anEmergencyRelationship;
-        this.primaryCarePhysicianName = aPrimaryCarePhysicianName;
-        this.primaryCarePhysicianAddress  = aPrimaryCarePhysicianAddress;
-        this.primaryCarePhysicianPhoneNumber = aPrimaryCarePhysicianPhoneNumber;
-        this.specialistName = aSpecialistName;
-        this.specialistPhoneNumber = aSpecialistPhoneNumber;
-        this.specialistType = aSpecialistType;
-        this.allergies =  someAllergies;
-        this.medicalConditions = someMedicalConditions;
+        this.userMedicalRecordName = userMedicalRecordName;
+        this.userAddress = userAddress;
+        this.userPhoneNumber = userPhoneNumber;
+        this.userDateOfBirth = userDateOfBirth;
+        this.emergencyName = emergencyName;
+        this.emergencyPhoneNumber = emergencyPhoneNumber;
+        this.emergencyRelationship = emergencyRelationship;
+        this.primaryCarePhysicianName = primaryCarePhysicianName;
+        this.primaryCarePhysicianAddress  = primaryCarePhysicianAddress;
+        this.primaryCarePhysicianPhoneNumber = primaryCarePhysicianPhoneNumber;
+        this.specialistName = specialistName;
+        this.specialistPhoneNumber = specialistPhoneNumber;
+        this.specialistType = specialistType;
+        this.allergies =  allergies;
+        this.medicalConditions = medicalConditions;
     }
+
+    public User getUser() { return user; }
+
+    public void setUser(User user) { this.user = user; }
 
     public String getUserMedicalRecordName() { return userMedicalRecordName; }
 
@@ -95,9 +96,9 @@ public class Profile extends AbstractEntity {
 
     public void setUserPhoneNumber(String userPhoneNumber) { this.userPhoneNumber = userPhoneNumber; }
 
-    public String getUserEmail() { return userEmail; }
-
-    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
+//    public String getUserEmail() { return userEmail; }
+//
+//    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
     public String getUserDateOfBirth() { return userDateOfBirth; }
 

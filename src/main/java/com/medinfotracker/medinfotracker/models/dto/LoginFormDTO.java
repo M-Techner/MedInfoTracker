@@ -1,5 +1,6 @@
 package com.medinfotracker.medinfotracker.models.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,6 +10,9 @@ public class LoginFormDTO {
     @NotBlank
     @Size(min = 3, max = 20, message = "Invalid username. Must be between 3 and 20 characters.")
     private String userName;
+
+    @Email
+    private String userEmail;
 
     @NotNull
     @NotBlank
@@ -22,6 +26,10 @@ public class LoginFormDTO {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public String getUserEmail() { return userEmail; }
+
+    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
 
     public String getPassword() {
         return password;

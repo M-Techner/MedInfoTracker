@@ -14,14 +14,16 @@
 <body>
 
 <div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
+
     <div class="container">
         <div class="navbar-header">
+<!--            <p th:text="${'Medical Information Tracker for ' + User.userName}"></p>-->
             <a th:href="@{/}" class="navbar-brand">Medical Information Tracker</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="user/profileView.html" th:href="@{user/profileView/{id}(id=${id})}">My Profile</a></li>
-                <li><a th:href="@{/medication}">Medication History</a></li>
+                <li><a th:href="@{/user/profileView/{id}(id=${profile_id})}">My Profile</a></li>
+                <li><a th:href="@{/medication/addMed}">Medication History</a></li>
                 <li><a th:href="@{/symptom}">Symptom Tracker</a></li>
                 <li><a th:href="@{/logout}">Logout/Change User</a></li>
             </ul>

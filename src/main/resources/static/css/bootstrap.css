@@ -243,10 +243,10 @@ th {
   }
   .btn > .caret,
   .dropup > .btn > .caret {
-    border-top-color: #000 !important;
+    border-top-color: #355E3B !important;
   }
   .label {
-    border: 1px solid #000;
+    border: 1px solid #355E3B;
   }
   .table {
     border-collapse: collapse !important;
@@ -5921,7 +5921,7 @@ button.close {
   bottom: 0;
   left: 0;
   z-index: 1040;
-  background-color: #000;
+  background-color: #355E3B;
 }
 .modal-backdrop.fade {
   filter: alpha(opacity=0);
@@ -6035,7 +6035,7 @@ button.close {
   padding: 3px 8px;
   color: #fff;
   text-align: center;
-  background-color: #000;
+  background-color: #355E3B;
   border-radius: 4px;
 }
 .tooltip-arrow {
