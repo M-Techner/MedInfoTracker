@@ -22,6 +22,7 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
+                <li><a th:href="@{'user/profileView/{userId}' (userId=${userId})}">My Profile</a></li>
 <!--                <li><a th:href="@{/user/profileView/user_id ${userId})"}>My Profile</a></li>-->
                 <li><a th:href="@{/medication/addMed}">Medication History</a></li>
                 <li><a th:href="@{/symptom}">Symptom Tracker</a></li>

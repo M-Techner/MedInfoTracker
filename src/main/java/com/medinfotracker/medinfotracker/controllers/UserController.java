@@ -18,6 +18,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
+//@SessionAttributes("user")
 @RequestMapping("user")
 public class UserController {
 
@@ -30,21 +31,14 @@ public class UserController {
     @Autowired
     private AuthenticationController authenticationController;
 
-//    @GetMapping("")
-//    public String index(Model model) {
-//        model.addAttribute("Title", "User");
-//        model.addAttribute("User", userRepository.findAll());
-////        model.addAttribute("profile", profileRepository.findAll());
-//        return "index";
-//    }
-
     @GetMapping("addProfile")
     public String displayAddProfileForm(Model model) {
 
         model.addAttribute("User Medical Record Name", "Add User Medical Record Name");
         model.addAttribute("User Address", "Add User Address");
         model.addAttribute("User Phone Number", "Add User Phone Number");
-        model.addAttribute("Emergency Contact Name", "Add Emergency Contact Name");
+//        model.addAttribute("Preferred Pronouns","My preferred pronouns are: ");
+        model.addAttribute("Emergencys Contact Name", "Add Emergency Contact Name");
         model.addAttribute("Emergency Contact Phone Number", "Add Emergency Contact Phone Number");
         model.addAttribute("Emergency Contact Relationship", "Add Emergency Contact Relationship");
         model.addAttribute("Primary Care Physician Name", "Add Primary Care Physician Name");
@@ -70,8 +64,8 @@ public class UserController {
 
         User user = authenticationController.getUserFromSession(request.getSession());
 
-        user.setProfile(newProfile);
         profileRepository.save(newProfile);
+        user.setProfile(newProfile);
         userRepository.save(user);
 //        model.addAttribute("user", userRepository.findAll());
         model.addAttribute("profile", profileRepository.findAll());

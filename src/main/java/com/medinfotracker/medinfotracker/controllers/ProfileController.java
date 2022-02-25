@@ -29,12 +29,7 @@ public class ProfileController {
     private AuthenticationController authenticationController;
 
 
-//    @GetMapping("")
-//    public String index(Model model) {
-//        model.addAttribute("Title", "User Profile");
-//        model.addAttribute("User Profile", profileRepository.findAll());
-//        return "index";
-//    }
+
 
 //    @GetMapping("add")
 //    public String displayAddProfileForm(Model model) {
@@ -57,24 +52,24 @@ public class ProfileController {
 //        return "profile/add";
 //    }
 
-    @PostMapping("add")
-    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
-                                        Errors errors, Model model, HttpServletRequest request) {
-
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Add User Profile Details");
-            return "profile/add";
-        }
-
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        user.setProfile(newProfile);
-        profileRepository.save(newProfile);
-        userRepository.save(user);
-//        model.addAttribute("user", userRepository.findAll());
-        model.addAttribute("profile", profileRepository.findAll());
-        return "redirect:";
-    }
+//    @PostMapping("add")
+//    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
+//                                        Errors errors, Model model, HttpServletRequest request) {
+//
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Add User Profile Details");
+//            return "profile/add";
+//        }
+//
+//        User user = authenticationController.getUserFromSession(request.getSession());
+//
+//        user.setProfile(newProfile);
+//        profileRepository.save(newProfile);
+//        userRepository.save(user);
+////        model.addAttribute("user", userRepository.findAll());
+//        model.addAttribute("profile", profileRepository.findAll());
+//        return "redirect:";
+//    }
 
 //    @GetMapping("view/{id}")
 //    public String displayViewProfile(Model model, @PathVariable int id) {

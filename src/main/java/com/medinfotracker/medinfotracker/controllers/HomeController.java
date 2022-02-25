@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("home")
+@RequestMapping("/")
 public class HomeController {
 
     @Autowired
@@ -36,27 +36,29 @@ public class HomeController {
 
 //    CHECK INTO THIS @INITBINDER INFO = PAY ATTENTION
 
-    @InitBinder
-    void initAllowFields(WebDataBinder binder) {
-        binder.setAllowedFields("userMedicalRecordName");
-        binder.setAllowedFields("userAddress");
-        binder.setAllowedFields("userPhoneNumber");
-        binder.setAllowedFields("userDateOfBirth");
-        binder.setAllowedFields("emergencyName");
-        binder.setAllowedFields("emergencyPhoneNumber");
-        binder.setAllowedFields("emergencyRelationship");
-        binder.setAllowedFields("primaryCarePhysicianName");
-        binder.setAllowedFields("primaryCarePhysicianAddress");
-        binder.setAllowedFields("primaryCarePhysicianPhoneNumber");
-        binder.setAllowedFields("specialistName");
-        binder.setAllowedFields("specialistPhoneNumber");
-        binder.setAllowedFields("specialistType");
-        binder.setAllowedFields("allergies");
-        binder.setAllowedFields("medicalConditions");
-        binder.setAllowedFields("userName");
-        binder.setAllowedFields("userId");
-//        binder.setAllowedFields("name");
-    }
+//    @InitBinder
+//    void initAllowFields(WebDataBinder binder) {
+////        binder.setAllowedFields("userPreferredName");
+//        binder.setAllowedFields("userMedicalRecordName");
+//        binder.setAllowedFields("userAddress");
+//        binder.setAllowedFields("userPhoneNumber");
+//        binder.setAllowedFields("userDateOfBirth");
+////        binder.setAllowedFields("userPreferredPronouns");
+//        binder.setAllowedFields("emergencyName");
+//        binder.setAllowedFields("emergencyPhoneNumber");
+//        binder.setAllowedFields("emergencyRelationship");
+//        binder.setAllowedFields("primaryCarePhysicianName");
+//        binder.setAllowedFields("primaryCarePhysicianAddress");
+//        binder.setAllowedFields("primaryCarePhysicianPhoneNumber");
+//        binder.setAllowedFields("specialistName");
+//        binder.setAllowedFields("specialistPhoneNumber");
+//        binder.setAllowedFields("specialistType");
+//        binder.setAllowedFields("allergies");
+//        binder.setAllowedFields("medicalConditions");
+//        binder.setAllowedFields("userName");
+//        binder.setAllowedFields("userId");
+////        binder.setAllowedFields("name");
+//    }
 
 
     @RequestMapping("")
@@ -66,12 +68,14 @@ public class HomeController {
 //        model.addAttribute("userName", loginFormDTO.getUserName());
 //        model.addAttribute("profile", profileRepository.findAll());
 
-                User user = authenticationController.getUserFromSession(request.getSession());
-                model.addAttribute("user", user);
-                model.addAttribute("name", user.getUserName());
-                model.addAttribute("userId", user.getUserId());
-//        setUserInSession(session, user);
+//        @GetMapping("")
+//        public String sessionUser(@SessionAttribute("user") User sessionUser, Model model)
 
+        User user = authenticationController.getUserFromSession(request.getSession());
+        model.addAttribute("user", user);
+        model.addAttribute("name", user.getUserName());
+        model.addAttribute("userId", user.getUserId());
+//        setUserInSession(session, user);
 
 //
 //        User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
@@ -84,6 +88,15 @@ public class HomeController {
         return "index";
     }
 //
+//
+//    @GetMapping("")
+//    public String sessionUser(@SessionAttribute("user") User sessionUser, final Model model) {
+//        model.addAttribute("user",sessionUser);
+//        return "sessionUser";
+//    }
+
+
+
 //    @RequestMapping("")
 //    public String index(@ModelAttribute  Errors errors, Model model, @RequestParam Profile profile) {
 ////                                    @RequestParam

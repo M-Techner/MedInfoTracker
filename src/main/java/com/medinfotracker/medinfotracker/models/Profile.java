@@ -13,6 +13,8 @@ public class Profile extends AbstractEntity {
     @OneToOne
     private User user;
 
+    private String userPreferredName;
+
     @NotNull
     private String userMedicalRecordName;
 
@@ -24,6 +26,8 @@ public class Profile extends AbstractEntity {
 
     @NotNull
     private String userDateOfBirth;
+
+    private String userPreferredPronouns;
 
     @NotNull
     private String emergencyName;
@@ -57,16 +61,18 @@ public class Profile extends AbstractEntity {
 
     public Profile() {}
 
-    public Profile(String userMedicalRecordName, String userAddress, String userPhoneNumber,
-                   String userDateOfBirth, String emergencyName, String emergencyPhoneNumber, String emergencyRelationship,
+    public Profile(String userPreferredName, String userMedicalRecordName, String userAddress, String userPhoneNumber,
+                   String userDateOfBirth, String userPreferredPronouns, String emergencyName, String emergencyPhoneNumber, String emergencyRelationship,
                    String primaryCarePhysicianName, String primaryCarePhysicianAddress, String primaryCarePhysicianPhoneNumber,
                    String specialistName, String specialistPhoneNumber, String specialistType,
                    String allergies, String medicalConditions) {
         super();
+        this.userPreferredName = userPreferredName;
         this.userMedicalRecordName = userMedicalRecordName;
         this.userAddress = userAddress;
         this.userPhoneNumber = userPhoneNumber;
         this.userDateOfBirth = userDateOfBirth;
+        this.userPreferredPronouns = userPreferredPronouns;
         this.emergencyName = emergencyName;
         this.emergencyPhoneNumber = emergencyPhoneNumber;
         this.emergencyRelationship = emergencyRelationship;
@@ -83,6 +89,10 @@ public class Profile extends AbstractEntity {
     public User getUser() { return user; }
 
     public void setUser(User user) { this.user = user; }
+
+    public String getUserPreferredName() { return userPreferredName; }
+
+    public void setUserPreferredName(String userPreferredName) { this.userPreferredName = userPreferredName; }
 
     public String getUserMedicalRecordName() { return userMedicalRecordName; }
 
@@ -103,6 +113,10 @@ public class Profile extends AbstractEntity {
     public String getUserDateOfBirth() { return userDateOfBirth; }
 
     public void setUserDateOfBirth(String userDateOfBirth) { this.userDateOfBirth = userDateOfBirth; }
+
+    public String getUserPreferredPronouns() { return userPreferredPronouns; }
+
+    public void setUserPreferredPronouns(String userPreferredPronouns) { this.userPreferredPronouns = userPreferredPronouns; }
 
     public String getEmergencyName() { return emergencyName; }
 
