@@ -27,12 +27,12 @@ public class AuthenticationController {
         private static final String userSessionKey = "user";
 
         public User getUserFromSession(@NotNull HttpSession session) {
-            Integer id = (Integer) session.getAttribute(userSessionKey);
-            if (id == null) {
+            Integer userId = (Integer) session.getAttribute(userSessionKey);
+            if (userId == null) {
                 return null;
             }
 
-            Optional<User> user = userRepository.findById(id);
+            Optional<User> user = userRepository.findById(userId);
 
             if (user.isEmpty()) { return null; }
 
@@ -40,7 +40,7 @@ public class AuthenticationController {
         }
 
         private static void setUserInSession(HttpSession session, User user) {
-            session.setAttribute(userSessionKey, user.getId());
+            session.setAttribute(userSessionKey, user.getUserId());
         }
 
         @GetMapping("/register")

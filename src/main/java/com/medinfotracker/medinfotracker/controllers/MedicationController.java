@@ -45,10 +45,10 @@ public class MedicationController {
         return "redirect:..";
 
     }
-    @GetMapping("view/{id}")
-    public String displayViewMedication(Model model, @PathVariable int id) {
+    @GetMapping("view/{userId}")
+    public String displayViewMedication(Model model, @PathVariable int userId) {
         model.addAttribute("medication", medicationRepository.findAll());
-        Optional optMedication = medicationRepository.findById(id);
+        Optional optMedication = medicationRepository.findById(userId);
         if (optMedication.isPresent()) {
             Medication medication = (Medication) optMedication.get();
             model.addAttribute("medication", medication);

@@ -37,44 +37,39 @@ public class HomeController {
 //    CHECK INTO THIS @INITBINDER INFO = PAY ATTENTION
 
     @InitBinder
-    void allowFields(WebDataBinder webDataBinder) {
-        webDataBinder.setAllowedFields("userName");
-//        webDataBinder.setAllowedFields("symptoms");
-//        webDataBinder.setAllowedFields("symptomNotes");
-//        webDataBinder.setAllowedFields("medication");
-        webDataBinder.setAllowedFields("profile");
+    void initAllowFields(WebDataBinder binder) {
+        binder.setAllowedFields("userMedicalRecordName");
+        binder.setAllowedFields("userAddress");
+        binder.setAllowedFields("userPhoneNumber");
+        binder.setAllowedFields("userDateOfBirth");
+        binder.setAllowedFields("emergencyName");
+        binder.setAllowedFields("emergencyPhoneNumber");
+        binder.setAllowedFields("emergencyRelationship");
+        binder.setAllowedFields("primaryCarePhysicianName");
+        binder.setAllowedFields("primaryCarePhysicianAddress");
+        binder.setAllowedFields("primaryCarePhysicianPhoneNumber");
+        binder.setAllowedFields("specialistName");
+        binder.setAllowedFields("specialistPhoneNumber");
+        binder.setAllowedFields("specialistType");
+        binder.setAllowedFields("allergies");
+        binder.setAllowedFields("medicalConditions");
+        binder.setAllowedFields("userName");
+        binder.setAllowedFields("userId");
+//        binder.setAllowedFields("name");
     }
-
-//    private static final String userSessionKey = "user";
-
-//    public User getUserFromSession(@NotNull HttpSession session) {
-//        Integer session_id = (Integer) session.getAttribute(userSessionKey);
-//        if (session_id == null) {
-//            return null;
-//        }
-//
-//        Optional<User> user = userRepository.findById(session_id);
-//
-//        if (user.isEmpty()) {
-//            return null;
-//        }
-//
-//        return user.get();
-//    }
-
-//    private static void setUserInSession(HttpSession session, User user) {
-//        session.setAttribute(userSessionKey, user.getId());
-//    }
 
 
     @RequestMapping("")
-    public String index(Model model, HttpServletRequest request) {
-        model.addAttribute("title", "User");
-        model.addAttribute("user", userRepository.findAll());
+    public String index(Model model, HttpServletRequest request, RegisterFormDTO registerFormDTO ) {
+//        model.addAttribute("title", "User");
+//        model.addAttribute("user", userRepository.findAll());
 //        model.addAttribute("userName", loginFormDTO.getUserName());
-        model.addAttribute("profile", profileRepository.findAll());
+//        model.addAttribute("profile", profileRepository.findAll());
 
                 User user = authenticationController.getUserFromSession(request.getSession());
+                model.addAttribute("user", user);
+                model.addAttribute("name", user.getUserName());
+                model.addAttribute("userId", user.getUserId());
 //        setUserInSession(session, user);
 
 

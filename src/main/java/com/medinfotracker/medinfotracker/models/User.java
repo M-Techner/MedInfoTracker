@@ -22,16 +22,21 @@ public class User extends AbstractEntity {
     @NotNull
     private String userName;
 
+//    private String name;
+
     @NotNull
     private String userEmail;
 
     @NotNull
     private String pwHash;
 
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     public User() {}
 
     public User(String userName, String userEmail, String password) {
         super();
+//        this.name = userName;
         this.userName = userName;
         this.userEmail = userEmail;
         this.pwHash = encoder.encode(password);
@@ -42,8 +47,6 @@ public class User extends AbstractEntity {
     }
 
 //    getters and setters
-
-
 
     public Profile getProfile() {
         return profile;
@@ -57,11 +60,15 @@ public class User extends AbstractEntity {
 
     public void setUserName(String userName) { this.userName = userName; }
 
+
+//    public String getName() { return name; }
+//
+////    possibly this.name = userName ?
+//    public void setName(String name) { this.name = name; }
+
     public String getUserEmail() { return userEmail; }
 
     public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
-
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
 

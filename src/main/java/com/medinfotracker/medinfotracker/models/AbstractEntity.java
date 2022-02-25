@@ -14,29 +14,35 @@ public abstract class AbstractEntity {
 
     @Id
     @GeneratedValue
-    private int id;
+    private int userId;
+
+//    private String name;
 
     public AbstractEntity() {}
 
-//    public AbstractEntity(int id) {
-//        this.id = id;
-//    }
-
 //    getters and setters
 
-    public int getId() { return id; }
+    public int getUserId() { return userId; }
+
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AbstractEntity that = (AbstractEntity) o;
-        return id == that.id;
+        return userId == that.userId;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(userId);
     }
 
 }

@@ -81,9 +81,9 @@ public class UserController {
 
 //    Should this connect to the user session??
 
-    @GetMapping("profileView/{id}")
+    @GetMapping("profileView/{userId}")
     public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors,
-                                         @PathVariable("id") int id) {
+                                         @PathVariable("userId") int userId) {
 //        model.addAttribute("user", userRepository.findById(profile_id));
 
         User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
@@ -94,10 +94,10 @@ public class UserController {
             return "user/profileView";
         }
 
-        Optional optUser = userRepository.findById(id);
+        Optional optUser = userRepository.findById(userId);
         if (optUser.isPresent()) {
             User user = (User) optUser.get();
-            model.addAttribute("title", "user: " + ((User) optUser.get()).getId());
+            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
             model.addAttribute("user", user);
             return "user/profileView";
         } else {
