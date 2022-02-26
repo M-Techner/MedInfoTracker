@@ -78,7 +78,6 @@ public class User extends AbstractEntity {
 //    private final List<Profile> profile = new ArrayList<>();
     private Profile profile;
     @ManyToOne
-    @JoinColumn(name = "symptoms_id")
     private Symptoms symptoms;
 //    private EntUserId userId;
 

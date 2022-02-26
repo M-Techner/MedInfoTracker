@@ -2,9 +2,12 @@ package com.medinfotracker.medinfotracker.controllers;
 
 
 import com.medinfotracker.medinfotracker.models.Profile;
+import com.medinfotracker.medinfotracker.models.Symptoms;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
+import com.medinfotracker.medinfotracker.models.data.SymptomRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
+import org.apache.catalina.Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +31,8 @@ public class UserController {
 
     @Autowired
     private AuthenticationController authenticationController;
+    @Autowired
+    private SymptomRepository symptomRepository;
 
     @GetMapping("")
     public String index(Model model) {
@@ -72,8 +77,25 @@ public class UserController {
         user.setProfile(newProfile);
         profileRepository.save(newProfile);
         userRepository.save(user);
+
 //        model.addAttribute("user", userRepository.findAll());
         model.addAttribute("profile", profileRepository.findAll());
+        return "redirect:";
+    }
+    @PostMapping("symptoms/add")
+    public String processAddSymptomsForm(@ModelAttribute @Valid Symptoms newSymptoms,
+                                         Errors errors, Model model, HttpServletRequest request) {
+
+        if (errors.hasErrors()) {
+            model.addAttribute("title", "Add New Symptom");
+            return "symptoms/add";
+        }
+        User user = authenticationController.getUserFromSession(request.getSession());
+        user.setSymptoms(newSymptoms);
+        symptomRepository.save(newSymptoms);
+        userRepository.save(user);
+//        userRepository.save(newSymptoms);
+        model.addAttribute("symptoms", symptomRepository.findAll());
         return "redirect:";
     }
 

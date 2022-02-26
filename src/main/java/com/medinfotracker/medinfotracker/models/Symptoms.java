@@ -6,6 +6,8 @@ import com.medinfotracker.medinfotracker.models.*;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.*;
 import com.medinfotracker.medinfotracker.controllers.*;
+
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 @Entity
 public class Symptoms extends AbstractEntity {
@@ -15,8 +17,8 @@ public class Symptoms extends AbstractEntity {
     private String startDate;
     private String stopDate;
     private String description;
-    @ManyToOne
-    private User user;
+//    @OneToMany
+//    private User user;
 
     private String userName;
     @NotNull
