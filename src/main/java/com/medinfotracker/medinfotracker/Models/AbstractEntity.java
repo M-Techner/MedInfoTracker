@@ -3,8 +3,7 @@ package com.medinfotracker.medinfotracker.Models;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-
-        import java.util.Objects;
+import java.util.Objects;
 
 
 @MappedSuperclass
@@ -33,5 +32,6 @@ public abstract class AbstractEntity {
         return Objects.hash(id);
     }
 
+    public abstract boolean isMatchingPassword(String password);
 }
 
