@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body>
+
+<div th:replace="fragments :: page-header"></div>
+<p>Please select an option</p>
+<ol>
+    <li><a href="symptom/add.html" th:href="@{/symptom/add}">Add a Symptom</a></li>
+    <li><a th:href="@{/symptom/add}">Symptom Tracker -add test 5</a></li>
+    <!--            <span class="error" th:error="${symptoms.add}"></span>-->
+    <!--            <p class="error" th:errors="${404}"></p>-->
+    <li><a href="symptom/view.html" th:href="@{/symptom/view}">View a list of your tracked symptoms</a></li>
+    <li><a th:href="@{/symptom/add}">Add a Symptom</a></li>
+    <li><a th:href="@{/symptom/view}">View a list of your tracked symptoms</a></li>
+</ol>
+
+$END$
+</body>
+</html>

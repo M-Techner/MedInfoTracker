@@ -11,21 +11,23 @@
     <h1> Welcome to the Medical Info Tracker</h1>
     <h2>View medication info by:</h2>
     <ul>
-        <li th:each="action : ${actions}">
-            <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>
-        </li>
+<!--        <li th:each="action : ${actions}">-->
+<!--            <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>-->
+<!--        </li>-->
         <p>Please select an option</p>
         <ol>
             <li><a href="symptom/add.html" th:href="@{/symptom/add}">Add a Symptom</a></li>
 <!--            <span class="error" th:error="${symptoms.add}"></span>-->
 <!--            <p class="error" th:errors="${404}"></p>-->
+            <li><a href="symptom/index.html" th:href="@{/symptom/index}">Symptom Tracker</a></li>
             <li><a href="symptom/view.html" th:href="@{/symptom/view}">View a list of your tracked symptoms</a></li>
+            <li><a th:href="@{/symptom/add}">Symptom Tracker -add test 5</a></li>
 <!--            <span class="error" th:error="${symptoms.name}"></span>-->
 <!--            <li><a href="condition/add.html" th:href="@{/condition/add}">Add your medical conditions</a></li>-->
 <!--            <span class="error" th:error="${conditions.name}"></span>-->
 <!--            <li><a href="condition/view.html" th:href="@{/condition/view}">View a List of your medical conditions</a></li>-->
 <!--            <span class="error" th:error="${conditions.name}"></span>-->
-            <li><a href="userprofile.html" th:href="@{/userprofile}">See User Profile</a></li>
+            <li><a href="user/profileView.html" th:href="@{/user/profileView}">See User Profile</a></li>
         </ol>
     </ul>
 </div>

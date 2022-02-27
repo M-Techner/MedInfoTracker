@@ -3,18 +3,18 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 th:text="${'Symptom: ' + symptoms.name}">Default Title</h1>
+<h1 th:text="${'Symptom: ' + symptom.name}">Default Title</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="form-group">
-    <p th:text="${'Name: ' + symptoms.name}"></p>
-    <p th:text="${'Description: ' + symptoms.description}"></p>
-    <p th:text="${'Start Date ' + symptoms.startDate}"></p>
-    <p th:text="${'Stop Date ' + symptoms.stopDate}"></p>
+    <p th:text="${'Name: ' + symptom.name}"></p>
+    <p th:text="${'Description: ' + symptom.description}"></p>
+    <p th:text="${'Start Date ' + symptom.startDate}"></p>
+    <p th:text="${'Stop Date ' + symptom.stopDate}"></p>
     <p> Symptoms:
     <ul>
-        <li th:each="symptoms : ${symptoms.user}">
+        <li th:each="symptoms : ${symptom.user}">
             <a th:href="@{'/view/' + ${user.id}}" th:text="${user.name}"></a>
         </li>
     </ul>
