@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<!--Use fragments.html for consistency across pages-->
+
+<body class="container body-content">
+
+<h1 th:text="${'Symptoms for: ' + user.userName}">MedInfoTracker</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+
+<div class="symptoms">
+    <p th:text="${'User ID: ' + userId}"></p>
+    <p th:text="${'Symptom: ' + symptoms.symptomName}"></p>
+    <p th:text="${'Symptom Started: ' + symptoms.startDate}"></p>
+    <p th:text="${'Symptom Stopped: ' + symptoms.stopDate}"></p>
+    <p th:text="${'Symptom Description: ' + symptoms.description}"></p>
+    <!--       <a th:href="@{'/profile/add'}"></a>-->
+</div>
+
+</body>
+</html>
