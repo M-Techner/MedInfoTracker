@@ -22,11 +22,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a th:href="@{'user/profileView/{userId}' (userId=${userId})}">My Profile</a></li>
+                <li><a th:href="@{'/user/profileView/{userId}' (userId=${userId})}">My Profile</a></li>
 <!--                <li><a th:href="@{/user/profileView/user_id ${userId})"}>My Profile</a></li>-->
-                <li><a th:href="@{/medication/addMed}">Medication History</a></li>
+                <li><a th:href="@{/medication/add}">Medication History</a></li>
                 <li><a th:href="@{/symptom}">Symptom Tracker</a></li>
+                <li><a th:href="@{/search}">Search</a></li>
                 <li><a th:href="@{/logout}">Logout/Change User</a></li>
+<!--                <li><a th:href="@{/deleteProfile})">Delete My Profile</a></li>-->
+
             </ul>
         </div>
     </div>

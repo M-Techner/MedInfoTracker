@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Profile Management</title>
+</head>
 <!--Use fragments.html for consistency across pages-->
 
 <body class="container body-content">
@@ -11,16 +14,16 @@
 
 
 <div class="user-profile">
-    <p th:text="${'User ID: ' + userId}"></p>
-<!--    <p th:text="${'Username: ' + user.profile.userPreferredName}"></p>-->
+<!--    <p th:text="${'User ID: ' + userId}"></p>-->
     <p th:text="${'Username: ' + user.userName}"></p>
     <p th:text="${'Email: ' + user.userEmail}"></p>
-<!--    <p th:text="${'Username: ' + user.profile.userPreferredPronouns}"></p>-->
-    <p th:text="${'Profile ID: ' + user.profile}"></p>
+    <br>
+    <p th:text="${'Preferred Name: ' + user.profile.userPreferredName}"></p>
+    <p th:text="${'Preferred Pronouns: ' + user.profile.userPreferredPronouns}"></p>
+<!--    <p th:text="${'Profile ID: ' + user.profile}"></p>-->
     <p th:text="${'Medical Record Name: ' + user.profile.userMedicalRecordName}"></p>
     <p th:text="${'Address: ' + user.profile.userAddress}"></p>
     <p th:text="${'Phone Number: ' + user.profile.userPhoneNumber}"></p>
-    <p th:text="${'Email: ' + user.userEmail}"></p>
     <p th:text="${'Date of Birth: ' + user.profile.userDateOfBirth}"></p>
     <p th:text="${'Emergency Contact: ' + user.profile.emergencyName}"></p>
     <p th:text="${'Emergency Contact Number: ' + user.profile.emergencyPhoneNumber}"></p>
@@ -33,9 +36,36 @@
     <p th:text="${'Specialist Type: ' + user.profile.specialistType}"></p>
     <p th:text="${'Known Allergies of Any Kind: ' + user.profile.allergies}"></p>
     <p th:text="${'Medical Conditions: ' + user.profile.medicalConditions}"></p>
-
-<!--       <a th:href="@{'/profile/add'}"></a>-->
 </div>
+       <a th:href="@{'/user/deleteProfile/{userId}' (userId=${userId})}">Delete Profile</a>
+<!--</div>-->
+<!--<form method="post">-->
+<!--    <input type="submit" value="Delete My Profile" class="btn btn-danger">-->
+<!--</form>-->
+
+<!--<form method="get">-->
+<!--<form method="post">-->
+<!--    <div class="form-group">-->
+<!--        <label>-->
+<!--            <span th:text="${'Delete Profile?'}"></span>-->
+<!--            <input type="hidden" name="_method" value="delete">-->
+<!--            <input type="checkbox" name="profileUserId" th:value="${profileUserId}" class="form-control">-->
+<!--        </label>-->
+<!--    </div>-->
+<!--<br>-->
+
+
+
+<!--        <input type="submit" value="Delete Profile" class="btn btn-danger">-->
+<!--        <button id="delete" name="delete" th:onclick="@{'/deleteProfile'}">Delete My Profile</button>-->
+<!--        <button type="submit" class="btn">Delete</button>-->
+<!--    </form>-->
+<!--<br>-->
+<!--<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>-->
+
+
+
+
 
 </body>
 </html>

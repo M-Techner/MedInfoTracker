@@ -10,4 +10,5 @@ import javax.transaction.Transactional;
 @Repository
 @Transactional
 public interface ProfileRepository extends CrudRepository<Profile, Integer> {
+    Profile findByUserId(int userId);
 }

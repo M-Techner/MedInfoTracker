@@ -10,8 +10,8 @@ import java.util.List;
 @Entity
 public class Profile extends AbstractEntity {
 
-    @OneToOne
-    private User user;
+//    @OneToOne
+//    private User user;
 
     private String userPreferredName;
 
@@ -86,9 +86,9 @@ public class Profile extends AbstractEntity {
         this.medicalConditions = medicalConditions;
     }
 
-    public User getUser() { return user; }
-
-    public void setUser(User user) { this.user = user; }
+//    public User getUser() { return user; }
+//
+//    public void setUser(User user) { this.user = user; }
 
     public String getUserPreferredName() { return userPreferredName; }
 

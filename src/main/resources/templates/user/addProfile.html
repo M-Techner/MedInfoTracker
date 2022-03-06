@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head"></head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Profile Management</title>
+</head>
 <body class="container  body-content">
 <h1>Create My Profile</h1>
 
@@ -9,18 +12,22 @@
 
 <form method="post" style="max-width:600px;">
 
-    <!--    <div class="form-group">-->
-    <!--        <label th:for="userName">Username</label>-->
-    <!--        <input class="form-control" th:field="${profile.userName}" />-->
-    <!--        <span th:errors="${profile.userName}" class="error"></span>-->
-    <!--    </div>-->
+    <div class="form-group">
+        <label th:for="userPreferredName">User Preferred Name</label>
+        <input class="form-control" th:field="${profile.userPreferredName}" />
+        <span th:errors="${profile.userPreferredName}" class="error"></span>
+    </div>
 
-<!--    <p th:text="${'Hi ' + user.userName + 'Please complete your medical profile'}"></p>-->
+    <div class="form-group">
+        <label th:for="userPreferredPronouns">User Preferred Pronouns</label>
+        <input class="form-control" th:field="${profile.userPreferredPronouns}" />
+        <span th:errors="${profile.userPreferredPronouns}" class="error"></span>
+    </div>
 
     <div class="form-group">
         <label th:for="userMedicalRecordName">User Medical Record Name</label>
         <input class="form-control" th:field="${profile.userMedicalRecordName}" />
-<!--        <span th:errors="${profile.userMedicalRecordName}" class="error"></span>-->
+        <span th:errors="${profile.userMedicalRecordName}" class="error"></span>
     </div>
 
     <div class="form-group">

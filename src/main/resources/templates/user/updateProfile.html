@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Profile Management</title>
+</head>
+<body>
+    <div class="container  body-content">
+        <h1>Profile Management</h1>
+        <hr>
+        <h2>Update Profile</h2>
+
+    <form action="#" th:action="@{/updateProfile}" th:object="${profile}"
+          method="POST">
+
+        <!-- Add hidden form field to handle update -->
+        <input type="hidden" th:field="${userId}" />
+
+        <input type="text" th:field="${profile.userMedicalRecordName}" class="form-group">
+
+        <input type="text" th:field="${profile.userAddress}" class="form-group">
+
+        <input type="text" th:field="${profile.userPhoneNumber}" class="form-group">
+
+        <input type="text" th:field="${profile.userDateOfBirth}" class="form-group">
+
+        <input type="text" th:field="${profile.emergencyName}" class="form-group">
+
+        <input type="text" th:field="${profile.emergencyPhoneNumber}" class="form-group">
+
+        <input type="text" th:field="${profile.emergencyRelationship}" class="form-group">
+
+        <input type="text" th:field="${profile.primaryCarePhysicianName}" class="form-group">
+
+        <input type="text" th:field="${profile.primaryCarePhysicianAddress}" class="form-group">
+
+        <input type="text" th:field="${profile.primaryCarePhysicianPhoneNumber}" class="form-group">
+
+        <input type="text" th:field="${profile.specialistName}" class="form-group">
+
+        <input type="text" th:field="${profile.specialistPhoneNumber}" class="form-group">
+
+        <input type="text" th:field="${profile.specialistType}" class="form-group">
+
+        <input type="text" th:field="${profile.allergies}" class="form-group">
+
+        <input type="text" th:field="${profile.medicalConditions}" class="form-group">
+
+        <button type="submit" class="btn btn-info col-2">Update Profile</button>
+    </form>
+
+    <hr>
+
+    <a th:href = "@{/}">Cancel Changes and Return to Profile</a>
+</div>
+</body>
+</html>

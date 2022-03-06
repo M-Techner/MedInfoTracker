@@ -2,10 +2,8 @@ package com.medinfotracker.medinfotracker.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.net.ssl.HandshakeCompletedEvent;
 import javax.persistence.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -19,12 +17,16 @@ public class User extends AbstractEntity {
     @OneToOne
     private Profile profile;
 
-    @NotNull
+    @OneToMany
+    private List<Medication> medications = new ArrayList<>();
+
+    @NotBlank(message = "Name is required")
+    @Size(min = 3, max = 50, message = "Name must be between 3 and 50 characters")
     private String userName;
 
-//    private String name;
 
-    @NotNull
+    @NotBlank(message = "Email is required")
+    @Email(message = "Invalid email. Try again.")
     private String userEmail;
 
     @NotNull
@@ -32,7 +34,8 @@ public class User extends AbstractEntity {
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public User() {}
+    public User() {
+    }
 
     public User(String userName, String userEmail, String password) {
         super();
@@ -41,6 +44,16 @@ public class User extends AbstractEntity {
         this.userEmail = userEmail;
         this.pwHash = encoder.encode(password);
     }
+
+    public User(String userName, String userEmail, String password, List<Medication> medications) {
+        super();
+//        this.name = userName;
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.pwHash = encoder.encode(password);
+        this.medications = medications;
+    }
+
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
@@ -56,20 +69,27 @@ public class User extends AbstractEntity {
         this.profile = profile;
     }
 
-    public String getUserName() { return userName; }
+    public String getUserName() {
+        return userName;
+    }
 
-    public void setUserName(String userName) { this.userName = userName; }
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
+    public String getUserEmail() {
+        return userEmail;
+    }
 
-//    public String getName() { return name; }
-//
-////    possibly this.name = userName ?
-//    public void setName(String name) { this.name = name; }
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
 
-    public String getUserEmail() { return userEmail; }
+    public List<Medication> getMedications() {
+        return medications;
+    }
 
-    public void setUserEmail(String userEmail) { this.userEmail = userEmail; }
-
-
-
+    public void addMedication(Medication medication) {
+        medications.add(medication);
+    }
 }

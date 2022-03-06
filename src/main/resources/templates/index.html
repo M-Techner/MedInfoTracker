@@ -1,6 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Profile Management</title>
+</head>
 </head>
 <body>
 
@@ -27,7 +30,7 @@
     <a href="addProfile.html"
        th:href="@{/user/addProfile}">Create Your Medical Profile</a>
     <br>
-    <a th:href="@{'user/profileView/{userId}' (userId=${userId})}">View My Profile</a>
+    <a th:href="@{'/user/profileView/{userId}' (userId=${userId})}">View My Profile</a>
     <br>
 
     <a th:href="@{/logout}">Or Logout to Change User</a>

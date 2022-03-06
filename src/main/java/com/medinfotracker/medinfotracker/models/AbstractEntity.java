@@ -18,7 +18,7 @@ public abstract class AbstractEntity {
 
 //    private String name;
 
-    public AbstractEntity() {}
+//    public AbstractEntity() {}
 
 //    getters and setters
 
