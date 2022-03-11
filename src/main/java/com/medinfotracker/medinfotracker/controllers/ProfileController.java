@@ -85,4 +85,51 @@ public class ProfileController {
 //            return "redirect:..";
 //        }
 
+
+
+//    @RequestMapping(value = "deleteProfile/{userId}", method = {RequestMethod.POST, RequestMethod.GET})
+//    public String deleteProfile(@ModelAttribute("profile") Profile profile,
+//                                @RequestParam(required = false)
+//                                @ModelAttribute("userId") int userId,
+//                                Model model, HttpServletRequest request) {
+//
+//        User user = authenticationController.getUserFromSession(request.getSession());
+//
+//        if (user == null || user.equals("")) {
+////            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            assert user != null;
+//            model.addAttribute("profile", user.getProfile());
+//            model.addAttribute("title", "Delete Profile");
+////            model.addAttribute("profile", profileRepository.findAll());
+//            model.addAttribute("user", user);
+//            return "user/profileView";
+//        }
+//
+////        profile = profileRepository.findByUserId(userId);
+//        profile = user.getProfile();
+//        Integer profileId = profile.getUserId();
+//        profileRepository.deleteById(profileId);
+////        userRepository.save(user);
+//        {
+////        if (optUser.isPresent()) {
+////            User aUser = (User) optUser.get();
+////            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+////            model.addAttribute("user", aUser);
+////            return "user/profileView";
+////        } else {
+////            return "redirect:/";
+////        }
+////        if (userId.isPresent()) {
+////            Profile profile = (Profile) result.get();
+////        { profileRepository.delete(profile);}
+////            {this.profileService.deleteProfileById(profileUserId);}
+////        model.addAttribute("profile", profileRepository.findAll());
+//            return "index";
+//        }
+
+
+
+
+
+
     }

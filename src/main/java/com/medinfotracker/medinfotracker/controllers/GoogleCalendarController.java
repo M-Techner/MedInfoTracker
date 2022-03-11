@@ -94,7 +94,7 @@ public class GoogleCalendarController {
         try {
             TokenResponse response = this.flow.newTokenRequest(code).setRedirectUri(this.redirectURI).execute();
 
-            Credential credential = this.flow.createAndStoreCredential(response , "userID");
+            Credential credential = this.flow.createAndStoreCredential(response , "userId");
             Calendar client = (new Builder(httpTransport,JSON_FACTORY,credential)).setApplicationName("medinfotracker").build();
             Calendar.Events events = client.events();
             com.google.api.services.calendar.model.Events eventList = (com.google.api.services.calendar.model.Events)events.list("primary").setTimeMax(this.currentDate).execute();

@@ -68,11 +68,11 @@ public class Profile extends AbstractEntity {
                    String allergies, String medicalConditions) {
         super();
         this.userPreferredName = userPreferredName;
+        this.userPreferredPronouns = userPreferredPronouns;
         this.userMedicalRecordName = userMedicalRecordName;
         this.userAddress = userAddress;
         this.userPhoneNumber = userPhoneNumber;
         this.userDateOfBirth = userDateOfBirth;
-        this.userPreferredPronouns = userPreferredPronouns;
         this.emergencyName = emergencyName;
         this.emergencyPhoneNumber = emergencyPhoneNumber;
         this.emergencyRelationship = emergencyRelationship;

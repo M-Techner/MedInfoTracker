@@ -44,7 +44,6 @@ public class Medication extends AbstractEntity {
 
     public Medication(String aMedicationName, String aDateStarted, String aPrescribingPhysician, String aDosage, String aFrequency, String aRouteOfAdministration, String aRefill, String anOverTheCounter) {
         super();
-
         this.medicationName = aMedicationName;
         this.dateStarted = aDateStarted;
         this.prescribingPhysician = aPrescribingPhysician;
@@ -111,7 +110,11 @@ public class Medication extends AbstractEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Medication that = (Medication) o;
-        return Objects.equals(medicationName, that.medicationName) && Objects.equals(dateStarted, that.dateStarted) && Objects.equals(prescribingPhysician, that.prescribingPhysician) && Objects.equals(dosage, that.dosage) && Objects.equals(frequency, that.frequency) && Objects.equals(routeOfAdministration, that.routeOfAdministration) && Objects.equals(refill, that.refill) && Objects.equals(overTheCounter, that.overTheCounter);
+        return Objects.equals(medicationName, that.medicationName) && Objects.equals(dateStarted, that.dateStarted)
+                && Objects.equals(prescribingPhysician, that.prescribingPhysician) && Objects.equals(dosage,
+                that.dosage) && Objects.equals(frequency, that.frequency) && Objects.equals(routeOfAdministration,
+                that.routeOfAdministration) && Objects.equals(refill, that.refill) && Objects.equals(overTheCounter,
+                that.overTheCounter);
     }
 
 

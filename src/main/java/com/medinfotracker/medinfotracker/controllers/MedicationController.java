@@ -29,12 +29,12 @@ public class MedicationController {
     private AuthenticationController authenticationController;
 
 
-    @GetMapping("")
-    public String index(Model model) {
-        model.addAttribute("Title", "User");
-        model.addAttribute("User", userRepository.findAll());
-        return "index";
-    }
+//    @GetMapping("")
+//    public String index(Model model) {
+//        model.addAttribute("Title", "User");
+//        model.addAttribute("User", userRepository.findAll());
+//        return "index";
+//    }
 
     @GetMapping(value = "add")
     public String displayAddMedicationForm(Model model) {
@@ -53,7 +53,7 @@ public class MedicationController {
     }
 
     @PostMapping(value = "add")
-    public String processAddMedicationForm(@ModelAttribute @Valid com.medinfotracker.medinfotracker.models.Medication newMedication, Errors errors, Model model, HttpServletRequest request) {
+    public String processAddMedicationForm(@ModelAttribute @Valid Medication newMedication, Errors errors, Model model, HttpServletRequest request) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Medication Information");
             return "/medication/add";
@@ -70,14 +70,14 @@ public class MedicationController {
 
 
 
-    @GetMapping("view/{id}")
-    public String displayViewMedication (Model model, @PathVariable int id) {
+    @GetMapping("medicationView/{userId}")
+    public String displayViewMedication (Model model, @PathVariable int userId) {
         model.addAttribute("medication", medicationRepository.findAll());
-        Optional optMedication = medicationRepository.findById(id);
+        Optional optMedication = medicationRepository.findById(userId);
         if (optMedication.isPresent()) {
             Medication medication = (Medication) optMedication.get();
             model.addAttribute("medication", medication);
-            return "medication/view";
+            return "medication/medicationView";
         } else {
             return "redirect:..";
         }

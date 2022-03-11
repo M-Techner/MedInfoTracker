@@ -112,7 +112,7 @@ import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
 import com.medinfotracker.medinfotracker.models.dto.RegisterFormDTO;
-import com.medinfotracker.medinfotracker.service.ProfileService;
+//import com.medinfotracker.medinfotracker.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -138,17 +138,16 @@ public class UserController {
     @Autowired
     private AuthenticationController authenticationController;
 
-    @Autowired
-    private ProfileService profileService;
+//    @Autowired
+//    private ProfileService profileService;
 
     @GetMapping("addProfile")
     public String displayAddProfileForm(Model model) {
-
         model.addAttribute("Preferred Name","Add User Preferred Name");
+        model.addAttribute("Preferred Pronouns","My preferred pronouns are:");
         model.addAttribute("User Medical Record Name", "Add User Medical Record Name");
         model.addAttribute("User Address", "Add User Address");
         model.addAttribute("User Phone Number", "Add User Phone Number");
-        model.addAttribute("Preferred Pronouns","My preferred pronouns are:");
         model.addAttribute("Emergency Contact Name", "Add Emergency Contact Name");
         model.addAttribute("Emergency Contact Phone Number", "Add Emergency Contact Phone Number");
         model.addAttribute("Emergency Contact Relationship", "Add Emergency Contact Relationship");
@@ -190,6 +189,7 @@ public class UserController {
 //    (org.springframework.ui.Model,javax.servlet.http.HttpServletRequest,org.springframework.validation.Errors,java.lang.String)
 //    java.lang.IllegalStateException: An Errors/BindingResult argument is expected to be declared immediately after the model attribute,
 //    the @RequestBody or the @RequestPart arguments to which they apply: public java.lang.String
+
 @GetMapping("profileView/{userId}")
 public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors,
                                      @PathVariable("userId") int userId) {
@@ -259,10 +259,12 @@ public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDT
 
 
 //    @PostMapping("deleteProfile")
-    @RequestMapping(value = "deleteProfile/{profileUserId}", method = {RequestMethod.POST, RequestMethod.GET})
-    public String deleteProfile(@ModelAttribute("profile") Profile profile,
+    @RequestMapping(value = "profileView/{userId}", method = {RequestMethod.POST})
+//            {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public String deleteProfile( @ModelAttribute("profile") Profile profile,
 //                                @RequestParam(required = false)
-                                @ModelAttribute("profileUserId") String profileUserId,
+//                                @ModelAttribute("userId") int userId,
                                 Model model, HttpServletRequest request) {
 
         User user = authenticationController.getUserFromSession(request.getSession());
@@ -272,27 +274,19 @@ public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDT
             assert user != null;
             model.addAttribute("profile", user.getProfile());
             model.addAttribute("title", "Delete Profile");
-            model.addAttribute("profile", profileRepository.findAll());
+//            model.addAttribute("profile", profileRepository.findAll());
             model.addAttribute("user", user);
             return "user/profileView";
         }
 
-        profile = profileRepository.findByUserId(Integer.valueOf(profileUserId));
+//        profile = profileRepository.findByUserId(userId);
+        profile = user.getProfile();
+//        Integer profileId = profile.getUserId();
+        profileRepository.delete(profile);
+//        userRepository.save(user);
         {
-//        if (optUser.isPresent()) {
-//            User aUser = (User) optUser.get();
-//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-//            model.addAttribute("user", aUser);
-//            return "user/profileView";
-//        } else {
-//            return "redirect:/";
-//        }
-//        if (userId.isPresent()) {
-//            Profile profile = (Profile) result.get();
-//        { profileRepository.delete(profile);}
-            {this.profileService.deleteProfileById(profileUserId);}
-        model.addAttribute("profile", profileRepository.findAll());
-        return "index";
+
+        return "user/profileView";
     }
 
 

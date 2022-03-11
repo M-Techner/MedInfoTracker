@@ -37,29 +37,29 @@
     <p th:text="${'Known Allergies of Any Kind: ' + user.profile.allergies}"></p>
     <p th:text="${'Medical Conditions: ' + user.profile.medicalConditions}"></p>
 </div>
-       <a th:href="@{'/user/deleteProfile/{userId}' (userId=${userId})}">Delete Profile</a>
+<!--       <a th:href="@{'/user/deleteProfile/{userId}' (userId=${userId})}">Delete Profile</a>-->
 <!--</div>-->
 <!--<form method="post">-->
 <!--    <input type="submit" value="Delete My Profile" class="btn btn-danger">-->
 <!--</form>-->
 
 <!--<form method="get">-->
-<!--<form method="post">-->
-<!--    <div class="form-group">-->
-<!--        <label>-->
-<!--            <span th:text="${'Delete Profile?'}"></span>-->
+<form method="post">
+    <div class="form-group">
+        <label>
+            <span th:text="${'Delete Profile?'}"></span>
 <!--            <input type="hidden" name="_method" value="delete">-->
-<!--            <input type="checkbox" name="profileUserId" th:value="${profileUserId}" class="form-control">-->
-<!--        </label>-->
-<!--    </div>-->
-<!--<br>-->
+            <input type="checkbox" name="userId" th:value="${userId}" class="form-control">
+        </label>
+    </div>
+<br>
 
 
 
 <!--        <input type="submit" value="Delete Profile" class="btn btn-danger">-->
-<!--        <button id="delete" name="delete" th:onclick="@{'/deleteProfile'}">Delete My Profile</button>-->
+        <button id="delete" name="delete" th:onclick="@{'/deleteProfile'}">Delete My Profile</button>
 <!--        <button type="submit" class="btn">Delete</button>-->
-<!--    </form>-->
+    </form>
 <!--<br>-->
 <!--<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>-->
 

@@ -121,7 +121,7 @@ public class HomeController {
 //        User newUser = userRepository.findById(userId).orElse(new User());
 //
 ////        newProfile = profileRepository.findById(userId).orElse(new Profile());
-//        newUser.getuserId(newProfile);
+//        newUser.getUserId(newProfile);
 ////        List<Symptom> symptomObj = (List<Symptom>) symptomRepository.findAllById(symptoms);
 ////        newProfile.setSymptoms(symptomObj);
 //        model.addAttribute("profile", profileRepository.findAll());
