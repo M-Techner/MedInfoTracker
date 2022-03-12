@@ -16,10 +16,11 @@
         </li>
         <p>Please select an option</p>
         <ol>
-            <li><a href="symptom/add.html" th:href="@{/symptom/add}">Add a Symptom</a></li>
+            <li><a href="symptoms/add.html" th:href="@{/symptom/add}">Add a Symptom</a></li>
 <!--            <span class="error" th:error="${symptoms.add}"></span>-->
+            <li><a th:href="@{/view}">view sx</a></li>
 <!--            <p class="error" th:errors="${404}"></p>-->
-            <li><a href="symptom/view.html" th:href="@{/symptom/view}">View a list of your tracked symptoms</a></li>
+            <li><a href="symptoms/view.html" th:href="@{/symptom/view}">View a list of your tracked symptoms</a></li>
 <!--            <span class="error" th:error="${symptoms.name}"></span>-->
 <!--            <li><a href="condition/add.html" th:href="@{/condition/add}">Add your medical conditions</a></li>-->
 <!--            <span class="error" th:error="${conditions.name}"></span>-->
