@@ -33,17 +33,17 @@ public class Symptoms extends AbstractEntity {
     public Symptoms() {
     }
 
-    public Symptoms(int id, String name, String name1, String startDate, String stopDate, String description, String userName) {
+    public Symptoms(int id, String symptomName, String startDate, String stopDate, String description, String userName) {
 
 //        super(id, name);
         super();
 
 //        super(id, name);
 
-        this.name = name1;
-        this.startDate = startDate;
-        this.stopDate = stopDate;
-        this.description = description;
+        this.symptomName = aSymptomName;
+        this.startDate = aStartDate;
+        this.stopDate = aStopDate;
+        this.description = aDescription;
 
         this.userName = userName;
 //    }
