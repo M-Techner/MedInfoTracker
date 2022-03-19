@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 
 
 import javax.validation.constraints.NotNull;
+import java.util.Objects;
+
 @Entity
 public class Symptoms extends AbstractEntity {
 
@@ -24,7 +26,7 @@ public class Symptoms extends AbstractEntity {
 //    private User user;
     private String userName;
     @NotNull
-    private String name;
+    private String symptomName;
     //    @Size(min=3, max=49)
 
 
@@ -33,7 +35,7 @@ public class Symptoms extends AbstractEntity {
     public Symptoms() {
     }
 
-    public Symptoms(int id, String symptomName, String startDate, String stopDate, String description, String userName) {
+    public Symptoms(int id, String aSymptomName, String aStartDate, String aStopDate, String aDescription, String aUserName) {
 
 //        super(id, name);
         super();
@@ -45,7 +47,7 @@ public class Symptoms extends AbstractEntity {
         this.stopDate = aStopDate;
         this.description = aDescription;
 
-        this.userName = userName;
+        this.userName = aUserName;
 //    }
 
 //    @Override
@@ -53,50 +55,60 @@ public class Symptoms extends AbstractEntity {
 
     }
 
-//    @Override
-    public String getName() {
-        return name;
-    }
-
-//    @Override
-//
-//    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
     public String getStopDate() {
-        return stopDate;
+        return this.stopDate;
     }
 
-    public void setStopDate(String stopDate) {
+    public void setStopDate(final String stopDate) {
         this.stopDate = stopDate;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public void setUserName(final String userName) {
+        this.userName = userName;
+    }
+
+    public String getSymptomName() {
+        return this.symptomName;
+    }
+
+    public void setSymptomName(final String symptomName) {
+        this.symptomName = symptomName;
+    }
+
+    //    public String getName() {
+//        return this.name;
+//    }
 //
-//    public String getUserName() {
-//        return userName;
+//    public void setName(final String name) {
+//        this.name = name;
 //    }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Symptoms that = (Symptoms) o;
+        return Objects.equals(symptomName, that.symptomName) && Objects.equals(startDate, that.startDate) && Objects.equals(stopDate, that.stopDate) && Objects.equals(description, that.description);
 
-//    public void setUserName(String userName) {
-//        this.userName = userName;
-//    }
+    }
 }
-
 
