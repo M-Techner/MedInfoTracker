@@ -23,61 +23,59 @@ public class Symptoms extends AbstractEntity {
 
     private String userName;
     @NotNull
-    private String name;
+    private String symptomName;
     public Symptoms() {
     }
 
 
 
-    public Symptoms(int id, String name, String name1, String startDate, String stopDate, String description, String userName) {
+    public Symptoms(int id, String aSymptomName, String aStartDate, String aStopDate, String aDescription, String aUserName) {
 //        super(id, name);
         super();
-        this.name = name1;
-        this.startDate = startDate;
-        this.stopDate = stopDate;
-        this.description = description;
-        this.userName = userName;
-    }
-
-//    @Override
-    public String getName() {
-        return name;
-    }
-
-//    @Override
-    public void setName(String name) {
-        this.name = name;
+        this.symptomName = aSymptomName;
+        this.startDate = aStartDate;
+        this.stopDate = aStopDate;
+        this.description = aDescription;
+        this.userName = aUserName;
     }
 
     public String getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(final String startDate) {
         this.startDate = startDate;
     }
 
     public String getStopDate() {
-        return stopDate;
+        return this.stopDate;
     }
 
-    public void setStopDate(String stopDate) {
+    public void setStopDate(final String stopDate) {
         this.stopDate = stopDate;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
     public String getUserName() {
-        return userName;
+        return this.userName;
     }
 
-    public void setUserName(String userName) {
+    public void setUserName(final String userName) {
         this.userName = userName;
+    }
+
+    public String getSymptomName() {
+        return this.symptomName;
+    }
+
+    public void setSymptomName(final String symptomName) {
+        this.symptomName = symptomName;
     }
 }

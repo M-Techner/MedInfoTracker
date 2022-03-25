@@ -69,7 +69,7 @@ public class SymptomController {
         return "redirect:";
     }
     @GetMapping("view/{Id}")
-    public String displayViewSymptoms(Model model, @PathVariable int id) {
+    public final String displayViewSymptoms(Model model, @PathVariable int id) {
         model.addAttribute("symptoms", symptomRepository.findAll());
 
 
