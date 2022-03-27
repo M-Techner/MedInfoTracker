@@ -1,3 +1,8 @@
+
+/*
+
+
+ */
 package com.medinfotracker.medinfotracker.controllers;
 
 
@@ -19,10 +24,6 @@ import java.util.*;
 @RequestMapping("symptom")
 public class SymptomController {
 
-    /**
-     *
-     *
-     */
     @Autowired
     private SymptomRepository symptomRepository;
 
@@ -39,41 +40,42 @@ public class SymptomController {
         model.addAttribute("Start Date", "startDate");
         model.addAttribute("Stop Date", "stopDate");
         model.addAttribute("Symptom Description", "symptomDescribe");
-//        return "symptoms/view";
-//        return "symptoms/index";
         return "redirect:../";
     }
 
     @GetMapping("add")
     public String displayAddSymptomsForm(Model model) {
         model.addAttribute(new Symptoms());
-//        model.addAttribute("Username", "${user.userName}");
         model.addAttribute("User", "userName");
-//        return "user/addSymptoms";
         return "symptoms/add";
     }
-    @PostMapping("add")
-    public String processAddSymptomsForm(@ModelAttribute @Valid Symptoms newSymptoms,
-                                      Errors errors, Model model, HttpServletRequest request) {
-
+    @PostMapping(value = "add")
+    public String processAddSymptomForm(@ModelAttribute @Valid Symptoms newSymptoms, Errors errors, Model model, HttpServletRequest request) {
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add New Symptom");
-            return "symptoms/add";
+            model.addAttribute("title", "Add Symptom Information");
+            return "/symptom/add";
         }
-        User user = authenticationController.getUserFromSession(request.getSession());
-        user.setSymptoms(newSymptoms);
         symptomRepository.save(newSymptoms);
-        userRepository.save(user);
-//        userRepository.save(newSymptoms);
-        model.addAttribute("symptoms", symptomRepository.findAll());
-        return "redirect:";
+        model.addAttribute("symptom", symptomRepository.findAll());
+        return "redirect:..";
+
+//        User user = authenticationController.getUserFromSession(request.getSession());
+//        user.addSymptoms(newSymptoms);
+//        symptomRepository.save(newSymptoms);
+//        userRepository.save(user);
+//        model.addAttribute("symptom", symptomRepository.findAll());
+//        return "redirect:";
+
+
+
     }
+
     @GetMapping("view/{Id}")
-    public final String displayViewSymptoms(Model model, @PathVariable int id) {
+    public final String displayViewSymptoms(Model model, @PathVariable int userId) {
         model.addAttribute("symptoms", symptomRepository.findAll());
 
 
-        Optional optSymptoms = symptomRepository.findById(id);
+        Optional optSymptoms = symptomRepository.findById(userId);
         if (optSymptoms.isPresent()) {
             Symptoms symptoms = (Symptoms) optSymptoms.get();
             model.addAttribute("symptoms", symptoms);
@@ -82,4 +84,7 @@ public class SymptomController {
             return "redirect:";
         }
     }
+    //
+
+
 }

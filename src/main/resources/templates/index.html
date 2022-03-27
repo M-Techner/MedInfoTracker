@@ -11,6 +11,7 @@
     <h1> Welcome to the Medical Info Tracker</h1>
     <h2>View medication info by:</h2>
     <ul>
+        <!--/*@thymesVar id="actions" type=""*/-->
         <li th:each="action : ${actions}">
             <a th:href="@{'/' + ${action.key}}" th:text="${action.value}"></a>
         </li>

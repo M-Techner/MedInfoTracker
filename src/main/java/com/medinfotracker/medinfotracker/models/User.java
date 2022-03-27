@@ -77,7 +77,8 @@ public class User extends AbstractEntity {
 //    @JoinColumn(name = "user_id")
 //    private final List<Profile> profile = new ArrayList<>();
     private Profile profile;
-    @ManyToOne
+
+    @Transient
     private Symptoms symptoms;
 //    private EntUserId userId;
 
