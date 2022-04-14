@@ -5,9 +5,9 @@
     <title>Profile Management</title>
 </head>
 <body class="container  body-content">
-
-<h1>Create My Profile</h1>
 <hr>
+<h1>Create My Profile</h1>
+
 <!--Use fragments.html for consistency across  pages-->
 <nav th:replace="fragments :: page-header"></nav>
 
@@ -15,27 +15,26 @@
 
     <div class="form-group">
         <label th:for="userPreferredName">User Preferred Name</label>
-<!--        <h5 th:text="${'Current Preferred Pronouns: ' + profile.userPreferredPronouns}"></h5>-->
-        <input class="form-control" th:field="${profile.userPreferredName}" />
-        <p class="error" th:errors="${profile.userPreferredName}"></p>
+        <input class="form-control" th:field="${profile.userPreferredName}"/>
+        <span class="error" th:errors="${profile.userPreferredName}"></span>
     </div>
 
     <div class="form-group">
         <label th:for="userPreferredPronouns">User Preferred Pronouns</label>
         <input class="form-control" th:field="${profile.userPreferredPronouns}" />
-        <p class="error" th:errors="${profile.userPreferredPronouns}"></p>
+        <span class="error" th:errors="${profile.userPreferredPronouns}"></span>
     </div>
 
     <div class="form-group">
         <label th:for="userMedicalRecordName">User Medical Record Name</label>
         <input class="form-control" th:field="${profile.userMedicalRecordName}" />
-        <p class="error" th:errors="${profile.userMedicalRecordName}"></p>
+        <span class="error" th:errors="${profile.userMedicalRecordName}"></span>
     </div>
 
     <div class="form-group">
         <label th:for="userAddress">User Address</label>
         <input class="form-control" th:field="${profile.userAddress}" />
-        <p class="error" th:errors="${profile.userAddress}"></p>
+        <span class="error" th:errors="${profile.userAddress}"></span>
     </div>
 
     <div class="form-group">
