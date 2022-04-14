@@ -61,7 +61,7 @@ public class HomeController {
 //    }
 
 
-    @RequestMapping("")
+    @RequestMapping("index")
     public String index(Model model, HttpServletRequest request, RegisterFormDTO registerFormDTO ) {
 //        model.addAttribute("title", "User");
 //        model.addAttribute("user", userRepository.findAll());

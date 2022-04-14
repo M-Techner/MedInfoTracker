@@ -1,110 +1,4 @@
 package com.medinfotracker.medinfotracker.controllers;
-//import com.medinfotracker.medinfotracker.models.Profile;
-//import com.medinfotracker.medinfotracker.models.User;
-//import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
-//import com.medinfotracker.medinfotracker.models.data.UserRepository;
-//import com.medinfotracker.medinfotracker.models.dto.RegisterFormDTO;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.stereotype.Controller;
-//import org.springframework.ui.Model;
-//import org.springframework.validation.Errors;
-//import org.springframework.web.bind.annotation.*;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpSession;
-//import javax.validation.Valid;
-//import java.util.Optional;
-//
-//@Controller
-////@SessionAttributes("user")
-//@RequestMapping("user")
-//public class UserController {
-//
-//    @Autowired
-//    private UserRepository userRepository;
-//    @Autowired
-//    private ProfileRepository profileRepository;
-//    @Autowired
-//    private AuthenticationController authenticationController;
-//
-//    @GetMapping("addProfile")
-//    public String displayAddProfileForm(Model model) {
-//
-//        model.addAttribute("User Medical Record Name", "Add User Medical Record Name");
-//        model.addAttribute("User Address", "Add User Address");
-//        model.addAttribute("User Phone Number", "Add User Phone Number");
-////        model.addAttribute("Preferred Pronouns","My preferred pronouns are: ");
-//        model.addAttribute("Emergencys Contact Name", "Add Emergency Contact Name");
-//        model.addAttribute("Emergency Contact Phone Number", "Add Emergency Contact Phone Number");
-//        model.addAttribute("Emergency Contact Relationship", "Add Emergency Contact Relationship");
-//        model.addAttribute("Primary Care Physician Name", "Add Primary Care Physician Name");
-//        model.addAttribute("Primary Care Physician Address", "Add Primary Care Physician Address");
-//        model.addAttribute("Primary Care Physician Phone Number", "Add Primary Care Physician Phone Number");
-//        model.addAttribute("Specialist Name", "Add Specialist Name");
-//        model.addAttribute("Specialist Phone Number", "Add Specialist Phone Number");
-//        model.addAttribute("Specialist Type", "Add Specialist Type");
-//        model.addAttribute("Known Allergies", "Add Known Allergies");
-//        model.addAttribute("Medical Conditions", "Add Medical Conditions");
-//        model.addAttribute(new Profile());
-//        return "/user/addProfile";
-//    }
-//    @PostMapping("addProfile")
-//    public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,
-//                                        Errors errors, Model model, HttpServletRequest request) {
-//        if (errors.hasErrors()) {
-//            model.addAttribute("title", "Add User Profile Details");
-//            return "/user/addProfile";
-//        }
-//
-//        User user = authenticationController.getUserFromSession(request.getSession());
-//
-//        profileRepository.save(newProfile);
-//        user.setProfile(newProfile);
-//        userRepository.save(user);
-////        model.addAttribute("user", userRepository.findAll());
-//        model.addAttribute("profile", profileRepository.findAll());
-//        return "redirect:..";
-//    }
-//
-//    //    If I try to get the user from the session, I get: An Errors/BindingResult argument is expected to be declared
-//    //    immediately after the model attribute, the @RequestBody or the @RequestPart arguments to which they apply: public
-//    //    java.lang.String com.medinfotracker.medinfotracker.controllers.UserController.displayViewUserProfile
-//    //    (org.springframework.ui.Model,javax.servlet.http.HttpServletRequest,org.springframework.validation.Errors,java.lang.String)
-//    //    java.lang.IllegalStateException: An Errors/BindingResult argument is expected to be declared immediately after the model attribute,
-//    //    the @RequestBody or the @RequestPart arguments to which they apply: public java.lang.String
-//    @GetMapping("profileView/{userId}")
-//    public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors,
-//                                         @PathVariable("userId") int userId) {
-////        model.addAttribute("user", userRepository.findById(profile_id));
-//
-//        User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
-//        if (existingUser != null) {
-//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
-//            model.addAttribute("title", "Register");
-//            return "user/profileView";
-//        }
-//        Optional optUser = userRepository.findById(userId);
-//        if (optUser.isPresent()) {
-//            User user = (User) optUser.get();
-//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-//            model.addAttribute("user", user);
-//            return "user/profileView";
-//        } else {
-//            return "redirect:/";
-//        }
-//    }
-//}
-
-
-
-
-
-
-
-
-
-
-
-//package com.medinfotracker.medinfotracker.controllers;
 
 
 import com.medinfotracker.medinfotracker.models.Profile;
@@ -112,22 +6,24 @@ import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.ProfileRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
 import com.medinfotracker.medinfotracker.models.dto.RegisterFormDTO;
-//import com.medinfotracker.medinfotracker.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.JpaOptimisticLockingFailureException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
-//@SessionAttributes("user")
 @RequestMapping("user")
-public class UserController {
+public class UserController extends Profile{
 
     @Autowired
     private UserRepository userRepository;
@@ -138,13 +34,11 @@ public class UserController {
     @Autowired
     private AuthenticationController authenticationController;
 
-//    @Autowired
-//    private ProfileService profileService;
 
     @GetMapping("addProfile")
     public String displayAddProfileForm(Model model) {
-        model.addAttribute("Preferred Name","Add User Preferred Name");
-        model.addAttribute("Preferred Pronouns","My preferred pronouns are:");
+        model.addAttribute("Preferred Name", "Add User Preferred Name");
+        model.addAttribute("Preferred Pronouns", "My preferred pronouns are:");
         model.addAttribute("User Medical Record Name", "Add User Medical Record Name");
         model.addAttribute("User Address", "Add User Address");
         model.addAttribute("User Phone Number", "Add User Phone Number");
@@ -160,7 +54,7 @@ public class UserController {
         model.addAttribute("Known Allergies", "Add Known Allergies");
         model.addAttribute("Medical Conditions", "Add Medical Conditions");
         model.addAttribute(new Profile());
-        return "/user/addProfile";
+        return "user/addProfile";
     }
 
     @PostMapping("addProfile")
@@ -169,7 +63,7 @@ public class UserController {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add User Profile Details");
-            return "/user/addProfile";
+            return "user/addProfile";
         }
 
         User user = authenticationController.getUserFromSession(request.getSession());
@@ -183,129 +77,231 @@ public class UserController {
     }
 
 
-//    If I try to get the user from the session, I get: An Errors/BindingResult argument is expected to be declared
-//    immediately after the model attribute, the @RequestBody or the @RequestPart arguments to which they apply: public
-//    java.lang.String com.medinfotracker.medinfotracker.controllers.UserController.displayViewUserProfile
-//    (org.springframework.ui.Model,javax.servlet.http.HttpServletRequest,org.springframework.validation.Errors,java.lang.String)
-//    java.lang.IllegalStateException: An Errors/BindingResult argument is expected to be declared immediately after the model attribute,
-//    the @RequestBody or the @RequestPart arguments to which they apply: public java.lang.String
 
-@GetMapping("profileView/{userId}")
-public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors,
-                                     @PathVariable("userId") int userId) {
+    @GetMapping("profileView/{userId}")
+    public String displayViewUserProfile(Model model, HttpServletRequest request) {
 //        model.addAttribute("user", userRepository.findById(profile_id));
 
-    User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
-    if (existingUser != null) {
-        errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
-        model.addAttribute("title", "Register");
+        User existingUser = authenticationController.getUserFromSession(request.getSession());
+//        if (existingUser != null) {
+//            existingUser.getProfile();
+            model.addAttribute("user", existingUser);
+            model.addAttribute("userId", existingUser.getUserId());
+            model.addAttribute("profile", existingUser.getProfile());
+
         return "user/profileView";
     }
-    Optional optUser = userRepository.findById(userId);
-    if (optUser.isPresent()) {
-        User user = (User) optUser.get();
-        model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-        model.addAttribute("user", user);
-        return "user/profileView";
-    } else {
-        return "redirect:/";
-    }
+
+
+//        User existingUser = userRepository.findByUserName(userName);
+//        if (existingUser != null) {
+//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
+//            model.addAttribute("title", "Register");
+//            return "user/profileView";
+//        }
+//        Optional optUser = userRepository.findById(userId);
+//        if (optUser.isPresent()) {
+//            User user = (User) optUser.get();
+//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            model.addAttribute("user", user);
+//            return "user/profileView";
+//        } else {
+//            return "redirect:./";
+//        }
+//    }
+
+
+    @GetMapping("updateProfile/{userId}")
+    public String displayFormForUpdate(Model model, HttpServletRequest request) {
+
+//            (@Validated @ModelAttribute("profile") Profile profile, @PathVariable("userId") int userId,
+//                                       String userName, Model model, HttpServletRequest request, Errors errors) {
+
+        User updateUser = authenticationController.getUserFromSession(request.getSession());
+//        if (existingUser != null) {
+//            existingUser.getProfile();
+        model.addAttribute("user", updateUser);
+        model.addAttribute("userId", updateUser.getUserId());
+        model.addAttribute("profile", updateUser.getProfile());
+
+//        return "/user/profileView";
+
+//        if (!model.containsAttribute("userId")) {
+//            User existingUser = authenticationController.getUserFromSession(request.getSession());
+//            model.addAttribute("user", existingUser);
+////            model.addAttribute("userId", existingUser.getUserId());
+//            model.addAttribute("profile", existingUser.getProfile());
+//            return "user/updateProfile";
+//        }
+//        User existingUser = authenticationController.getUserFromSession(request.getSession());
+//        model.addAttribute("user", existingUser);
+////        model.addAttribute("userId", existingUser.getProfile());
+//        model.addAttribute("profile", profile);
+
+//        User existingUser = userRepository.findByUserName(userName);
+//        if (existingUser != null) {
+//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
+//            model.addAttribute("title", "Register");
+//            return "user/updateProfile";
+//        }
+//        Optional optUser = userRepository.findById(userId);
+//        if (optUser.isPresent()) {
+//            User user = (User) optUser.get();
+//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            model.addAttribute("user", user);
+//            return "user/updateProfile";
+//        } else {
+            return "user/updateProfile";
+        }
+//    }
+
+
+    @PostMapping("updateProfile/{userId}")
+    public String processFormForUpdate(@Validated @ModelAttribute("profile") Profile profile,
+                                       @RequestParam(required = false) String userPreferredName, @RequestParam(required = false) String userPreferredPronouns,
+                                       @RequestParam(required = false) String userMedicalRecordName, @RequestParam(required = false) String userAddress,
+                                       @RequestParam(required = false) String userPhoneNumber, @RequestParam(required = false) String userDateOfBirth,
+                                       @RequestParam(required = false) String emergencyName, @RequestParam(required = false) String emergencyPhoneNumber,
+                                       @RequestParam(required = false) String emergencyRelationship, @RequestParam(required = false) String primaryCarePhysicianName,
+                                       @RequestParam(required = false) String primaryCarePhysicianAddress, @RequestParam(required = false) String primaryCarePhysicianPhoneNumber,
+                                       @RequestParam(required = false) String specialistName, @RequestParam(required = false) String specialistPhoneNumber,
+                                       @RequestParam(required = false) String specialistType, @RequestParam(required = false) String allergies,
+                                       @RequestParam(required = false) String medicalConditions, BindingResult bindingResult, RedirectAttributes redirectAttributes,
+                                       HttpServletRequest request, SessionStatus sessionStatus) {
+
+        User user = authenticationController.getUserFromSession(request.getSession());
+        if (!bindingResult.hasErrors()) {
+            try {
+                profile = user.getProfile();
+                if (userPreferredName == null) {
+                   String newUserPreferredName = profile.getUserPreferredName();
+                    profile.setUserPreferredName(newUserPreferredName);
+                } else {
+                    profile.setUserPreferredName(userPreferredName);
+                }
+                if (userPreferredPronouns == null) {
+                    String newUserPreferredPronouns = profile.getUserPreferredPronouns();
+                    profile.setUserPreferredPronouns(newUserPreferredPronouns);
+                } else {
+                    profile.setUserPreferredPronouns(userPreferredPronouns);
+                }
+                if(userMedicalRecordName == null) {
+                    String newUserMedicalRecordName = profile.getUserMedicalRecordName();
+                    profile.setUserMedicalRecordName(newUserMedicalRecordName);
+                } else {
+                    profile.setUserMedicalRecordName(userMedicalRecordName);
+                }
+                if (userAddress == null) {
+                    String newUserAddress = profile.getUserAddress();
+                    profile.setUserAddress(newUserAddress);
+                } else {
+                    profile.setUserAddress(userAddress);
+                }
+                if (userPhoneNumber == null) {
+                    String newUserPhoneNumber = profile.getUserPhoneNumber();
+                    profile.setUserPhoneNumber(newUserPhoneNumber);
+                } else {
+                    profile.setUserPhoneNumber(userPhoneNumber);
+                }
+                if (userDateOfBirth == null) {
+                    String newUserDateOfBirth = profile.getUserDateOfBirth();
+                    profile.setUserDateOfBirth(newUserDateOfBirth);
+                } else {
+                    profile.setUserDateOfBirth(userDateOfBirth);
+                }
+                if (emergencyName == null) {
+                    String newEmergencyName = profile.getEmergencyName();
+                    profile.setEmergencyName(newEmergencyName);
+                } else {
+                    profile.setEmergencyName(emergencyName);
+                }
+                if (emergencyPhoneNumber == null) {
+                    String newEmergencyPhoneNumber = profile.getEmergencyPhoneNumber();
+                    profile.setEmergencyPhoneNumber(newEmergencyPhoneNumber);
+                } else {
+                    profile.setEmergencyPhoneNumber(emergencyPhoneNumber);
+                }
+                if (emergencyRelationship == null) {
+                    String newEmergencyRelationship = profile.getEmergencyRelationship();
+                    profile.setEmergencyRelationship(newEmergencyRelationship);
+                } else {
+                    profile.setEmergencyRelationship(emergencyRelationship);
+                }
+                if (primaryCarePhysicianName == null) {
+                    String newPrimaryCarePhysicianName = profile.getPrimaryCarePhysicianName();
+                    profile.setPrimaryCarePhysicianName(newPrimaryCarePhysicianName);
+                } else {
+                    profile.setPrimaryCarePhysicianName(primaryCarePhysicianName);
+                }
+                if (primaryCarePhysicianAddress == null) {
+                    String newPrimaryCarePhysicianAddress = profile.getPrimaryCarePhysicianAddress();
+                    profile.setPrimaryCarePhysicianAddress(newPrimaryCarePhysicianAddress);
+                } else {
+                    profile.setPrimaryCarePhysicianAddress(primaryCarePhysicianAddress);
+                }
+                if (primaryCarePhysicianPhoneNumber == null) {
+                    String newPrimaryCarePhysicianPhoneNumber = profile.getPrimaryCarePhysicianPhoneNumber();
+                    profile.setPrimaryCarePhysicianPhoneNumber(newPrimaryCarePhysicianPhoneNumber);
+                } else {
+                    profile.setPrimaryCarePhysicianPhoneNumber(primaryCarePhysicianPhoneNumber);
+                }
+                if (specialistName == null) {
+                    String newSpecialistName = profile.getSpecialistName();
+                    profile.setSpecialistName(newSpecialistName);
+                } else {
+                    profile.setSpecialistName(specialistName);
+                }
+                if (specialistPhoneNumber == null) {
+                    String newSpecialistPhoneNumber = profile.getSpecialistPhoneNumber();
+                    profile.setSpecialistPhoneNumber(newSpecialistPhoneNumber);
+                } else {
+                    profile.setSpecialistPhoneNumber(specialistPhoneNumber);
+                }
+                if (specialistType == null) {
+                    String newSpecialistType = profile.getSpecialistType();
+                    profile.setSpecialistType(newSpecialistType);
+                } else {
+                    profile.setSpecialistType(specialistType);
+                }
+                if (allergies == null) {
+                    String newAllergies = profile.getAllergies();
+                    profile.setAllergies(newAllergies);
+                } else {
+                    profile.setAllergies(allergies);
+                }
+                if (medicalConditions == null) {
+                    String newMedicalConditions = profile.getMedicalConditions();
+                    profile.setMedicalConditions(newMedicalConditions);
+                } else {
+                    profile.setMedicalConditions(medicalConditions);}
+
+                    profileRepository.save(profile);
+                    user.setProfile(profile);
+                    userRepository.save(user);
+
+            } catch (JpaOptimisticLockingFailureException exception) {
+                exception.printStackTrace();
+                return "Please Create A Profile Before Trying To Edit It - Thank You!";
+            }
+
+            }
+
+    return  "index";
 }
 
 
+    @PostMapping("profileView/{userId}")
+    public String deleteProfile( @ModelAttribute User user, Model model, HttpServletRequest request) {
 
-//}
+        user = authenticationController.getUserFromSession(request.getSession());
 
-//
-//
-//    @GetMapping("/updateProfile/{profileUserId}")
-//    public String displayFormForUpdate(@PathVariable("profileUserId") int profileUserId, Model model) {
-//
-//        if (!model.containsAttribute("profileUserId")) {
-//            Profile profile = profileRepository.findById(profileUserId).orElseThrow(()
-//            -> new IllegalArgumentException("Invalid Profile" + profileUserId));
-//            model.addAttribute("profile", profile);
-//        }
-//
-//        return "updateProfile";
-//    }
-
-//    @PostMapping("/updateProfile/{profileId}")
-//    public String processFormForUpdate(@Validated @ModelAttribute("profile") Profile profile, @RequestParam() int profileId,
-//                                       @RequestParam(required = false) String userMedicalRecordName, String userAddress, String userPhoneNumber,
-//                                       String userDateOfBirth, String emergencyName, String emergencyPhoneNumber, String emergencyRelationship,
-//                                       String primaryCarePhysicianName, String primaryCarePhysicianAddress, String primaryCarePhysicianPhoneNumber,
-//                                       String specialistName, String specialistPhoneNumber, String specialistType,
-//                                       String allergies, String medicalConditions, BindingResult bindingResult,
-//                                       RedirectAttributes redirectAttributes, HttpServletRequest httpServletRequest, SessionStatus sessionStatus) {
-//        User user = authenticationController.getUserFromSession(httpServletRequest.getSession());
-//
-//        if (!bindingResult.hasErrors()) {
-//            try {
-//                Optional result = profileRepository.findById(profileId);
-//                if (result.isPresent()) {
-//                    Profile aProfile = (Profile) result.get();
-//                    profileRepository.save(aProfile);
-//                    user.setProfile(aProfile);
-//                    userRepository.save(user);
-//                }
-//            }
-//                catch (JpaOptimisticLockingFailureException exception) {
-//
-//                }
-//
-//    }
-
-
-
-//    @PostMapping("deleteProfile")
-    @RequestMapping(value = "profileView/{userId}", method = {RequestMethod.POST})
-//            {RequestMethod.POST, RequestMethod.GET})
-    @ResponseBody
-    public String deleteProfile( @ModelAttribute("profile") Profile profile,
-//                                @RequestParam(required = false)
-//                                @ModelAttribute("userId") int userId,
-                                Model model, HttpServletRequest request) {
-
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null || user.equals("")) {
-//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-            assert user != null;
-            model.addAttribute("profile", user.getProfile());
-            model.addAttribute("title", "Delete Profile");
-//            model.addAttribute("profile", profileRepository.findAll());
-            model.addAttribute("user", user);
-            return "user/profileView";
-        }
-
-//        profile = profileRepository.findByUserId(userId);
-        profile = user.getProfile();
-//        Integer profileId = profile.getUserId();
+        Profile profile = user.getProfile();
+        user.deleteProfile(profile);
         profileRepository.delete(profile);
-//        userRepository.save(user);
-        {
+        userRepository.save(user);
 
-        return "user/profileView";
+
+        return "";
     }
 
-
-
-//        if (userId == null || userId.equals("")) {
-
-//            User user = authenticationController.getUserFromSession(request.getSession());
-//            model.addAttribute("profile", user.getProfile());
-//            model.addAttribute("title", "Delete Profile");
-//            model.addAttribute("profile", profileRepository.findAll());
-//            model.addAttribute("user", user);
-//
-////            if (userId == null || userId.equals("")) {
-////    }
-//      Optional result = null; <-- this threw a Null Exception, below was suggested fix
-//        Optional result = Optional.empty();
-//        if (userId != null) {
-//            result = profileRepository.findById(Integer.parseInt(userId));
-//        }
-
-
-}}
+}

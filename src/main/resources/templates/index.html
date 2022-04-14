@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Profile Management</title>
 </head>
-</head>
 <body>
 
 <!--Use fragments.html for consistency across  pages-->
@@ -19,23 +18,21 @@
 <!--        ADD A LINK HERE TO PROMP USER TO SIGN IN TO GOOGLE CALENDAR AND SEE UPCOMING MEDICAL DATES -->
     <h3>Calendar</h3>
 
-
-
-    <a th:href="@{/login/google}">Access Your Google Calender</a>
+    <a style="color:black;" th:href="@{/login/google}">Access Your Google Calender</a>
 <!--    GET https://www.googleapis.com/calendar/v3/calendars/calendarId/events-->
-    <br>
 </div>
 
 <div class="container body-content">
-    <a href="addProfile.html"
-       th:href="@{/user/addProfile}">Create Your Medical Profile</a>
+    <a style="color:black;"  href="addProfile.html"
+       th:href="@{/user/addProfile}">Create Your Medical History Profile</a>
     <br>
-    <a th:href="@{/medication/add}"> Add A Medication</a>
+<!--    <a th:href="@{/medication/add}"> Add A Medication</a>-->
     <br>
-    <a th:href="@{'/user/profileView/{userId}' (userId=${userId})}">View My Profile</a>
+    <a style="color:black;" th:href="@{'/user/profileView/{userId}' (userId=${userId})}">View My Profile</a>
     <br>
 
-    <a th:href="@{/logout}">Or Logout to Change User</a>
+    <a style="color:black;" th:href="@{/logout}">Or Logout to Change User</a>
+</div>
 </div>
 
 </body>

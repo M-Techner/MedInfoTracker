@@ -16,21 +16,12 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int userId;
 
-//    private String name;
 
-//    public AbstractEntity() {}
 
 //    getters and setters
 
     public int getUserId() { return userId; }
 
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public void setName(String name) {
-//        this.name = name;
-//    }
 
     @Override
     public boolean equals(Object o) {

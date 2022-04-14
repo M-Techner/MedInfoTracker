@@ -5,53 +5,93 @@
     <title>Profile Management</title>
 </head>
 <body>
-    <div class="container  body-content">
-        <h1>Profile Management</h1>
-        <hr>
-        <h2>Update Profile</h2>
+<br>
+<br>
+<br>
+<!--<h1 th:text="${'Medical Profile for: ' + userName}">MedInfoTracker</h1>-->
+<!--<h2>Profile Management</h2>-->
 
-    <form action="#" th:action="@{/updateProfile}" th:object="${profile}"
-          method="POST">
+<h3>Update Profile</h3>
+<hr>
+<nav th:replace="fragments :: page-header"></nav>
 
+    <form action = "" method="POST">
+    <!--            action = "/user/updateProfile"-->
+    <!--              th:object="${profile}"-->
+
+        <div class="container  body-content">
+
+
+        <div class="user-profile">
         <!-- Add hidden form field to handle update -->
-        <input type="hidden" th:field="${userId}" />
+        <input type="hidden" th:field="${user.userId}">
 
-        <input type="text" th:field="${profile.userMedicalRecordName}" class="form-group">
+<!--        <input type="text" th:field="${userEmail}" class="form-group"/>-->
+        <h5 th:text="${'Current Preferred Name: ' + user.profile.userPreferredName}"></h5>
+<!--            <input type="text" id=userPreferredName name="userPreferredName" value=${profile.userPreferredName} />-->
+        <input type="text" th:field="${profile.userPreferredName}" class="form-group"/>
 
-        <input type="text" th:field="${profile.userAddress}" class="form-group">
+        <h5 th:text="${'Current Preferred Pronouns: ' + user.profile.userPreferredPronouns}"></h5>
+        <input type="text" th:field="${profile.userPreferredPronouns}" class="form-group"/>
 
-        <input type="text" th:field="${profile.userPhoneNumber}" class="form-group">
+        <h5 th:text="${'Current Medical Record Name: ' + user.profile.userMedicalRecordName}"></h5>
+        <input type="text" th:field="${profile.userMedicalRecordName}" class="form-group"/>
 
-        <input type="text" th:field="${profile.userDateOfBirth}" class="form-group">
+        <h5 th:text="${'Current Address: ' + user.profile.userAddress}"></h5>
+        <input type="text" th:field="${profile.userAddress}" class="form-group"/>
 
-        <input type="text" th:field="${profile.emergencyName}" class="form-group">
+        <h5 th:text="${'Current Phone Number: ' + user.profile.userPhoneNumber}"></h5>
+        <input type="text" th:field="${profile.userPhoneNumber}" class="form-group"/>
 
-        <input type="text" th:field="${profile.emergencyPhoneNumber}" class="form-group">
+            <h5 th:text="${'Current Date of Birth: ' + user.profile.userDateOfBirth}"></h5>
+        <input type="text" th:field="${profile.userDateOfBirth}" class="form-group"/>
 
-        <input type="text" th:field="${profile.emergencyRelationship}" class="form-group">
+            <h5 th:text="${'Current Emergency Contact: ' + user.profile.emergencyName}"></h5>
+        <input type="text" th:field="${profile.emergencyName}" class="form-group"/>
 
-        <input type="text" th:field="${profile.primaryCarePhysicianName}" class="form-group">
+            <h5 th:text="${'Current Emergency Contact Number: ' + user.profile.emergencyPhoneNumber}"></h5>
+        <input type="text" th:field="${profile.emergencyPhoneNumber}" class="form-group"/>
 
-        <input type="text" th:field="${profile.primaryCarePhysicianAddress}" class="form-group">
+            <h5 th:text="${'Current Emergency Contact Relationship: ' + user.profile.emergencyRelationship}"></h5>
+        <input type="text" th:field="${profile.emergencyRelationship}" class="form-group"/>
 
-        <input type="text" th:field="${profile.primaryCarePhysicianPhoneNumber}" class="form-group">
+            <h5 th:text="${'Current Primary Care Physician (PCP): ' + user.profile.primaryCarePhysicianName}"></h5>
+        <input type="text" th:field="${profile.primaryCarePhysicianName}" class="form-group"/>
 
-        <input type="text" th:field="${profile.specialistName}" class="form-group">
+            <h5 th:text="${'Current PCP Address: ' + user.profile.primaryCarePhysicianAddress}"></h5>
+        <input type="text" th:field="${profile.primaryCarePhysicianAddress}" class="form-group"/>
 
-        <input type="text" th:field="${profile.specialistPhoneNumber}" class="form-group">
+            <h5 th:text="${'Current PCP Phone Number: ' + user.profile.primaryCarePhysicianPhoneNumber}"></h5>
+        <input type="text" th:field="${profile.primaryCarePhysicianPhoneNumber}" class="form-group"/>
 
-        <input type="text" th:field="${profile.specialistType}" class="form-group">
+            <h5 th:text="${'Current Specialist Physician: ' + user.profile.specialistName}"></h5>
+        <input type="text" th:field="${profile.specialistName}" class="form-group"/>
 
-        <input type="text" th:field="${profile.allergies}" class="form-group">
+            <h5 th:text="${'Current Specialist Phone Number: ' + user.profile.specialistPhoneNumber}"></h5>
+        <input type="text" th:field="${profile.specialistPhoneNumber}" class="form-group"/>
 
-        <input type="text" th:field="${profile.medicalConditions}" class="form-group">
+            <h5 th:text="${'Current Specialist Type: ' + user.profile.specialistType}"></h5>
+        <input type="text" th:field="${profile.specialistType}" class="form-group"/>
 
-        <button type="submit" class="btn btn-info col-2">Update Profile</button>
+        <h5 th:text="${'Current Known Allergies of Any Kind: ' + user.profile.allergies}"></h5>
+        <input type="text" th:field="${profile.allergies}" class="form-group"/>
+
+        <h5 th:text="${'Current Medical Conditions: ' + user.profile.medicalConditions}"></h5>
+        <input type="text" th:field="${profile.medicalConditions}" class="form-group"/>
+
+        </div>
+
+            <input type="submit" value="Update Profile"/>
+        </div>
+
     </form>
-
     <hr>
 
-    <a th:href = "@{/}">Cancel Changes and Return to Profile</a>
-</div>
+        <a style="color:black;" th:href="@{'/user/profileView/{userId}' (userId=${userId})}">Return to my profile</a>
+        <br>
+
 </body>
 </html>
+<br>
+<br>
+<br>

@@ -14,7 +14,8 @@ import java.util.List;
 @Entity
 public class User extends AbstractEntity {
 
-    @OneToOne (cascade=CascadeType.ALL)
+    @OneToOne
+//            (cascade=CascadeType.ALL)
     private Profile profile;
 
     @OneToMany
@@ -91,5 +92,9 @@ public class User extends AbstractEntity {
 
     public void addMedication(Medication medication) {
         medications.add(medication);
+    }
+
+    public void deleteProfile(Profile profile) {
+        this.profile = null;
     }
 }

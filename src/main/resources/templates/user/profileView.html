@@ -9,9 +9,14 @@
 <body class="container body-content">
 
 <h1 th:text="${'Medical Profile for: ' + user.userName}">MedInfoTracker</h1>
-
+<hr>
 <nav th:replace="fragments :: page-header"></nav>
 
+<br>
+<a style="color:black;" th:href="@{/index}">Return Home</a>
+<br>
+<a style="color:black;" th:href="@{'/user/updateProfile/{userId}' (userId=${userId})}">Edit or Update My Profile</a>
+<br>
 
 <div class="user-profile">
 <!--    <p th:text="${'User ID: ' + userId}"></p>-->
@@ -37,34 +42,25 @@
     <p th:text="${'Known Allergies of Any Kind: ' + user.profile.allergies}"></p>
     <p th:text="${'Medical Conditions: ' + user.profile.medicalConditions}"></p>
 </div>
-<!--       <a th:href="@{'/user/deleteProfile/{userId}' (userId=${userId})}">Delete Profile</a>-->
-<!--</div>-->
-<!--<form method="post">-->
-<!--    <input type="submit" value="Delete My Profile" class="btn btn-danger">-->
-<!--</form>-->
 
-<!--<form method="get">-->
-<form method="post">
+
+
+<form action="" method="post">
     <div class="form-group">
         <label>
             <span th:text="${'Delete Profile?'}"></span>
-<!--            <input type="hidden" name="_method" value="delete">-->
             <input type="checkbox" name="userId" th:value="${userId}" class="form-control">
         </label>
+
     </div>
-<br>
 
+        <button name="delete" type="submit" value=":Delete">Delete My Profile</button>
 
-
-<!--        <input type="submit" value="Delete Profile" class="btn btn-danger">-->
-        <button id="delete" name="delete" th:onclick="@{'/deleteProfile'}">Delete My Profile</button>
-<!--        <button type="submit" class="btn">Delete</button>-->
     </form>
-<!--<br>-->
-<!--<td> <a th:href="@{/showFormForUpdate/{id}(id=${employee.id})}" class="btn btn-primary">Update</a>-->
-
-
-
+<hr>
+<br>
+<br>
+<br>
 
 
 </body>
