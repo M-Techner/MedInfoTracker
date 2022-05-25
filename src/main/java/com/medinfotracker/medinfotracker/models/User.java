@@ -92,4 +92,7 @@ public class User extends AbstractEntity {
     public void addMedication(Medication medication) {
         medications.add(medication);
     }
+    public void deleteMedication(List<Medication> medication) {
+        this.medications = null;
+    }
 }

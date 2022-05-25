@@ -64,3 +64,381 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org/">-->
+
+<!--<head th:replace="fragments :: head"></head>-->
+
+<!--<body class="container body-content">-->
+
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+<!--<h1>Medication Form</h1>-->
+<!--<form method="post" style="max-width:600px;">-->
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Medication Name</label>-->
+<!--        <input class="form-control" th:field="${medication.medicationName}" />-->
+<!--        <span th:errors="${medication.medicationName}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Dosage</label>-->
+<!--        <input class="form-control" th:field="${medication.dosage}" />-->
+<!--        <span th:errors="${medication.dosage}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Frequency</label>-->
+<!--        <input class="form-control" th:field="${medication.frequency}" />-->
+<!--        <span th:errors="${medication.frequency}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Route of Administration</label>-->
+<!--        <input class="form-control" th:field="${medication.routeOfAdministration}" />-->
+<!--        <span th:errors="${medication.routeOfAdministration}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="location">Prescribing Physician</label>-->
+<!--        <input class="form-control" th:field="${medication.prescribingPhysician}" />-->
+<!--        <span th:errors="${medication.prescribingPhysician}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Date Started</label>-->
+<!--        <input class="form-control" th:field="${medication.dateStarted}" />-->
+<!--        <span th:errors="${medication.dateStarted}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Refill</label>-->
+<!--        <input class="form-control" th:field="${medication.refill}" />-->
+<!--        <span th:errors="${medication.refill}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <div class="form-group">-->
+<!--        <label th:for="name">Over the Counter</label>-->
+<!--        <input class="form-control" th:field="${medication.overTheCounter}" />-->
+<!--        <span th:errors="${medication.overTheCounter}" class="error"></span>-->
+<!--    </div>-->
+
+<!--    <input type="submit" value="Medication Form">   //Is this allright?-->
+<!--</form>-->
+
+
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head th:replace="fragments :: head">-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Profile Management</title>-->
+<!--</head>-->
+<!--&lt;!&ndash;Use fragments.html for consistency across pages&ndash;&gt;-->
+
+<!--<body class="container body-content">-->
+
+<!--<h1 th:text="${'Medical Profile for: ' + user.userName}">MedInfoTracker</h1>-->
+
+<!--<nav th:replace="fragments :: page-header"></nav>-->
+
+<!--<br>-->
+<!--<a th:href="@{'/user/updateProfile/{userId}' (userId=${userId})}">Edit or Update My Profile</a>-->
+<!--<br>-->
+
+<!--<div class="user-profile">-->
+<!--    &lt;!&ndash;    <p th:text="${'User ID: ' + userId}"></p>&ndash;&gt;-->
+<!--    <p th:text="${'Username: ' + user.userName}"></p>-->
+<!--    <p th:text="${'Email: ' + user.userEmail}"></p>-->
+<!--    <br>-->
+<!--    <p th:text="${'Preferred Name: ' + user.profile.userPreferredName}"></p>-->
+<!--    <p th:text="${'Preferred Pronouns: ' + user.profile.userPreferredPronouns}"></p>-->
+<!--    &lt;!&ndash;    <p th:text="${'Profile ID: ' + user.profile}"></p>&ndash;&gt;-->
+<!--    <p th:text="${'Medical Record Name: ' + user.profile.userMedicalRecordName}"></p>-->
+<!--    <p th:text="${'Address: ' + user.profile.userAddress}"></p>-->
+<!--    <p th:text="${'Phone Number: ' + user.profile.userPhoneNumber}"></p>-->
+<!--    <p th:text="${'Date of Birth: ' + user.profile.userDateOfBirth}"></p>-->
+<!--    <p th:text="${'Emergency Contact: ' + user.profile.emergencyName}"></p>-->
+<!--    <p th:text="${'Emergency Contact Number: ' + user.profile.emergencyPhoneNumber}"></p>-->
+<!--    <p th:text="${'Emergency Contact Relationship: ' + user.profile.emergencyRelationship}"></p>-->
+<!--    <p th:text="${'Primary Care Physician (PCP): ' + user.profile.primaryCarePhysicianName}"></p>-->
+<!--    <p th:text="${'PCP Address: ' + user.profile.primaryCarePhysicianAddress}"></p>-->
+<!--    <p th:text="${'PCP Phone Number: ' + user.profile.primaryCarePhysicianPhoneNumber}"></p>-->
+<!--    <p th:text="${'Specialist Physician: ' + user.profile.specialistName}"></p>-->
+<!--    <p th:text="${'Specialist Phone Number: ' + user.profile.specialistPhoneNumber}"></p>-->
+<!--    <p th:text="${'Specialist Type: ' + user.profile.specialistType}"></p>-->
+<!--    <p th:text="${'Known Allergies of Any Kind: ' + user.profile.allergies}"></p>-->
+<!--    <p th:text="${'Medical Conditions: ' + user.profile.medicalConditions}"></p>-->
+<!--</div>-->
+
+
+
+<!--<form action="" method="post">-->
+<!--    <div class="form-group">-->
+<!--        <label>-->
+<!--            <span th:text="${'Delete Profile?'}"></span>-->
+<!--            <input type="checkbox" name="userId" th:value="${userId}" class="form-control">-->
+<!--        </label>-->
+
+<!--    </div>-->
+
+<!--    <button name="delete" type="submit" value=":Delete">Delete My Profile</button>-->
+
+<!--</form>-->
+<!--<br>-->
+<!--<br>-->
+<!--<br>-->
+
+
+
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!--package com.medinfotracker.medinfotracker.controllers;-->
+
+
+<!--import com.medinfotracker.medinfotracker.models.Profile;-->
+<!--import com.medinfotracker.medinfotracker.models.User;-->
+<!--import com.medinfotracker.medinfotracker.models.data.ProfileRepository;-->
+<!--import com.medinfotracker.medinfotracker.models.data.UserRepository;-->
+<!--import com.medinfotracker.medinfotracker.models.dto.RegisterFormDTO;-->
+<!--import org.springframework.beans.factory.annotation.Autowired;-->
+<!--import org.springframework.orm.jpa.JpaOptimisticLockingFailureException;-->
+<!--import org.springframework.stereotype.Controller;-->
+<!--import org.springframework.ui.Model;-->
+<!--import org.springframework.validation.BindingResult;-->
+<!--import org.springframework.validation.Errors;-->
+<!--import org.springframework.validation.annotation.Validated;-->
+<!--import org.springframework.web.bind.annotation.*;-->
+<!--import org.springframework.web.bind.support.SessionStatus;-->
+<!--import org.springframework.web.servlet.mvc.support.RedirectAttributes;-->
+
+<!--import javax.servlet.http.HttpServletRequest;-->
+<!--import javax.validation.Valid;-->
+<!--import java.util.Optional;-->
+
+<!--@Controller-->
+<!--@RequestMapping("user")-->
+<!--public class UserController {-->
+
+<!--@Autowired-->
+<!--private UserRepository userRepository;-->
+
+<!--@Autowired-->
+<!--private ProfileRepository profileRepository;-->
+
+<!--@Autowired-->
+<!--private AuthenticationController authenticationController;-->
+
+
+<!--@GetMapping("addProfile")-->
+<!--public String displayAddProfileForm(Model model) {-->
+<!--model.addAttribute("Preferred Name", "Add User Preferred Name");-->
+<!--model.addAttribute("Preferred Pronouns", "My preferred pronouns are:");-->
+<!--model.addAttribute("User Medical Record Name", "Add User Medical Record Name");-->
+<!--model.addAttribute("User Address", "Add User Address");-->
+<!--model.addAttribute("User Phone Number", "Add User Phone Number");-->
+<!--model.addAttribute("Emergency Contact Name", "Add Emergency Contact Name");-->
+<!--model.addAttribute("Emergency Contact Phone Number", "Add Emergency Contact Phone Number");-->
+<!--model.addAttribute("Emergency Contact Relationship", "Add Emergency Contact Relationship");-->
+<!--model.addAttribute("Primary Care Physician Name", "Add Primary Care Physician Name");-->
+<!--model.addAttribute("Primary Care Physician Address", "Add Primary Care Physician Address");-->
+<!--model.addAttribute("Primary Care Physician Phone Number", "Add Primary Care Physician Phone Number");-->
+<!--model.addAttribute("Specialist Name", "Add Specialist Name");-->
+<!--model.addAttribute("Specialist Phone Number", "Add Specialist Phone Number");-->
+<!--model.addAttribute("Specialist Type", "Add Specialist Type");-->
+<!--model.addAttribute("Known Allergies", "Add Known Allergies");-->
+<!--model.addAttribute("Medical Conditions", "Add Medical Conditions");-->
+<!--model.addAttribute(new Profile());-->
+<!--return "/user/addProfile";-->
+<!--}-->
+
+<!--@PostMapping("addProfile")-->
+<!--public String processAddProfileForm(@ModelAttribute @Valid Profile newProfile,-->
+<!--Errors errors, Model model, HttpServletRequest request) {-->
+
+<!--if (errors.hasErrors()) {-->
+<!--model.addAttribute("title", "Add User Profile Details");-->
+<!--return "/user/addProfile";-->
+<!--}-->
+
+<!--User user = authenticationController.getUserFromSession(request.getSession());-->
+
+<!--profileRepository.save(newProfile);-->
+<!--user.setProfile(newProfile);-->
+<!--userRepository.save(user);-->
+<!--//        model.addAttribute("user", userRepository.findAll());-->
+<!--model.addAttribute("profile", profileRepository.findAll());-->
+<!--return "redirect:..";-->
+<!--}-->
+
+
+<!--//    If I try to get the user from the session, I get: An Errors/BindingResult argument is expected to be declared-->
+<!--//    immediately after the model attribute, the @RequestBody or the @RequestPart arguments to which they apply: public-->
+<!--//    java.lang.String com.medinfotracker.medinfotracker.controllers.UserController.displayViewUserProfile-->
+<!--//    (org.springframework.ui.Model,javax.servlet.http.HttpServletRequest,org.springframework.validation.Errors,java.lang.String)-->
+<!--//    java.lang.IllegalStateException: An Errors/BindingResult argument is expected to be declared immediately after the model attribute,-->
+<!--//    the @RequestBody or the @RequestPart arguments to which they apply: public java.lang.String-->
+
+<!--@GetMapping("profileView/{userId}")-->
+<!--public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors,-->
+<!--@PathVariable("userId") int userId) {-->
+<!--//        model.addAttribute("user", userRepository.findById(profile_id));-->
+
+<!--User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());-->
+<!--if (existingUser != null) {-->
+<!--errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");-->
+<!--model.addAttribute("title", "Register");-->
+<!--return "user/profileView";-->
+<!--}-->
+<!--Optional optUser = userRepository.findById(userId);-->
+<!--if (optUser.isPresent()) {-->
+<!--User user = (User) optUser.get();-->
+<!--model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());-->
+<!--model.addAttribute("user", user);-->
+<!--return "user/profileView";-->
+<!--} else {-->
+<!--return "redirect:/";-->
+<!--}-->
+<!--}-->
+
+
+<!--@GetMapping("updateProfile/{userId}")-->
+<!--public String displayFormForUpdate(@Validated @ModelAttribute("profile") Profile profile, @PathVariable("userId") int userId, Model model, RegisterFormDTO registerFormDTO, Errors errors) {-->
+
+<!--//        User existingUser = authenticationController.getUserFromSession(request.getSession());-->
+
+<!--//        if (!model.containsAttribute("userId")) {-->
+<!--//            profile = profileRepository.findById(userId).orElseThrow(()-->
+<!--//                    -> new IllegalArgumentException("Invalid Profile" + userId));-->
+<!--//            model.addAttribute("profile", profile);-->
+<!--//        }-->
+
+<!--User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());-->
+<!--if (existingUser != null) {-->
+<!--errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");-->
+<!--model.addAttribute("title", "Register");-->
+<!--return "user/updateProfile";-->
+<!--}-->
+<!--Optional optUser = userRepository.findById(userId);-->
+<!--if (optUser.isPresent()) {-->
+<!--User user = (User) optUser.get();-->
+<!--model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());-->
+<!--model.addAttribute("user", user);-->
+<!--return "user/updateProfile";-->
+<!--} else {-->
+<!--return "redirect:/";-->
+<!--}-->
+
+<!--//-->
+<!--//        if (!model.containsAttribute("userId")) {-->
+<!--//            Profile profile = profileRepository.findById(userId).orElseThrow(()-->
+<!--//                    -> new IllegalArgumentException("Invalid Profile" + userId));-->
+<!--//            model.addAttribute("profile", profile);-->
+<!--//        }-->
+
+<!--//        return "user/updateProfile";-->
+<!--}-->
+
+<!--@PostMapping("updateProfile/{userId}")-->
+<!--public String processFormForUpdate(@Validated @ModelAttribute("profile") Profile profile, @RequestParam() int userId,-->
+<!--@RequestParam(required = false) String userPreferredName, String userPreferredPronouns,-->
+<!--String userMedicalRecordName, String userAddress,  String userPhoneNumber,-->
+<!--String userDateOfBirth, String emergencyName, String emergencyPhoneNumber, String emergencyRelationship,-->
+<!--String primaryCarePhysicianName, String primaryCarePhysicianAddress, String primaryCarePhysicianPhoneNumber,-->
+<!--String specialistName, String specialistPhoneNumber, String specialistType,-->
+<!--String allergies, String medicalConditions, BindingResult bindingResult,-->
+<!--RedirectAttributes redirectAttributes, HttpServletRequest httpServletRequest, SessionStatus sessionStatus) {-->
+
+<!--User user = authenticationController.getUserFromSession(httpServletRequest.getSession());-->
+
+<!--if (!bindingResult.hasErrors()) {-->
+<!--try {-->
+<!--Optional result = profileRepository.findById(userId);-->
+<!--if (result.isPresent()) {-->
+<!--Profile aProfile = (Profile) result.get();-->
+<!--//                    profileRepository.save(aProfile);-->
+<!--//                    user.setProfile(aProfile);-->
+<!--//                    userRepository.save(user);-->
+<!--//                }-->
+<!--//            } catch (JpaOptimisticLockingFailureException exception) {-->
+<!--//}-->
+
+<!--//            Profile updateProfile = profileRepository.findById(userId);-->
+
+<!--profile.setUserPreferredName(aProfile.getUserPreferredName());-->
+<!--profile.setUserPreferredPronouns(aProfile.getUserPreferredPronouns());-->
+<!--profile.setUserMedicalRecordName(aProfile.getUserMedicalRecordName());-->
+<!--profile.setUserAddress(aProfile.getUserAddress());-->
+<!--profile.setUserPhoneNumber(aProfile.getUserPhoneNumber());-->
+<!--profile.setUserDateOfBirth(aProfile.getUserDateOfBirth());-->
+<!--profile.setEmergencyName(aProfile.getEmergencyName());-->
+<!--profile.setEmergencyPhoneNumber(aProfile.getEmergencyPhoneNumber());-->
+<!--profile.setEmergencyRelationship(aProfile.getEmergencyRelationship());-->
+<!--profile.setPrimaryCarePhysicianName(aProfile.getPrimaryCarePhysicianName());-->
+<!--profile.setPrimaryCarePhysicianAddress(aProfile.getPrimaryCarePhysicianAddress());-->
+<!--profile.setPrimaryCarePhysicianPhoneNumber(aProfile.getPrimaryCarePhysicianPhoneNumber());-->
+<!--profile.setSpecialistName(aProfile.getSpecialistName());-->
+<!--profile.setSpecialistPhoneNumber(aProfile.getSpecialistPhoneNumber());-->
+<!--profile.setAllergies(aProfile.getAllergies());-->
+<!--profile.setMedicalConditions(aProfile.getMedicalConditions());-->
+
+<!--profileRepository.save(aProfile);-->
+<!--user.setProfile(aProfile);-->
+<!--userRepository.save(user);-->
+<!--}-->
+<!--} catch (JpaOptimisticLockingFailureException exception) {-->
+
+<!--return "unable to update profile";-->
+<!--}}-->
+
+<!--return"user/updateProfile";-->
+<!--}-->
+
+
+<!--@PostMapping("profileView/{userId}")-->
+<!--public String deleteProfile( @ModelAttribute User user, Model model, HttpServletRequest request) {-->
+
+<!--user = authenticationController.getUserFromSession(request.getSession());-->
+
+<!--Profile profile = user.getProfile();-->
+<!--user.deleteProfile(profile);-->
+<!--profileRepository.delete(profile);-->
+<!--userRepository.save(user);-->
+
+
+<!--return "/";-->
+<!--}-->
+
+}

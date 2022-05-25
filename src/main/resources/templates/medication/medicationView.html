@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head">
+    <meta charset="UTF-8">
+    <title>Profile Management</title>
+</head>
+<!--Use fragments.html for consistency across pages-->
+
+<body class="container body-content"></body>
+
+<!--<div th:replace="fragments :: page-header"></div>-->
+
+
+
+<h1 th:text="${'Medication Profile for: ' + user.userName}">MedInfoTracker</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<br>
+<a th:href="@{'/medication/medicationView/{userId}' (userId=${userId})}">View My List of Medications</a>
+<br>
+
+<h1>Medication Form</h1>
+<!--<form method="post" style="max-width:600px;">-->
+
+<div class="medication-view">
+
+<table class="Medication-List">
+     <tr th:each="medication : ${medications}"></tr>
+
+    <p>
+        Medication:
+        <a th:href="@{'/medication/medicationView/' + ${userId}}" th:text="${userId}"></a>
+    </p>
+
+    <p th:text="${'Medication Name: ' + medicationName}"></p>9
+    <p th:text="${'Date Started: ' + dateStarted}"></p>
+    <p th:text="${'Refill ' + Refill}"></p>
+    <p th:text="${'Over the Counter: ' + overTheCounter}"></p>
+
+u /.
+
+
+<form action="" method="post">
+    <div class="form-group">
+        <label>
+<!--            <span th:text="${'Delete Profile?'}"></span>-->
+            <span th:text="${'Delete Medication?'}"></span>
+            <input type="checkbox" name="userId" th:value="${userId}" class="form-control">
+        </label>
+
+    </div>
+
+    <button name="delete" type="submit" value=":Delete">Delete My Medication    </button>
+
+</form>
+
+
+
+<html></html>
+
+
+
+
+
+
+
+<!--    <p> Medications:-->
+
+<!--    <ul>-->
+<!--        <li th:each="medication : ${user.medications}">-->
+<!--            <a th:href="@{'/view/' + ${medication.id}}" th:text="${medication.name}"></a>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--    </form>-->
+
+<!--    <Table class="centered table">-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="name">Medication Name</label>-->
+<!--            <input class="form-control" th:field="${medication.medicationName}" />-->
+<!--            <span th:errors="${medication.medicationName}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="name">Dosage</label>-->
+<!--            <input class="form-control" th:field="${medication.dosage}" />-->
+<!--            <span th:errors="${medication.dosage}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div clasbfxzctybhhhhhn n n jnm    s="form-group">-->
+<!--            <label th:for="name">Frequency</label>-->
+<!--            <input class="form-control" th:field="${medication.frequency}" />-->
+<!--            <span th:errors="${medication.frequency}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="name">Route of Administration</label>-->
+<!--            <input class="form-control" th:field="${medication.routeOfAdministration}" />-->
+<!--            <span th:errors="${medication.routeOfAdministration}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="location">Prescribing Physician</label>-->
+<!--            <input class="form-control" th:field="${medication.prescribingPhysician}" />-->
+<!--            <span th:errors="${medication.prescribingPhysician}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="name">Date Started</label>-->
+<!--            <input class="form-control" th:field="${medication.dateStarted}" />-->
+<!--            <span th:errors="${medication.dateStarted}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="name">Refill</label>-->
+<!--            <input class="form-control" th:field="${medication.refill}" />-->
+<!--            <span th:errors="${medication.refill}" class="error"></span>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label th:for="name">Over the Counter</label>-->
+<!--            <input class="form-control" th:field="${medication.overTheCounter}" />-->
+<!--            <span th:errors="${medication.overTheCounter}" class="error"></span>-->
+<!--        </div>-->
+
+<!--    </table>-->
+
+
+
+
+<!--        <tr>-->
+
+<!--            <th>Medication Name</th>&ndash;&gt;-->
+
+<!--            <td></td>-->
+<!--        </tr>-->
+<!--        <th>Dosage</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+<!--        <th>Frequency</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+<!--        <th>Route of Administration</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+<!--        <th>Prescribing Physician</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+<!--        <th>Date Started</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+<!--        <th>Refill</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+<!--        <th>Over the Counter</th>-->
+<!--        <td></td>-->
+<!--        </tr>-->
+
+
+<!--    <p>To undestand the example better, we have added borders to the table.</p>-->
+
+
+
+
+
+
+<!--<a href="@'/controllers/MedicationController"></a>-->
+
+
+
+
+
+
+<!--//<div class="form-group">-->
+<!--    //<label>-->
+<!--    //<span th:text="${'Delete Profile?'}"></span>-->
+<!--    //&lt;!&ndash;            <input type="hidden" name="_method" value="delete">&ndash;&gt;-->
+<!--    //<input type="checkbox" name="delete" th:value="${profileUserID}" class="form-control">-->
+<!--    //</label>-->
+<!--    //</div>-->
+<!--//<br>-->
+
+<!--//<form method="post">-->
+<!--    //&lt;!&ndash;            action="#" th:action=@{'/deleteProfile'}" &ndash;&gt;-->
+<!--    //<button id="delete" name="delete" th:onclick="@{'/deleteProfile'}">Delete My Profile</button>-->
+<!--    //&lt;!&ndash;        <button type="submit" class="btn">Delete</button>&ndash;&gt;-->
+<!--    //</form>-->
+<!--//<br>-->
+<!--//&lt;!&ndash;<form action="#" th:action="@{'/deleteProfile/{profileId}'(profileId=${profileUserId})}" th:method="delete" >&ndash;&gt;-->
+<!--//&lt;!&ndash;    <input type="hidden" name="_method" value="delete" />&ndash;&gt;-->
+<!--//&lt;!&ndash;    <button type="submit" id="submitButton"> </button>&ndash;&gt;-->
+<!--//&lt;!&ndash;</form>&ndash;&gt;-->
+
+<!--//&lt;!&ndash;    <button id="delete" name="delete" th:onclick="@{'/foos/{id}'(id=${foo.id})}" th:method="delete">Delete</button>&ndash;&gt;-->
+<!--//&lt;!&ndash;    <input type="submit" value="Delete My Profile" class="btn btn-danger">&ndash;&gt;-->
+<!--//&lt;!&ndash;</form>&ndash;&gt;-->
+
+
+
+
+
+<!--Is this pertinent? Pulled from techjobs4 list.html-->
+<!--<li>-->
+<!--    <a th:href="@{/list/jobs(column='All',value='View All')}">View All</a>-->
+<!--</li>-->
+<!--</td>-->
+<!--<td>-->
+<!--    <li th:each="employer : ${employers}">-->
+<!--        <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}"></a>-->
+<!--    </li>-->
+<!--</td>-->
+<!--<td>-->
+<!--    <li th:each="skill : ${skills}">-->
+<!--        <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}"></a>-->
+<!--    </li>-->
+
+
+<!--<Table class="centered table">-->
+<!--    <tr>-->
+<!--        <th>Medication Name</th>-->
+<!--        <td>th:text="${Medication Name}"></td>-->
+<!--    </tr>-->
+<!--    <th>Dosage</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Dosage}"></a></td>-->
+<!--    </tr>-->
+<!--    <th>Frequency</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Frequency}"></a></td>-->
+<!--    </tr>-->
+<!--    <th>Route of Administration</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Route of Administration}"></a></td>-->
+<!--    </tr>-->
+<!--    <th>Prescribing Physician</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Prescribing Physician}"></a></td>-->
+<!--    </tr>-->
+<!--    <th>Date Started</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Date Started}"></a></td>-->
+<!--    </tr>-->
+<!--    <th>Refill</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Refill}"></a></td>-->
+<!--    </tr>-->
+<!--    <th>Over the Counter</th>-->
+<!--    <td><a th:href="@{'/view/' + ${Medication}}" th:text="${Over the Counter}"></a></td>-->
+<!--    </tr>-->
+
+<!--</Table>-->

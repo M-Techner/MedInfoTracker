@@ -258,27 +258,27 @@ public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDT
 
 
 
-//    @PostMapping("deleteProfile")
-    @RequestMapping(value = "deleteProfile/{profileUserId}", method = {RequestMethod.POST, RequestMethod.GET})
-    public String deleteProfile(@ModelAttribute("profile") Profile profile,
-//                                @RequestParam(required = false)
-                                @ModelAttribute("profileUserId") String profileUserId,
-                                Model model, HttpServletRequest request) {
+////    @PostMapping("deleteProfile")
+//    @RequestMapping(value = "deleteProfile/{profileUserId}", method = {RequestMethod.POST, RequestMethod.GET})
+//    public String deleteProfile(@ModelAttribute("profile") Profile profile,
+////                                @RequestParam(required = false)
+//                                @ModelAttribute("profileUserId") String profileUserId,
+//                                Model model, HttpServletRequest request) {
+//
+//        User user = authenticationController.getUserFromSession(request.getSession());
+//
+//        if (user == null || user.equals("")) {
+////            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            assert user != null;
+//            model.addAttribute("profile", user.getProfile());
+//            model.addAttribute("title", "Delete Profile");
+//            model.addAttribute("profile", profileRepository.findAll());
+//            model.addAttribute("user", user);
+//            return "user/profileView";
+//        }
 
-        User user = authenticationController.getUserFromSession(request.getSession());
-
-        if (user == null || user.equals("")) {
-//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-            assert user != null;
-            model.addAttribute("profile", user.getProfile());
-            model.addAttribute("title", "Delete Profile");
-            model.addAttribute("profile", profileRepository.findAll());
-            model.addAttribute("user", user);
-            return "user/profileView";
-        }
-
-        profile = profileRepository.findByUserId(Integer.valueOf(profileUserId));
-        {
+//        profile = profileRepository.findByUserId(Integer.valueOf(profileUserId);
+//        {
 //        if (optUser.isPresent()) {
 //            User aUser = (User) optUser.get();
 //            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
@@ -290,10 +290,10 @@ public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDT
 //        if (userId.isPresent()) {
 //            Profile profile = (Profile) result.get();
 //        { profileRepository.delete(profile);}
-            {this.profileService.deleteProfileById(profileUserId);}
-        model.addAttribute("profile", profileRepository.findAll());
-        return "index";
-    }
+//            {this.profileService.deleteProfileById(profileUserId);}
+//        model.addAttribute("profile", profileRepository.findAll());
+//        return "index";
+//    }
 
 
 
@@ -314,4 +314,29 @@ public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDT
 //        }
 
 
-}}
+}
+
+
+//    @GetMapping("profileView/{userId}")
+//    public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors, String userName,
+//                                         @PathVariable("userId") int userId, HttpServletRequest request) {
+////        model.addAttribute("user", userRepository.findById(profile_id));
+//
+////        User existingUser = authenticationController.getUserFromSession(request.getSession());
+//
+//        User existingUser = userRepository.findByUserName(userName);
+//        if (existingUser != null) {
+//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
+//            model.addAttribute("title", "Register");
+//            return "user/profileView";
+//        }
+//        Optional optUser = userRepository.findById(userId);
+//        if (optUser.isPresent()) {
+//            User user = (User) optUser.get();
+//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            model.addAttribute("user", user);
+//            return "user/profileView";
+//        } else {
+//            return "redirect:./";
+//        }
+//    }

@@ -5,10 +5,11 @@ import org.springframework.stereotype.Repository;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Repository
 @Transactional
 public interface UserRepository extends CrudRepository<User, Integer> {
     User findByUserName(String userName);
-//    User findById(int userId);
+//    Optional findById(int userId);
 }

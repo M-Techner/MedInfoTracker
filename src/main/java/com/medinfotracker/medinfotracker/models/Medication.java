@@ -6,6 +6,7 @@ package com.medinfotracker.medinfotracker.models;
 import com.medinfotracker.medinfotracker.models.AbstractEntity;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpSession;
 //import javax.validation.constraints.NotBlank;
@@ -17,6 +18,8 @@ import java.util.Objects;
 @Entity
 public class Medication extends AbstractEntity {
 
+    @ManyToOne
+    private User user;
 
     private String medicationName;
 

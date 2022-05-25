@@ -5,6 +5,7 @@ import com.medinfotracker.medinfotracker.models.Medication;
 import com.medinfotracker.medinfotracker.models.User;
 import com.medinfotracker.medinfotracker.models.data.MedicationRepository;
 import com.medinfotracker.medinfotracker.models.data.UserRepository;
+import com.medinfotracker.medinfotracker.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -53,7 +55,7 @@ public class MedicationController {
     }
 
     @PostMapping(value = "add")
-    public String processAddMedicationForm(@ModelAttribute @Valid com.medinfotracker.medinfotracker.models.Medication newMedication, Errors errors, Model model, HttpServletRequest request) {
+    public String processAddMedicationForm(@ModelAttribute @Valid Medication newMedication, Errors errors, Model model, HttpServletRequest request) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Medication Information");
             return "/medication/add";
@@ -68,23 +70,128 @@ public class MedicationController {
         return "redirect:";
     }
 
+    @GetMapping("MedicationView/{userId}")
+    public String displayViewMedication (Model model, HttpServletRequest request) {
+//        model.addAttribute("user", userRepository.findById(profile_id));
+
+        User existingUser = authenticationController.getUserFromSession(request.getSession());
+
+        model.addAttribute("user", existingUser);
+        model.addAttribute("userId", existingUser.getUserId());
+        //model.addAttribute("profile", existingUser.getProfile());
+        model.addAttribute("Medication",existingUser.getMedications());
+        return "medication/medicationView";   }
 
 
-    @GetMapping("view/{id}")
-    public String displayViewMedication (Model model, @PathVariable int id) {
-        model.addAttribute("medication", medicationRepository.findAll());
-        Optional optMedication = medicationRepository.findById(id);
-        if (optMedication.isPresent()) {
-            Medication medication = (Medication) optMedication.get();
-            model.addAttribute("medication", medication);
-            return "medication/view";
-        } else {
-            return "redirect:..";
-        }
+//    @GetMapping("MedicationView/{userId}")
+//    public String displayViewMedication (@ModelAttribute @Valid Medication viewMedication,
+//                                         String userName, @PathVariable("userId") int userId, Errors errors, Model model, HttpServletRequest request) {
+////        model.addAttribute("medication", medicationRepository.findAll());
+//         User existingUser= authenticationController.getUserFromSession(request.getSession());
+//
+//        existingUser = userRepository.findByUserName(userName);
+//        if (existingUser != null) {
+//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
+//            model.addAttribute("title", "Register");
+//            return "medication/MedicationView";
+//        }
+//        Optional optUser = userRepository.findById(userId);
+//        if (optUser.isPresent()) {
+//            User user = (User) optUser.get();
+//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            model.addAttribute("user", user);
+//            return "medication/medicationView";
+//        } else {
+//            return "redirect:./";
+//        }
+//    }
 
+
+
+
+
+
+
+//    @GetMapping("medicationView/{userId}")
+//    public String displayViewMedication(Model model, RegisterFormDTO registerFormDTO, Errors errors, String userName,
+//                                         @PathVariable("userId") int userId, HttpServletRequest request) {
+////        model.addAttribute("user", userRepository.findById(profile_id));
+//
+//        User existingUser = authenticationController.getUserFromSession(request.getSession());
+//
+//        User existingUser = userRepository.findByUserName(userName);
+//        if (existingUser != null) {
+//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
+//            model.addAttribute("title", "Register");
+//            return "medication/medicationView";
+//        }
+//        Optional optUser = userRepository.findById(userId);
+//        if (optUser.isPresent()) {
+//            User user = (User) optUser.get();
+//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//            model.addAttribute("user", user);
+//            return "medication/medicationView";
+//        } else {
+//            return "redirect:./";
+//        }
+//    }
+
+    @PostMapping("medicationView/{userId}")
+    public String deleteMedication( @ModelAttribute User user, Model model, HttpServletRequest request) {
+
+       user = authenticationController.getUserFromSession(request.getSession());
+
+        List<Medication> medication = user.getMedications();
+        user.deleteMedication(medication);
+        medicationRepository.delete((Medication) medication);
+        userRepository.save(user);
+
+
+        return "";
     }
 
-}
+
+
+
+
+
+
+//        Optional optMedication = medicationRepository.findById(userId);
+//        if (optMedication.isPresent()) {
+//            Medication medication = (Medication) optMedication.get();
+//            model.addAttribute("medication", medication);
+//            return "medication/MedicationView";
+//        } else {
+//            return "redirect:..";
+
+
+//            @GetMapping("profileView/{userId}")
+//            public String displayViewUserProfile(Model model, RegisterFormDTO registerFormDTO, Errors errors,
+//            @PathVariable("userId") int userId) {
+////        model.addAttribute("user", userRepository.findById(profile_id));
+//
+//                User existingUser = userRepository.findByUserName(registerFormDTO.getUserName());
+//                if (existingUser != null) {
+//                    errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
+//                    model.addAttribute("title", "Register");
+//                    return "user/profileView";
+//                }
+//                Optional optUser = userRepository.findById(userId);
+//                if (optUser.isPresent()) {
+//                    User user = (User) optUser.get();
+//                    model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
+//                    model.addAttribute("user", user);
+//                    return "user/profileView";
+//                } else {
+//                    return "redirect:/";
+//                }
+//            }
+        }
+
+
+
+
+
 
 
 //package com.medinfotracker.medinfotracker.controllers;
