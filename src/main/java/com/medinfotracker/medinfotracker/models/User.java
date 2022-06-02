@@ -15,7 +15,6 @@ import java.util.List;
 public class User extends AbstractEntity {
 
     @OneToOne
-//            (cascade=CascadeType.ALL)
     private Profile profile;
 
     @OneToMany

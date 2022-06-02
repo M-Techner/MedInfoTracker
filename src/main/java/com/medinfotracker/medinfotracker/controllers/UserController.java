@@ -63,10 +63,15 @@ public class UserController extends Profile{
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add User Profile Details");
-            return "user/addProfile";
+            return "index";
         }
 
         User user = authenticationController.getUserFromSession(request.getSession());
+
+        if (user == null) {
+            errors.rejectValue("user","user.invalid","The given user does not exist");
+            model.addAttribute("title", "Log In");
+        }
 
         profileRepository.save(newProfile);
         user.setProfile(newProfile);
@@ -83,77 +88,40 @@ public class UserController extends Profile{
 //        model.addAttribute("user", userRepository.findById(profile_id));
 
         User existingUser = authenticationController.getUserFromSession(request.getSession());
-//        if (existingUser != null) {
-//            existingUser.getProfile();
+
             model.addAttribute("user", existingUser);
             model.addAttribute("userId", existingUser.getUserId());
             model.addAttribute("profile", existingUser.getProfile());
+
+//           ***Working on adding error if there is no existing profile to view
+
+//        if (existingUser.getProfile() != null) {
+//            errors.rejectValue("profile", "profile.doesNotExist", "There is no profile associated with this username.");
+//            model.addAttribute("title", "Profile");
+//            return "addProfile";
+//        }
 
         return "user/profileView";
     }
 
 
-//        User existingUser = userRepository.findByUserName(userName);
-//        if (existingUser != null) {
-//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
-//            model.addAttribute("title", "Register");
-//            return "user/profileView";
-//        }
-//        Optional optUser = userRepository.findById(userId);
-//        if (optUser.isPresent()) {
-//            User user = (User) optUser.get();
-//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-//            model.addAttribute("user", user);
-//            return "user/profileView";
-//        } else {
-//            return "redirect:./";
-//        }
-//    }
+
 
 
     @GetMapping("updateProfile/{userId}")
     public String displayFormForUpdate(Model model, HttpServletRequest request) {
 
-//            (@Validated @ModelAttribute("profile") Profile profile, @PathVariable("userId") int userId,
-//                                       String userName, Model model, HttpServletRequest request, Errors errors) {
-
         User updateUser = authenticationController.getUserFromSession(request.getSession());
-//        if (existingUser != null) {
-//            existingUser.getProfile();
+
         model.addAttribute("user", updateUser);
         model.addAttribute("userId", updateUser.getUserId());
         model.addAttribute("profile", updateUser.getProfile());
+//        When ready to connect to medications?
+//        model.addAttribute("medications", updateUser.getMedications());
 
-//        return "/user/profileView";
-
-//        if (!model.containsAttribute("userId")) {
-//            User existingUser = authenticationController.getUserFromSession(request.getSession());
-//            model.addAttribute("user", existingUser);
-////            model.addAttribute("userId", existingUser.getUserId());
-//            model.addAttribute("profile", existingUser.getProfile());
-//            return "user/updateProfile";
-//        }
-//        User existingUser = authenticationController.getUserFromSession(request.getSession());
-//        model.addAttribute("user", existingUser);
-////        model.addAttribute("userId", existingUser.getProfile());
-//        model.addAttribute("profile", profile);
-
-//        User existingUser = userRepository.findByUserName(userName);
-//        if (existingUser != null) {
-//            errors.rejectValue("userName", "userName.alreadyExists", "That username is already in use.");
-//            model.addAttribute("title", "Register");
-//            return "user/updateProfile";
-//        }
-//        Optional optUser = userRepository.findById(userId);
-//        if (optUser.isPresent()) {
-//            User user = (User) optUser.get();
-//            model.addAttribute("title", "user: " + ((User) optUser.get()).getUserId());
-//            model.addAttribute("user", user);
-//            return "user/updateProfile";
-//        } else {
             return "user/updateProfile";
-        }
-//    }
+    }
+
 
 
     @PostMapping("updateProfile/{userId}")
@@ -286,7 +254,9 @@ public class UserController extends Profile{
 
             }
 
-    return  "index";
+//    return  "redirect:.";
+//                return "user/profileView";
+        return "index";
 }
 
 
@@ -301,7 +271,7 @@ public class UserController extends Profile{
         userRepository.save(user);
 
 
-        return "";
+        return "index";
     }
 
 }

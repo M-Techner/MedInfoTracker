@@ -2,6 +2,7 @@ package com.medinfotracker.medinfotracker.models;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Profile extends AbstractEntity {
@@ -9,49 +10,55 @@ public class Profile extends AbstractEntity {
 //    @OneToOne
 //    private User user;
 
+    @NotNull
     private String userPreferredName;
 
-//    @NotNull
+    @NotNull
     private String userMedicalRecordName;
 
-//    @NotNull
+    @NotNull
     private String userAddress;
 
-//    @NotNull
+    @NotNull
     private String userPhoneNumber;
 
-//    @NotNull
+    @NotNull
     private String userDateOfBirth;
 
+    @NotNull
     private String userPreferredPronouns;
 
-//    @NotNull
+    @NotNull
     private String emergencyName;
 
-//    @NotNull
+    @NotNull
     private String emergencyPhoneNumber;
 
-//    @NotNull
+    @NotNull
     private String emergencyRelationship;
 
-//    @NotNull
+    @NotNull
     private String primaryCarePhysicianName;
 
-//    @NotNull
+    @NotNull
     private String primaryCarePhysicianAddress;
 
-//    @NotNull
+    @NotNull
     private String primaryCarePhysicianPhoneNumber;
 
-
+    @NotNull
     private String specialistName;
 
+    @NotNull
     private String specialistPhoneNumber;
 
+    @NotNull
     private String specialistType;
 
+    @NotNull
     private String allergies;
 
+    @NotNull
     private String medicalConditions;
 
 

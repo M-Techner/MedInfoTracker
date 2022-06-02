@@ -23,7 +23,7 @@
     <p th:text="${'Username: ' + user.userName}"></p>
     <p th:text="${'Email: ' + user.userEmail}"></p>
     <br>
-    <p th:text="${'Preferred Name: ' + user.profile.userPreferredName}"></p>
+    <p th:text="${'Preferred Name: ' + profile.userPreferredName}"></p>
     <p th:text="${'Preferred Pronouns: ' + user.profile.userPreferredPronouns}"></p>
 <!--    <p th:text="${'Profile ID: ' + user.profile}"></p>-->
     <p th:text="${'Medical Record Name: ' + user.profile.userMedicalRecordName}"></p>
@@ -45,7 +45,7 @@
 
 
 
-<form action="" method="post">
+<form method="post">
     <div class="form-group">
         <label>
             <span th:text="${'Delete Profile?'}"></span>
