@@ -1,8 +1,6 @@
 package com.medinfotracker.medinfotracker.models;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import java.util.List;
 
 @Entity
 public class Conditions extends AbstractEntity {

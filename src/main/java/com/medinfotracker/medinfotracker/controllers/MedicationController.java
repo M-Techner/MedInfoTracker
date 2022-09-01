@@ -48,7 +48,11 @@ public class MedicationController {
         model.addAttribute("Route Of Administration", "add Route Of Administration");
         model.addAttribute("Refill", "add Refill");
         model.addAttribute("Over the Counter", "add Over the Counter");
-        model.addAttribute(new Medication());
+        model.addAttribute(new Medication() {
+            public int getId() {
+                return 0;
+            }
+        });
         return "medication/add";
     }
 

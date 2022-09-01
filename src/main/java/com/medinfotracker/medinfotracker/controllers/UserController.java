@@ -23,7 +23,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("user")
-public class UserController extends Profile{
+public abstract class UserController extends Profile{
 
     @Autowired
     private UserRepository userRepository;
@@ -53,7 +53,12 @@ public class UserController extends Profile{
         model.addAttribute("Specialist Type", "Add Specialist Type");
         model.addAttribute("Known Allergies", "Add Known Allergies");
         model.addAttribute("Medical Conditions", "Add Medical Conditions");
-        model.addAttribute(new Profile());
+        model.addAttribute(new Profile() {
+            @Override
+            public int getId() {
+                return 0;
+            }
+        });
         return "user/addProfile";
     }
 

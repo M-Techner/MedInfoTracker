@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
-public class Symptoms extends AbstractEntity {
+public abstract class Symptoms extends AbstractEntity {
 
 
 

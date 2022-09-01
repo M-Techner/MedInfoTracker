@@ -41,7 +41,12 @@ public class SymptomController {
 
     @GetMapping("add")
     public String displayAddSymptomsForm(Model model) {
-        model.addAttribute(new Symptoms());
+        model.addAttribute(new Symptoms() {
+            @Override
+            public int getId() {
+                return 0;
+            }
+        });
         return "symptoms/add";
     }
     @GetMapping("addSymptoms")

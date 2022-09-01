@@ -36,4 +36,5 @@ public abstract class AbstractEntity {
         return Objects.hash(userId);
     }
 
+    public abstract int getId();
 }

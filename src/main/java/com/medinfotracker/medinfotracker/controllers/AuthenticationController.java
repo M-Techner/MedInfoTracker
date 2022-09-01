@@ -50,6 +50,13 @@ public class AuthenticationController {
             return "register";
         }
 
+    /**
+     * @param registerFormDTO
+     * @param errors
+     * @param request
+     * @param model
+     * @return
+     */
         @PostMapping("/register")
         public String processRegistrationForm(@ModelAttribute @Valid RegisterFormDTO registerFormDTO,
                                               Errors errors, HttpServletRequest request,
@@ -76,7 +83,11 @@ public class AuthenticationController {
                 return "register";
             }
 
-            User newUser = new User(registerFormDTO.getUserName(), registerFormDTO.getUserEmail(), registerFormDTO.getPassword());
+            User newUser = new User(registerFormDTO.getUserName(), registerFormDTO.getUserEmail(), registerFormDTO.getPassword()) {
+                public int getId() {
+                    return 0;
+                }
+            };
             userRepository.save(newUser);
             setUserInSession(request.getSession(), newUser);
 

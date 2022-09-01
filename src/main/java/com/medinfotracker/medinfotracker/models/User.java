@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @Entity
-public class User extends AbstractEntity {
+public abstract class User extends AbstractEntity {
 
     @OneToOne
     private Profile profile;

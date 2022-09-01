@@ -15,7 +15,7 @@ import javax.persistence.Entity;
 import java.util.Objects;
 
 @Entity
-public class Medication extends AbstractEntity {
+public abstract class Medication extends AbstractEntity {
 
 
     private String medicationName;
@@ -117,6 +117,10 @@ public class Medication extends AbstractEntity {
                 that.overTheCounter);
     }
 
+    @Override
+    public int getId() {
+        return 0;
+    }
 
 
 }

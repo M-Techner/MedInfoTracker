@@ -5,7 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Profile extends AbstractEntity {
+public abstract class Profile extends AbstractEntity {
 
 //    @OneToOne
 //    private User user;
