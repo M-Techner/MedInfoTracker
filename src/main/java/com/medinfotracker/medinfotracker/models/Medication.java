@@ -1,19 +1,17 @@
 package com.medinfotracker.medinfotracker.models;
 
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.*;
 
-//import javax.net.ssl.HandshakeCompletedEvent;
-import com.medinfotracker.medinfotracker.models.AbstractEntity;
-
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpSession;
-//import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotNull;
-//import javax.validation.constraints.Size;
-//import java.util.ArrayList;
-import java.util.Objects;
+import javax.net.ssl.*;
+import com.medinfotracker.medinfotracker.models.data.*;
+import com.medinfotracker.medinfotracker.models.dto.*;
+import com.medinfotracker.medinfotracker.models.*;
+import com.medinfotracker.medinfotracker.service.*;
+import com.medinfotracker.medinfotracker.controllers.*;
+import javax.persistence.*;
+import javax.servlet.http.*;
+import javax.validation.constraints.*;
+import java.util.*;
 
 @Entity
 public class Medication extends AbstractEntity {
@@ -128,10 +126,6 @@ public class Medication extends AbstractEntity {
 
 
 //package com.medinfotracker.medinfotracker.models;
-//
-//import javax.persistence.Entity;
-//import java.util.Objects;
-//
 //@Entity
 //public class Medication extends AbstractEntity{
 //
