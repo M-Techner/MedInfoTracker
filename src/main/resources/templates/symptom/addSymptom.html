@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+
+<body class="container body-content">
+<br>
+<br>
+<h1>Add Symptom</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label th:for="name">Symptom Name
+        <input class="form-control" th:field="${symptoms.name}" /></label>
+        <span th:errors="${symptoms.name}" class="error"></span>
+    </div>
+
+<!--    <input type="date">-->
+<!--    <input type="time">-->
+<!--    <input type="datetime-local">-->
+    <div class="form-group">
+        <label th:datetime="startdate">Symptom Start Date
+        <input class="form-control" type="date" th:field="${symptoms.startDate}" /></label>
+        <span th:errors="${symptoms.startDate}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:datetime="stopdate">Symptom Stop Date
+        <input class="form-control" type="date" th:field="${symptoms.stopDate}" /></label>
+        <span th:errors="${symptoms.stopDate}" class="error"></span>
+    </div>
+    <div class="form-group">
+        <label th:for="description">Symptom Description
+        <input class="form-control" th:field="${symptoms.description}" /></label>
+        <span th:errors="${symptoms.description}" class="error"></span>
+    </div>
+
+    <input type="submit" value="Add Symptom" />
+</form>
+
+</body>
+</html>
